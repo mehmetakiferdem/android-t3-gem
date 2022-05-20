@@ -105,6 +105,7 @@ BOARD_KERNEL_CMDLINE += init=/init
 BOARD_KERNEL_CMDLINE += cma=512M
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
 BOARD_KERNEL_CMDLINE += androidboot.hardware=am62x
+BOARD_KERNEL_CMDLINE += fw_devlink=permissive
 
 DEVICE_MANIFEST_FILE := device/ti/am62x/manifest.xml
 
