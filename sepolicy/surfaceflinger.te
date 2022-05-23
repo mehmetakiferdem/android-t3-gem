@@ -1,0 +1,4 @@
+allow surfaceflinger gpu_device:dir { read open };
+allow surfaceflinger gpu_device:chr_file { open read write ioctl map };
+allow surfaceflinger device:dir { read open };
+allow surfaceflinger same_process_hal_file:file { getattr read open map };

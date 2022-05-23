@@ -1,0 +1,18 @@
+genfscon tracefs /events/rogue/rogue_job_enqueue            u:object_r:debugfs_tracing:s0
+genfscon tracefs /events/rogue/rogue_firmware_activity      u:object_r:debugfs_tracing:s0
+genfscon tracefs /events/rogue/rogue_sched_switch           u:object_r:debugfs_tracing:s0
+
+genfscon debugfs /pvr/driver_stats                        u:object_r:vendor_debugfs_pvr:s0
+genfscon debugfs /pvr/memtrack_stats                      u:object_r:vendor_debugfs_pvr:s0
+
+genfscon sysfs /class/power_supply	                                      u:object_r:sysfs_power_supply:s0
+genfscon sysfs /class/thermal		                                      u:object_r:sysfs_thermal:s0
+genfscon sysfs /devices/platform/bus@f0000/2800000.serial/wakeup/wakeup0  u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/bus@f0000/fa10000.mmc/                   u:object_r:sysfs_mmc:s0
+genfscon sysfs /devices/platform/leds/                                    u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/virtual/thermal	                                  u:object_r:sysfs_thermal:s0
+
+genfscon proc /pvr                                    u:object_r:vendor_proc_pvr:s0
+
+# Storage
+genfscon proc /sys/vm/swappiness                      u:object_r:proc_dirty:s0

@@ -1,0 +1,5 @@
+allow system_server gpu_device:chr_file { open read write ioctl map };
+allow system_server cgroup:dir { create setattr };
+allow system_server cgroup:file setattr;
+allow system_server sysfs:dir { open read };
+allow system_server sysfs_leds:dir { open read };

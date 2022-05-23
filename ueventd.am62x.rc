@@ -1,0 +1,10 @@
+modalias_handling enabled
+
+/dev/ion	 0666 system graphics
+# for android sync framework
+/dev/pvr_sync             0666   system     graphics
+# gpu
+/dev/dri/card0 0660 system graphics
+/dev/dri/card1 0660 system graphics
+/dev/dri/card2 0660 system graphics
+/dev/dri/renderD128 0666 system graphics
