@@ -129,6 +129,20 @@ on property:sys.boot_completed=1 && property:sys.wifitracing.started=1
     chmod 0766 /sys/kernel/tracing/trace_marker
     chmod 0766 /sys/kernel/debug/tracing/trace_marker
 
+on zygote-start
+    mkdir /data/vendor/wifi 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
+
+service wpa_supplicant /system/vendor/bin/hw/wpa_supplicant \
+     -g@android:wpa_wlan0
+     interface android.hardware.wifi.supplicant@1.0::ISupplicant default
+     interface android.hardware.wifi.supplicant@1.1::ISupplicant default
+     socket wpa_wlan0 dgram 660 wifi wifi
+     class main
+     disabled
+     oneshot
+
 service pvrsrvinit /vendor/bin/pvrsrvctl --start
     class core
     user root
