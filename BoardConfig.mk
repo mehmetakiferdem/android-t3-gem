@@ -123,7 +123,7 @@ PRODUCT_COPY_FILES += \
         device/ti/am62x/flashall.sh:$(TARGET_OUT)/flashall.sh \
 
 # Copy kernel modules into /vendor/lib/modules
-BOARD_ALL_MODULES := $(shell find device/ti/am62x-prebuilts/kernel/5.10 -type f -iname '*.ko')
+BOARD_ALL_MODULES := $(shell find device/ti/am62x-kernel/kernel/5.10 -type f -iname '*.ko')
 BOARD_VENDOR_KERNEL_MODULES += $(BOARD_ALL_MODULES)
 
 # USB Hal
