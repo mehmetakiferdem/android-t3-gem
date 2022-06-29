@@ -185,6 +185,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += audio.primary.am62x
 
+# Audio USB HAL
+PRODUCT_PACKAGES += \
+    audio.usb.default
+
 # audio policy configuration
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \
