@@ -1,1 +1,4 @@
-allow appdomain same_process_hal_file:file { read execute_no_trans };
+# Few system/untrusted_app_xx apps eg. deskclock,
+# gallery3d et al. need read-only access to /dev/dri
+# as well, otherwise they don't open and crash.
+gpu_access(appdomain -isolated_app)

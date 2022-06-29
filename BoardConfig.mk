@@ -111,6 +111,8 @@ BOARD_KERNEL_CMDLINE += fw_devlink=permissive
 DEVICE_MANIFEST_FILE := device/ti/am62x/manifest.xml
 
 BOARD_SEPOLICY_DIRS += device/ti/am62x/sepolicy
+PRODUCT_PRIVATE_SEPOLICY_DIRS += device/ti/am62x/sepolicy-private
+
 BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
 
 # Copy Bootloader prebuilts
