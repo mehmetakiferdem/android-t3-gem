@@ -20,7 +20,7 @@ Note: not xml elements from TinyHAL are supported.
             <!-- jack out -->
             <ctl name="HP Playback Switch" val="1" />
             <ctl name="PCM Playback Volume" val="127" />
-
+            <ctl name="HP DAC Playback Volume" val="118" />
         </init>
         </mixer>
 
