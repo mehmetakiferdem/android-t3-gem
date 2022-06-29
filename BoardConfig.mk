@@ -92,6 +92,7 @@ TARGET_SCREEN_DENSITY := 240
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_FSTAB := device/ti/am62x/fstab.am62x
+TARGET_RECOVERY_WIPE := device/ti/am62x/recovery.wipe
 
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_OFFSET      := 0x82000000
@@ -128,6 +129,19 @@ PRODUCT_COPY_FILES += \
 # Copy kernel modules into /vendor/lib/modules
 BOARD_ALL_MODULES := $(shell find device/ti/am62x-kernel/kernel/5.10 -type f -iname '*.ko')
 BOARD_VENDOR_KERNEL_MODULES += $(BOARD_ALL_MODULES)
+
+BOARD_RECOVERY_KERNEL_MODULES := \
+        device/ti/am62x-kernel/kernel/5.10/dwc3.ko \
+        device/ti/am62x-kernel/kernel/5.10/dwc3-am62.ko \
+        device/ti/am62x-kernel/kernel/5.10/typec.ko \
+        device/ti/am62x-kernel/kernel/5.10/roles.ko \
+        device/ti/am62x-kernel/kernel/5.10/tps6598x.ko \
+        device/ti/am62x-kernel/kernel/5.10/xhci-plat-hcd.ko \
+        device/ti/am62x-kernel/kernel/5.10/sa2ul.ko \
+        device/ti/am62x-kernel/kernel/5.10/crct10dif-ce.ko \
+        device/ti/am62x-kernel/kernel/5.10/cdns-dphy.ko \
+        device/ti/am62x-kernel/kernel/5.10/rng-core.ko \
+        device/ti/am62x-kernel/kernel/5.10/omap-rng.ko
 
 # USB Hal
 BOARD_SEPOLICY_DIRS += \

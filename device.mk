@@ -257,6 +257,10 @@ PRODUCT_COPY_FILES += \
     device/ti/am62x/fstab.am62x:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.am62x
 endif
 
+# RecoveryOS
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.recovery.am62x.rc:recovery/root/vendor/etc/init/init.recovery.am62x.rc
+
 # Media
 PRODUCT_COPY_FILES += \
         device/ti/am62x/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
