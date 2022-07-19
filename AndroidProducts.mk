@@ -18,4 +18,5 @@ PRODUCT_MAKEFILES := \
 	$(LOCAL_DIR)/am62x.mk \
 	
 COMMON_LUNCH_CHOICES := \
-	am62x-userdebug
+	am62x-userdebug \
+	am62x-user
