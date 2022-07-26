@@ -1,4 +1,4 @@
-vendor_internal_prop(cf_graphics_config_prop)
+vendor_internal_prop(vendor_cf_graphics_config_prop)
 
 allow vendor_init self:capability sys_module;
 allow vendor_init vendor_file:system { module_load };
@@ -15,4 +15,4 @@ recovery_only(`
 	allow vendor_init rootfs:system { module_load };
 ');
 
-set_prop(vendor_init, cf_graphics_config_prop)
+set_prop(vendor_init, vendor_cf_graphics_config_prop)
