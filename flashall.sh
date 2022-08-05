@@ -128,3 +128,6 @@ ${FASTBOOT} flash userdata ${userdataimg}
 
 echo "Erasing misc partitions"
 ${FASTBOOT} erase misc
+
+echo "Erasing metadata partition"
+${FASTBOOT} erase metadata
