@@ -78,6 +78,7 @@ bootloaderimg="${PRODUCT_OUT}bootloader.img"
 userdataimg="${PRODUCT_OUT}userdata.img"
 superimg="${PRODUCT_OUT}super.img"
 bootimg="${PRODUCT_OUT}boot.img"
+vbmetaimg="${PRODUCT_OUT}vbmeta.img"
 
 # Verify that all the files required for the fastboot flash
 # process are available
@@ -125,6 +126,11 @@ ${FASTBOOT} flash boot_b ${bootimg}
 
 echo "Flashing userdata Image"
 ${FASTBOOT} flash userdata ${userdataimg}
+
+if [ -e "${vbmetaimg}" ] ; then
+  echo "Flashing vbmeta Image"
+  ${FASTBOOT} flash vbmeta ${vbmetaimg}
+fi
 
 echo "Erasing misc partitions"
 ${FASTBOOT} erase misc
