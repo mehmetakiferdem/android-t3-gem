@@ -135,5 +135,5 @@ fi
 echo "Erasing misc partitions"
 ${FASTBOOT} erase misc
 
-echo "Erasing metadata partition"
-${FASTBOOT} erase metadata
+echo "Formatting metadata partition"
+${FASTBOOT} format metadata
