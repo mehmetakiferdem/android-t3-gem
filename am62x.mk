@@ -17,6 +17,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, device/ti/am62x/device.mk)
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=1m \
+    dalvik.vm.heapgrowthlimit=48m \
+    dalvik.vm.heapsize=128m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=512k \
+    dalvik.vm.heapmaxfree=2m \
+    dalvik.vm.usejit=false
+
 PRODUCT_NAME := am62x
 PRODUCT_DEVICE := am62x
 PRODUCT_BRAND := TI

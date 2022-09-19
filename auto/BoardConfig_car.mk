@@ -1,5 +1,5 @@
 #
-# Copyright 2022 The Android Open-Source Project
+# Copyright (C) 2022 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,14 +12,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/am62x.mk \
-	$(LOCAL_DIR)/auto/am62x_car.mk \
-	
-COMMON_LUNCH_CHOICES := \
-	am62x-userdebug \
-	am62x-user \
-	am62x_car-userdebug \
-	am62x_car-user
+TARGET_RECOVERY_UI_MARGIN_HEIGHT := 165
+TARGET_SCREEN_DENSITY := 180
+
+DEVICE_MANIFEST_FILE := device/ti/am62x/auto/manifest_device.xml
+
+BOARD_SEPOLICY_DIRS += device/ti/am62x/auto/sepolicy/public/

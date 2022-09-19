@@ -1,5 +1,5 @@
 #
-# Copyright 2022 The Android Open-Source Project
+# Copyright (C) 2022 Texas Instruments Incorporated - http://www.ti.com/
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,13 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+$(call inherit-product, device/google_car/common/pre_google_car.mk)
+$(call inherit-product, device/ti/am62x/auto/device-car.mk)
+$(call inherit-product, device/google_car/common/post_google_car.mk)
 
-PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/am62x.mk \
-	$(LOCAL_DIR)/auto/am62x_car.mk \
-	
-COMMON_LUNCH_CHOICES := \
-	am62x-userdebug \
-	am62x-user \
-	am62x_car-userdebug \
-	am62x_car-user
+PRODUCT_PACKAGE_OVERLAYS := device/ti/am62x/auto/overlay
+$(call inherit-product, packages/services/Car/car_product/build/car.mk)
+
+PRODUCT_NAME := am62x_car
+PRODUCT_DEVICE := am62x
+PRODUCT_BRAND := TI
+PRODUCT_MODEL := AOSP Car on AM62X EVM
+PRODUCT_MANUFACTURER := Texas Instruments
