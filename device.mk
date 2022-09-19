@@ -52,6 +52,10 @@ PRODUCT_BUILD_SUPER_PARTITION := true
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
+# Set default log size to 1M
+PRODUCT_PROPERTY_OVERRIDES += \
+  ro.logd.size=1M
+
 # Use 64-bit dex2oat for better dexopt time.
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat64.enabled=true
