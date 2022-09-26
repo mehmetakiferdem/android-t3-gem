@@ -129,7 +129,8 @@ ${FASTBOOT} flash userdata ${userdataimg}
 
 if [ -e "${vbmetaimg}" ] ; then
   echo "Flashing vbmeta Image"
-  ${FASTBOOT} flash vbmeta ${vbmetaimg}
+  ${FASTBOOT} flash vbmeta_a ${vbmetaimg}
+  ${FASTBOOT} flash vbmeta_b ${vbmetaimg}
 fi
 
 echo "Erasing misc partitions"
