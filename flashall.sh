@@ -80,6 +80,8 @@ superimg="${PRODUCT_OUT}super.img"
 bootimg="${PRODUCT_OUT}boot.img"
 vbmetaimg="${PRODUCT_OUT}vbmeta.img"
 persistimg="${PRODUCT_OUT}persist.img"
+dtboimg="${PRODUCT_OUT}dtbo.img"
+dtbouimg="${PRODUCT_OUT}dtbo-unsigned.img"
 
 # Verify that all the files required for the fastboot flash
 # process are available
@@ -133,9 +135,24 @@ echo "Flashing userdata Image"
 ${FASTBOOT} flash userdata ${userdataimg}
 
 if [ -e "${vbmetaimg}" ] ; then
-  echo "Flashing vbmeta Image"
-  ${FASTBOOT} flash vbmeta_a ${vbmetaimg}
-  ${FASTBOOT} flash vbmeta_b ${vbmetaimg}
+	if [ ! -e "${dtboimg}" ] ; then
+  		echo "Missing ${dtboimg}"
+  		exit -1;
+	fi
+	echo "Flashing vbmeta Image"
+  	${FASTBOOT} flash vbmeta_a ${vbmetaimg}
+  	${FASTBOOT} flash vbmeta_b ${vbmetaimg}
+  	echo "Flashing DTBO Image"
+	${FASTBOOT} flash dtbo_a ${dtboimg}
+	${FASTBOOT} flash dtbo_b ${dtboimg}
+else
+	if [ ! -e "${dtbouimg}" ] ; then
+	echo "Missing ${dtbouimg}"
+	exit -1;
+	fi
+	echo "Flashing DTBO Image Unsigned"
+	${FASTBOOT} flash dtbo_a ${dtbouimg}
+	${FASTBOOT} flash dtbo_b ${dtbouimg}
 fi
 
 echo "Flashing persist partition"

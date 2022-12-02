@@ -61,6 +61,7 @@ AB_OTA_UPDATER := true
 
 AB_OTA_PARTITIONS := \
     boot \
+    dtbo \
     system \
     vendor
 
@@ -70,6 +71,7 @@ endif
 
 # FS Configuration
 BOARD_BOOTIMAGE_PARTITION_SIZE := 41943040 # 40MiB
+BOARD_PREBUILT_DTBOIMAGE := device/ti/am62x-kernel/kernel/5.10/dtbo.img
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608 # 8 MiB
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE ?= ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -93,6 +95,7 @@ TARGET_SCREEN_DENSITY ?= 240
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_FSTAB := device/ti/am62x/fstab.am62x
 TARGET_RECOVERY_WIPE := device/ti/am62x/recovery.wipe
+
 
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_OFFSET      := 0x82000000
@@ -121,7 +124,8 @@ PRODUCT_COPY_FILES += \
         vendor/ti/am62x/bootloader/tiboot3.bin:$(TARGET_OUT)/tiboot3.bin \
         vendor/ti/am62x/bootloader/tispl.bin:$(TARGET_OUT)/tispl.bin \
         vendor/ti/am62x/bootloader/u-boot.img:$(TARGET_OUT)/u-boot.img \
-        vendor/ti/am62x/binaries/persist.img:$(TARGET_OUT)/persist.img
+        vendor/ti/am62x/binaries/persist.img:$(TARGET_OUT)/persist.img \
+        device/ti/am62x-kernel/kernel/5.10/dtbo.img:$(TARGET_OUT)/dtbo-unsigned.img
 
 # Copy Android Flashing Script
 PRODUCT_COPY_FILES += \
