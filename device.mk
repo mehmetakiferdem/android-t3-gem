@@ -174,7 +174,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.vulkan=powervr
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=196610
+    ro.opengles.version=196609
 
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.hwc.drm.device=/dev/dri/card0
