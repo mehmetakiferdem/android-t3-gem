@@ -116,11 +116,12 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS += device/ti/am62x/sepolicy-private
 
 BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
 
-# Copy Bootloader prebuilts
+# Copy Bootloader prebuilts and prebuilts images
 PRODUCT_COPY_FILES += \
         vendor/ti/am62x/bootloader/tiboot3.bin:$(TARGET_OUT)/tiboot3.bin \
         vendor/ti/am62x/bootloader/tispl.bin:$(TARGET_OUT)/tispl.bin \
         vendor/ti/am62x/bootloader/u-boot.img:$(TARGET_OUT)/u-boot.img \
+        vendor/ti/am62x/binaries/persist.img:$(TARGET_OUT)/persist.img
 
 # Copy Android Flashing Script
 PRODUCT_COPY_FILES += \

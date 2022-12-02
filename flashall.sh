@@ -79,6 +79,7 @@ userdataimg="${PRODUCT_OUT}userdata.img"
 superimg="${PRODUCT_OUT}super.img"
 bootimg="${PRODUCT_OUT}boot.img"
 vbmetaimg="${PRODUCT_OUT}vbmeta.img"
+persistimg="${PRODUCT_OUT}persist.img"
 
 # Verify that all the files required for the fastboot flash
 # process are available
@@ -101,6 +102,10 @@ if [ ! -e "${userdataimg}" ] ; then
 fi
 if [ ! -e "${bootimg}" ] ; then
   echo "Missing ${bootimg}"
+  exit -1;
+fi
+if [ ! -e "${persistimg}" ] ; then
+  echo "Missing ${persistimg}"
   exit -1;
 fi
 
@@ -133,8 +138,12 @@ if [ -e "${vbmetaimg}" ] ; then
   ${FASTBOOT} flash vbmeta_b ${vbmetaimg}
 fi
 
+echo "Flashing persist partition"
+${FASTBOOT} flash persist ${persistimg}
+
 echo "Erasing misc partitions"
 ${FASTBOOT} erase misc
 
 echo "Formatting metadata partition"
 ${FASTBOOT} format metadata
+
