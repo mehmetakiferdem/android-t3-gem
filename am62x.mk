@@ -30,8 +30,13 @@ PRODUCT_NAME := am62x
 PRODUCT_DEVICE := am62x
 PRODUCT_BRAND := TI
 PRODUCT_MODEL := AOSP on AM62X EVM
-PRODUCT_MANUFACTURER := Texas Instruments
+PRODUCT_MANUFACTURER := Texas_Instruments
 PRODUCT_CHARACTERISTICS := tablet
+
+# Set SOC information
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
+    ro.soc.model=$(PRODUCT_DEVICE)
 
 # clean-up all unknown PRODUCT_PACKAGES
 allowed_list := product_manifest.xml
