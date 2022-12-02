@@ -56,6 +56,10 @@ PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.logd.size=1M
 
+#enforce permission allowlists for system apps.
+PRODUCT_PROPERTY_OVERRIDES += \
+  ro.control_privapp_permissions=enforce
+
 # Use 64-bit dex2oat for better dexopt time.
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat64.enabled=true
