@@ -26,7 +26,6 @@
     <!-- following features are said to be "basic system services"
          in frameworks/native/data/etc/tablet_core_hardware.xml,
     -->
-    <feature name="android.software.activities_on_secondary_displays" />
     <feature name="android.software.autofill" />
     <feature name="android.software.companion_device_setup" />
     <feature name="android.software.home_screen" />
