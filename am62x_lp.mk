@@ -13,23 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-TARGET_WIFI_SUPPORT := true
-TARGET_BL_NAME := am62x-sk
+PRODUCT_SET_DEBUGFS_RESTRICTIONS := false
 
-$(call inherit-product, device/google_car/common/pre_google_car.mk)
-$(call inherit-product, device/ti/am62x/auto/device-car.mk)
-$(call inherit-product, device/google_car/common/post_google_car.mk)
+TARGET_WIFI_SUPPORT := false
+TARGET_BL_NAME := am62x-lp-sk
 
-PRODUCT_PACKAGE_OVERLAYS := device/ti/am62x/auto/overlay
-$(call inherit-product, packages/services/Car/car_product/build/car.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, device/ti/am62x/device.mk)
 
-PRODUCT_NAME := am62x_car
+PRODUCT_NAME := am62x_lp
 PRODUCT_DEVICE := am62x
 PRODUCT_BRAND := TI
-PRODUCT_MODEL := AOSP Car on AM62X EVM
+PRODUCT_MODEL := AOSP on AM62X-LP EVM
 PRODUCT_MANUFACTURER := Texas_Instruments
+PRODUCT_CHARACTERISTICS := tablet
 
-# Set SOC information
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
-    ro.soc.model=$(PRODUCT_DEVICE)
+$(call inherit-product, device/ti/am62x/am62x_common.mk)

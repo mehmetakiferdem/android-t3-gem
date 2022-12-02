@@ -121,9 +121,9 @@ BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
 
 # Copy Bootloader prebuilts and prebuilts images
 PRODUCT_COPY_FILES += \
-        vendor/ti/am62x/bootloader/am62x-sk/tiboot3.bin:$(TARGET_OUT)/tiboot3.bin \
-        vendor/ti/am62x/bootloader/am62x-sk/tispl.bin:$(TARGET_OUT)/tispl.bin \
-        vendor/ti/am62x/bootloader/am62x-sk/u-boot.img:$(TARGET_OUT)/u-boot.img \
+        vendor/ti/am62x/bootloader/${TARGET_BL_NAME}/tiboot3.bin:$(TARGET_OUT)/tiboot3.bin \
+        vendor/ti/am62x/bootloader/${TARGET_BL_NAME}/tispl.bin:$(TARGET_OUT)/tispl.bin \
+        vendor/ti/am62x/bootloader/${TARGET_BL_NAME}/u-boot.img:$(TARGET_OUT)/u-boot.img \
         vendor/ti/am62x/binaries/persist.img:$(TARGET_OUT)/persist.img \
         device/ti/am62x-kernel/kernel/5.10/dtbo.img:$(TARGET_OUT)/dtbo-unsigned.img
 

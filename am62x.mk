@@ -15,18 +15,12 @@
 #
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := false
 
+TARGET_WIFI_SUPPORT := true
+TARGET_BL_NAME := am62x-sk
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, device/ti/am62x/device.mk)
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapstartsize=1m \
-    dalvik.vm.heapgrowthlimit=64m \
-    dalvik.vm.heapsize=256m \
-    dalvik.vm.heaptargetutilization=0.75 \
-    dalvik.vm.heapminfree=512k \
-    dalvik.vm.heapmaxfree=2m \
-    dalvik.vm.usejit=false
 
 PRODUCT_NAME := am62x
 PRODUCT_DEVICE := am62x
@@ -35,11 +29,4 @@ PRODUCT_MODEL := AOSP on AM62X EVM
 PRODUCT_MANUFACTURER := Texas_Instruments
 PRODUCT_CHARACTERISTICS := tablet
 
-# Set SOC information
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
-    ro.soc.model=$(PRODUCT_DEVICE)
-
-# clean-up all unknown PRODUCT_PACKAGES
-allowed_list := product_manifest.xml
-$(call enforce-product-packages-exist, $(allowed_list))
+$(call inherit-product, device/ti/am62x/am62x_common.mk)
