@@ -16,6 +16,11 @@
 TARGET_WIFI_SUPPORT := true
 TARGET_BL_NAME := am62x-sk
 
+ifndef TARGET_KERNEL_USE
+TARGET_KERNEL_USE := 5.10
+endif
+
+
 $(call inherit-product, device/google_car/common/pre_google_car.mk)
 $(call inherit-product, device/ti/am62x/auto/device-car.mk)
 $(call inherit-product, device/google_car/common/post_google_car.mk)

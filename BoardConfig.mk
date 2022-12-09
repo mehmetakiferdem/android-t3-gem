@@ -71,7 +71,7 @@ endif
 
 # FS Configuration
 BOARD_BOOTIMAGE_PARTITION_SIZE := 41943040 # 40MiB
-BOARD_PREBUILT_DTBOIMAGE := device/ti/am62x-kernel/kernel/5.10/dtbo.img
+BOARD_PREBUILT_DTBOIMAGE := device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/dtbo.img
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608 # 8 MiB
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE ?= ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -110,7 +110,11 @@ BOARD_KERNEL_CMDLINE += init=/init
 BOARD_KERNEL_CMDLINE += cma=512M
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
 BOARD_KERNEL_CMDLINE += androidboot.hardware=am62x
+ifeq ($(TARGET_KERNEL_USE), 5.10)
 BOARD_KERNEL_CMDLINE += fw_devlink=permissive
+else
+BOARD_KERNEL_CMDLINE += fw_devlink=on
+endif
 
 DEVICE_MANIFEST_FILE := device/ti/am62x/manifest.xml
 
@@ -125,28 +129,30 @@ PRODUCT_COPY_FILES += \
         vendor/ti/am62x/bootloader/${TARGET_BL_NAME}/tispl.bin:$(TARGET_OUT)/tispl.bin \
         vendor/ti/am62x/bootloader/${TARGET_BL_NAME}/u-boot.img:$(TARGET_OUT)/u-boot.img \
         vendor/ti/am62x/binaries/persist.img:$(TARGET_OUT)/persist.img \
-        device/ti/am62x-kernel/kernel/5.10/dtbo.img:$(TARGET_OUT)/dtbo-unsigned.img
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/dtbo.img:$(TARGET_OUT)/dtbo-unsigned.img
 
 # Copy Android Flashing Script
 PRODUCT_COPY_FILES += \
         device/ti/am62x/flashall.sh:$(TARGET_OUT)/flashall.sh \
 
 # Copy kernel modules into /vendor/lib/modules
-BOARD_ALL_MODULES := $(shell find device/ti/am62x-kernel/kernel/5.10 -type f -iname '*.ko')
+BOARD_ALL_MODULES := $(shell find device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE} -type f -iname '*.ko')
 BOARD_VENDOR_KERNEL_MODULES += $(BOARD_ALL_MODULES)
 
+ifeq ($(TARGET_KERNEL_USE), 5.10)
 BOARD_RECOVERY_KERNEL_MODULES := \
-        device/ti/am62x-kernel/kernel/5.10/dwc3.ko \
-        device/ti/am62x-kernel/kernel/5.10/dwc3-am62.ko \
-        device/ti/am62x-kernel/kernel/5.10/typec.ko \
-        device/ti/am62x-kernel/kernel/5.10/roles.ko \
-        device/ti/am62x-kernel/kernel/5.10/tps6598x.ko \
-        device/ti/am62x-kernel/kernel/5.10/xhci-plat-hcd.ko \
-        device/ti/am62x-kernel/kernel/5.10/sa2ul.ko \
-        device/ti/am62x-kernel/kernel/5.10/crct10dif-ce.ko \
-        device/ti/am62x-kernel/kernel/5.10/cdns-dphy.ko \
-        device/ti/am62x-kernel/kernel/5.10/rng-core.ko \
-        device/ti/am62x-kernel/kernel/5.10/omap-rng.ko
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/dwc3.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/dwc3-am62.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/typec.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/roles.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/tps6598x.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/xhci-plat-hcd.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/sa2ul.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/crct10dif-ce.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/cdns-dphy.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/rng-core.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/omap-rng.ko
+endif
 
 # USB Hal
 BOARD_SEPOLICY_DIRS += \
@@ -172,3 +178,30 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_ti
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_HOSTAPD_DRIVER := NL80211
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
+
+ifeq ($(TARGET_KERNEL_USE), 5.10-gki)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/irq-ti-sci-intr.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/irq-ti-sci-inta.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/irq-pruss-intc.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/cdns-dphy.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/phy-omap-usb2.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/gpio-pca953x.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/pwm-tiecap.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/pwm-tiehrpwm.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/syscon-clk.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/pruss.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/reset-ti-sci.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/reset-ti-syscon.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/8250_omap.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/typec.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/roles.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/tps6598x.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/rti_wdt.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/sdhci_am654.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/sdhci-omap.ko \
+        device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/cqhci.ko 
+        
+
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD +=  $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES)
+endif

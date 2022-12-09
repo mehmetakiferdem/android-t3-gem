@@ -21,8 +21,8 @@ TARGET_AVB_ENABLE := true
 endif
 
 # Kernel part
-LOCAL_KERNEL := device/ti/am62x-kernel/kernel/5.10/Image
-LOCAL_DTB := device/ti/am62x-kernel/kernel/5.10
+LOCAL_KERNEL := device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/Image.lz4
+LOCAL_DTB := device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
 
 PRODUCT_COPY_FILES += \
         $(LOCAL_KERNEL):kernel
@@ -176,8 +176,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196609
 
+ifeq ($(TARGET_KERNEL_USE), 5.10-gki)
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.hwc.drm.device=/dev/dri/card1
+else
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.hwc.drm.device=/dev/dri/card0
+endif
 
 # Public Libraries
 PRODUCT_COPY_FILES += \
