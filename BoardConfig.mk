@@ -105,7 +105,11 @@ BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version 2
 BOARD_KERNEL_CMDLINE += no_console_suspend console=ttyS2,115200 
 BOARD_KERNEL_CMDLINE += printk.devkmsg=on androidboot.selinux=permissive
+ifeq ($(TARGET_SDCARD_BOOT), true)
+BOARD_KERNEL_CMDLINE += androidboot.boot_devices=bus@f0000/fa00000.mmc
+else
 BOARD_KERNEL_CMDLINE += androidboot.boot_devices=bus@f0000/fa10000.mmc
+endif
 BOARD_KERNEL_CMDLINE += init=/init
 BOARD_KERNEL_CMDLINE += cma=512M
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
@@ -118,7 +122,12 @@ endif
 
 DEVICE_MANIFEST_FILE := device/ti/am62x/manifest.xml
 
-BOARD_SEPOLICY_DIRS += device/ti/am62x/sepolicy
+BOARD_SEPOLICY_DIRS += device/ti/am62x/sepolicy/common/
+ifeq ($(TARGET_SDCARD_BOOT), true)
+BOARD_SEPOLICY_DIRS += device/ti/am62x/sepolicy/sdcard/
+else
+BOARD_SEPOLICY_DIRS += device/ti/am62x/sepolicy/mmc/
+endif
 PRODUCT_PRIVATE_SEPOLICY_DIRS += device/ti/am62x/sepolicy-private
 
 BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true

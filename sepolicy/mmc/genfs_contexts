@@ -1,0 +1,1 @@
+genfscon sysfs /devices/platform/bus@f0000/fa10000.mmc/                   u:object_r:sysfs_mmc:s0

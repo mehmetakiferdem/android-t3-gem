@@ -10,12 +10,11 @@ genfscon sysfs /class/power_supply                                    u:object_r
 genfscon sysfs /class/thermal		                                      u:object_r:sysfs_thermal:s0
 genfscon sysfs /devices/virtual/thermal	                              u:object_r:sysfs_thermal:s0
 
-genfscon sysfs /devices/platform/bus@f0000/fa10000.mmc/                   u:object_r:sysfs_mmc:s0
-
 # Suspend
 genfscon sysfs /devices/platform/bus@f0000/2800000.serial/wakeup/wakeup0                                                  u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/bus@f0000:bus@b00000/2b1f0000.rtc/wakeup/wakeup1                             u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/bus@f0000:bus@b00000/2b1f0000.rtc/rtc/rtc0/alarmtimer.0.auto/wakeup/wakeup2    u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/bus@f0000/bus@f0000:bus@b00000/2b1f0000.rtc/rtc/rtc0/alarmtimer.0.auto/wakeup/wakeup4    u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/bus@f0000:bus@b00000/2b1f0000.rtc/wakeup/wakeup2                             u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/fa20000.mmc/mmc_host/mmc2/mmc2:0001/mmc2:0001:2/wl18xx.1.auto/wakeup/wakeup6   u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/fa20000.mmc/mmc_host/mmc2/mmc2:0001/mmc2:0001:2/wl18xx.1.auto/wakeup/wakeup9   u:object_r:sysfs_wakeup:s0
