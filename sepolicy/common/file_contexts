@@ -26,7 +26,7 @@
 /vendor/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.software	            u:object_r:hal_gatekeeper_default_exec:s0
 /vendor/bin/hw/android\.hardware\.graphics\.allocator@4\.0-service\.img             u:object_r:hal_graphics_allocator_default_exec:s0
 /vendor/bin/hw/android\.hardware\.memtrack-service\.img                             u:object_r:hal_memtrack_default_exec:s0
-/vendor/bin/hw/android\.hardware\.thermal@2\.0-service\.img                         u:object_r:hal_thermal_default_exec:s0
+/vendor/bin/hw/android\.hardware\.thermal@2\.0-service\.ti                          u:object_r:hal_thermal_default_exec:s0
 /vendor/bin/pvrsrvctl		                                                    u:object_r:pvrsrvctl_exec:s0
 /vendor/bin/hw/android\.hardware\.health\.storage-service\.cuttlefish               u:object_r:hal_health_storage_default_exec:s0
 

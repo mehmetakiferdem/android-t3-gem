@@ -247,6 +247,10 @@ PRODUCT_PACKAGES += \
         android.hardware.keymaster@3.0-impl \
         android.hardware.keymaster@3.0-service
 
+# Thermal
+PRODUCT_PACKAGES += \
+        android.hardware.thermal@2.0-service.ti
+
 # Copy hardware config file(s)
 PRODUCT_COPY_FILES += \
         device/linaro/hikey/etc/permissions/android.hardware.screen.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.screen.xml \
