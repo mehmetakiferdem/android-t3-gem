@@ -21,8 +21,8 @@ TARGET_AVB_ENABLE := true
 endif
 
 # Kernel part
-LOCAL_KERNEL := device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}/Image.lz4
-LOCAL_DTB := device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
+LOCAL_KERNEL := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/Image.lz4
+LOCAL_DTB := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)
 
 PRODUCT_COPY_FILES += \
         $(LOCAL_KERNEL):kernel
