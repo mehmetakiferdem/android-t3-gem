@@ -1,12 +1,12 @@
 
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=1m \
-    dalvik.vm.heapgrowthlimit=64m \
+    dalvik.vm.heapgrowthlimit=128m \
     dalvik.vm.heapsize=256m \
     dalvik.vm.heaptargetutilization=0.75 \
     dalvik.vm.heapminfree=512k \
     dalvik.vm.heapmaxfree=2m \
-    dalvik.vm.usejit=false
+    dalvik.vm.usejit=true
 
 # Set SOC information
 PRODUCT_VENDOR_PROPERTIES += \

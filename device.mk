@@ -60,9 +60,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.control_privapp_permissions=enforce
 
-# Use 64-bit dex2oat for better dexopt time.
+# disable 64-bit dex2oat to save memory.
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat64.enabled=true
+    dalvik.vm.dex2oat64.enabled=false
 
 # Enable Incremental on the device
 PRODUCT_PROPERTY_OVERRIDES += \
