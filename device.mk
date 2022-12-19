@@ -303,6 +303,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
         device/ti/am62x/am62x.media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
 
+# Memtrack
+PRODUCT_PACKAGES += \
+        android.hardware.memtrack-service.example
+
 # Enable USB Camera
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-impl
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-external-service
