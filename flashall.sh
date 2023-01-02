@@ -213,12 +213,14 @@ FDISK_CMDS
 		${FASTBOOT} erase misc
 
 		echo "Formatting metadata partition"
+		set +e
 		${FASTBOOT} format metadata
 		if [ $? -eq 1 ]; then
 			echo "formating failed"
 			${FASTBOOT} erase metadata
 
 		fi
+		set -e
 }
 
 if [ "$0" = "$BASH_SOURCE" ]; then
