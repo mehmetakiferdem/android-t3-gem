@@ -73,6 +73,9 @@ FDISK_CMDS
 		mcopy -i bootloader.img tispl.bin ::tispl.bin
 		mcopy -i bootloader.img u-boot.img ::u-boot.img
 		# Pre-packaged DB
+		if [[ -x "fastboot" ]] && [[ ! -v FASTBOOT ]]; then
+			export FASTBOOT="./fastboot"
+		fi
 		export FASTBOOT=${FASTBOOT-$(which fastboot)}
 		export PRODUCT_OUT=${PRODUCT_OUT-"./"}
 		export LD_LIBRARY_PATH=./
