@@ -35,11 +35,11 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | fdisk ${sd_dev}
 g      # create new GPT partition
 n      # add new partition
 2      # partition number
-8192	# first sector 
+8192	# first sector
 +1MiB # partition size
 n      # add new partition
 1      # partition number
-10240	# default - first sector 
+10240	# default - first sector
 +8Mib	# default - last sector
 w      # write partition table and exit
 FDISK_CMDS
@@ -48,7 +48,7 @@ FDISK_CMDS
 			name 2 tiboot3 \
 			name 1 bootloader
 
-		dd if=tiboot3.bin of=${sd_dev}2 
+		dd if=tiboot3.bin of=${sd_dev}2
 		sync
 		mkfs.vfat -F 32 -n "bootloader" "${sd_dev}1"
 		mkdir boot
