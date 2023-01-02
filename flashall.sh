@@ -121,11 +121,6 @@ FDISK_CMDS
 				exit -1;
 		fi
 
-		## poll the board to find out its configuration
-		cpu=`${FASTBOOT} getvar cpu 2>&1         | grep cpu     | awk '{print$2}'`
-		cputype=`${FASTBOOT} getvar secure 2>&1  | grep secure  | awk '{print$2}'`
-		boardrev=`${FASTBOOT} getvar board_rev 2>&1  | grep board_rev  | awk '{print$2}' | cut -b 1`
-
 		# Create the filename
 		tiboot3bin="${PRODUCT_OUT}tiboot3.bin"
 		bootloaderimg="${PRODUCT_OUT}bootloader.img"
