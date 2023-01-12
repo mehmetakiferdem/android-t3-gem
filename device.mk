@@ -311,6 +311,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
         android.hardware.dumpstate@1.1-service.example
 
+# Atrace
+PRODUCT_PACKAGES += \
+        android.hardware.atrace@1.0-service
+
 # Enable USB Camera
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-impl
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-external-service
