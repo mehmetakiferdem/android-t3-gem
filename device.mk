@@ -307,6 +307,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
         android.hardware.memtrack-service.example
 
+# Dumpstate
+PRODUCT_PACKAGES += \
+        android.hardware.dumpstate@1.1-service.example
+
 # Enable USB Camera
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-impl
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-external-service
