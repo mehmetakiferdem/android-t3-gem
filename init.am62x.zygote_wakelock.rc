@@ -1,0 +1,9 @@
+# When zygote is restarting, it's possible that system cannot
+# make sufficient progress before autosuspend hits (and the board ends up in suspend)
+# See:
+# https://android-review.googlesource.com/c/platform/system/core/+/2353993
+on property:init.svc.zygote=stopping
+    write /sys/power/wake_lock zygote_kwl
+
+on property:sys.boot_completed=1
+    write /sys/power/wake_unlock zygote_kwl
