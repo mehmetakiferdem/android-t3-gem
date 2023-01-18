@@ -26,7 +26,7 @@ PRODUCT_NAME := am62x_lp
 PRODUCT_DEVICE := am62x
 PRODUCT_BRAND := TI
 PRODUCT_MODEL := AOSP on AM62X-LP EVM
-PRODUCT_MANUFACTURER := Texas_Instruments
+PRODUCT_MANUFACTURER := TexasInstruments
 PRODUCT_CHARACTERISTICS := tablet
 
 $(call inherit-product, device/ti/am62x/am62x_common.mk)
