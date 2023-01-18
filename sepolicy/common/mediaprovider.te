@@ -1,1 +1,1 @@
-allow mediaprovider functionfs:file ioctl;
+allowxperm mediaprovider functionfs:file ioctl `0x000067e7';
