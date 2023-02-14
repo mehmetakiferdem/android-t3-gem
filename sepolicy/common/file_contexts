@@ -39,3 +39,14 @@
 /sys/devices/platform/bus@f0000/fa20000.mmc/mmc_host/mmc2/mmc2:0001/mmc2:0001:2/wl18xx.2.auto/net/wlan0/mtu    u:object_r:sysfs_net:s0
 
 /(vendor|system/vendor)/firmware(/.*)?        u:object_r:vendor_firmware_file:s0
+
+# optee
+/dev/tee[0-9]*                                                   u:object_r:tee_device:s0
+/dev/teepriv[0-9]*                                               u:object_r:tee_device:s0
+/vendor/bin/tee-supplicant                                       u:object_r:tee_exec:s0
+/vendor/bin/hw/wait_for_keymaster_optee                          u:object_r:wait_for_keymaster_optee_exec:s0
+/vendor/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.optee u:object_r:hal_gatekeeper_default_exec:s0
+/vendor/bin/hw/android\.hardware\.keymaster@3\.0-service\.optee  u:object_r:hal_keymaster_default_exec:s0
+/data/vendor/tee(/.*)?                                           u:object_r:tee_data_file:s0
+/mnt/vendor/persist(/.*)?                                        u:object_r:vendor_data_file:s0
+/mnt/vendor/persist/tee(/.*)?                                    u:object_r:tee_data_file:s0

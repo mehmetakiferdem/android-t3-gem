@@ -8,3 +8,6 @@ vendor.hwc.drm.exclude_non_hwfb_imports 	u:object_r:vendor_cf_graphics_config_pr
 vendor.hwc.drm.primary_display_order 		u:object_r:vendor_cf_graphics_config_prop:s0 exact string
 vendor.hwc.drm.scale_with_gpu 			    u:object_r:vendor_cf_graphics_config_prop:s0 exact int
 vendor.hwc.drm.use_overlay_planes 		    u:object_r:vendor_cf_graphics_config_prop:s0 exact int
+
+#tee
+vendor.keymaster.optee.status           u:object_r:vendor_keymaster_tee_prop:s0
