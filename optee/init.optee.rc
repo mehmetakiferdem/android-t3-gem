@@ -1,0 +1,7 @@
+on post-fs
+    restorecon_recursive /mnt/vendor/persist/
+
+service tee-supplicant /vendor/bin/tee-supplicant
+    class early_hal
+    user root
+    oneshot
