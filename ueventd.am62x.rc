@@ -15,3 +15,6 @@ modalias_handling enabled
 /dev/video1               0660   system     camera
 /dev/video2               0660   system     camera
 /dev/video3               0660   system     camera
+
+/dev/tee0      0660  system  system
+/dev/teepriv0  0660  system  system
