@@ -16,3 +16,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 # clean-up all unknown PRODUCT_PACKAGES
 allowed_list := product_manifest.xml
 $(call enforce-product-packages-exist, $(allowed_list))
+
+include device/ti/am62x/optee/device-optee.mk
+$(call optee-add-ta, vendor/ti/am62x/optee/ta/380231ac-fb99-47ad-a689-9e017eb6e78a.ta) # supp_plugin
+$(call optee-add-all-xtest-ta, vendor/ti/am62x/optee/ta)
