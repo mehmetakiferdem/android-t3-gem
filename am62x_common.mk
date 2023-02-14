@@ -20,3 +20,8 @@ $(call enforce-product-packages-exist, $(allowed_list))
 include device/ti/am62x/optee/device-optee.mk
 $(call optee-add-ta, vendor/ti/am62x/optee/ta/380231ac-fb99-47ad-a689-9e017eb6e78a.ta) # supp_plugin
 $(call optee-add-all-xtest-ta, vendor/ti/am62x/optee/ta)
+
+# gatekeeper
+$(call optee-add-ta, vendor/ti/am62x/optee/ta/4d573443-6a56-4272-ac6f-2425af9ef9bb.ta)
+# keymaster
+$(call optee-add-ta, vendor/ti/am62x/optee/ta/dba51a17-0563-11e7-93b1-6fa7b0071a51.ta)

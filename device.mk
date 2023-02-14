@@ -244,11 +244,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
 # Security
-PRODUCT_PACKAGES += \
-        android.hardware.drm@1.4-service.clearkey \
-        android.hardware.gatekeeper@1.0-service.software \
-        android.hardware.keymaster@3.0-impl \
-        android.hardware.keymaster@3.0-service
+$(call inherit-product, $(LOCAL_PATH)/optee/device-optee.mk)
+$(call inherit-product, $(LOCAL_PATH)/optee/kmgk.mk)
+
+PRODUCT_PACKAGES += android.hardware.drm@1.4-service.clearkey
 
 # Thermal
 PRODUCT_PACKAGES += \
