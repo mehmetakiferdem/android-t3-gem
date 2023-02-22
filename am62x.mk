@@ -33,4 +33,4 @@ PRODUCT_MODEL := AOSP on AM62X EVM
 PRODUCT_MANUFACTURER := TexasInstruments
 PRODUCT_CHARACTERISTICS := tablet
 
-$(call inherit-product, device/ti/am62x/am62x_common.mk)
+include device/ti/am62x/am62x_common.mk
