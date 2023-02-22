@@ -11,15 +11,16 @@ function usage {
 }
 
 function main {
-	local opts_args="sdcard:,help"
+	local opts_args="sdcard:,help,hsfs"
 	local opts=$(getopt -o '' -l "${opts_args}" -- "$@")
 	eval set -- "${opts}"
 
 	local sd_dev=""
-
+	local hsfs="false"
 	while true; do
 		case "$1" in
 			--sdcard) sd_dev="$2"; shift 2 ;;
+			--hsfs) hsfs="true"; shift ;;
 			--help) usage; exit 0 ;;
 			--) shift; break ;;
 		esac
@@ -122,7 +123,11 @@ FDISK_CMDS
 		fi
 
 		# Create the filename
-		tiboot3bin="${PRODUCT_OUT}tiboot3.bin"
+		if [[ "${hsfs}" == "true" ]]; then
+			tiboot3bin="${PRODUCT_OUT}tiboot3-hsfs.bin"
+		else
+			tiboot3bin="${PRODUCT_OUT}tiboot3.bin"
+		fi
 		bootloaderimg="${PRODUCT_OUT}bootloader.img"
 		userdataimg="${PRODUCT_OUT}userdata.img"
 		superimg="${PRODUCT_OUT}super.img"
