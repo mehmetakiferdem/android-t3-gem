@@ -104,7 +104,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version 2
 BOARD_KERNEL_CMDLINE += no_console_suspend console=ttyS2,115200 
-BOARD_KERNEL_CMDLINE += printk.devkmsg=on androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += printk.devkmsg=on
 ifeq ($(TARGET_SDCARD_BOOT), true)
 BOARD_KERNEL_CMDLINE += androidboot.boot_devices=bus@f0000/fa00000.mmc
 else
