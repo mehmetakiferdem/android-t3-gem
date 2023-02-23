@@ -19,6 +19,9 @@ genfscon sysfs /devices/platform/bus@f0000/bus@f0000:bus@b00000/2b1f0000.rtc/wak
 genfscon sysfs /devices/platform/bus@f0000/fa20000.mmc/mmc_host/mmc2/mmc2:0001/mmc2:0001:2/wl18xx.1.auto/wakeup/wakeup6   u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/fa20000.mmc/mmc_host/mmc2/mmc2:0001/mmc2:0001:2/wl18xx.1.auto/wakeup/wakeup9   u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/fa20000.mmc/mmc_host/mmc2/mmc2:0001/mmc2:0001:2/wl18xx.2.auto/wakeup/wakeup6   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/bus@f0000/fa20000.mmc/mmc_host/mmc2/mmc2:0001/mmc2:0001:2/wl18xx.2.auto/wakeup/wakeup8   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/bus@f0000/f910000.dwc3-usb/wakeup/wakeup7                                                u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/bus@f0000/f900000.dwc3-usb/wakeup/wakeup6                                                u:object_r:sysfs_wakeup:s0
 
 genfscon proc /pvr                                    u:object_r:vendor_proc_pvr:s0
 
