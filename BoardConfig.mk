@@ -119,6 +119,7 @@ BOARD_KERNEL_CMDLINE += fw_devlink=permissive
 else
 BOARD_KERNEL_CMDLINE += fw_devlink=on
 endif
+BOARD_KERNEL_CMDLINE += mem_sleep_default=deep
 
 DEVICE_MANIFEST_FILE := device/ti/am62x/manifest.xml
 
