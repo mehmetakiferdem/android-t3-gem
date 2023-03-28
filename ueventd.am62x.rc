@@ -10,10 +10,8 @@ modalias_handling enabled
 /dev/dri/card2 0660 system graphics
 /dev/dri/renderD128 0666 system graphics
 
-/dev/video0               0660   system     camera
-/dev/video1               0660   system     camera
-/dev/video2               0660   system     camera
-/dev/video3               0660   system     camera
+# camera
+/dev/video*               0660   system     camera
 
 /dev/tee0      0660  system  system
 /dev/teepriv0  0660  system  system
