@@ -1,6 +1,5 @@
 modalias_handling enabled
 
-/dev/ion	 0666 system graphics
 /dev/dma_heap/reserved      0666   system     graphics
 
 # for android sync framework
