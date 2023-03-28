@@ -1,0 +1,5 @@
+cameras:
+  # camera on CSI0
+  "/base/bus@f0000/i2c@20020000/i2c-switch@71/i2c@1/camera@3c":
+    location: front
+    rotation: 0
