@@ -331,7 +331,8 @@ PRODUCT_COPY_FILES +=  \
 
 # CSI Camera using libcamera
 PRODUCT_COPY_FILES += \
-     device/ti/am62x/camera/camera_hal.yaml:$(TARGET_COPY_OUT_VENDOR)/etc/libcamera/camera_hal.yaml
+     device/ti/am62x/camera/camera_hal.yaml:$(TARGET_COPY_OUT_VENDOR)/etc/libcamera/camera_hal.yaml \
+     device/ti/am62x/camera/android.hardware.camera.provider@2.5-service_64_am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.camera.provider@2.5-service_64_am62x.rc
 
 PRODUCT_PACKAGES_DEBUG += cam
 
