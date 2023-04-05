@@ -336,6 +336,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES_DEBUG += cam
 
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.5-service_64 \
+    camera.libcamera
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.camera=libcamera
+
+PRODUCT_PACKAGES += \
         Launcher3QuickStep \
         WallpaperPicker
 
