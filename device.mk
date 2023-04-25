@@ -90,9 +90,9 @@ PRODUCT_COPY_FILES += \
 
 # Wifi configuration files
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf
+    device/ti/am62x/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
+    device/ti/am62x/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
+    device/ti/am62x/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf
 
 endif
 
@@ -189,7 +189,7 @@ endif
 
 # Public Libraries
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
+    device/ti/am62x/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
 # Vulkan
 PRODUCT_COPY_FILES += \
@@ -243,9 +243,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
-# Security
-$(call inherit-product, $(LOCAL_PATH)/optee/device-optee.mk)
-$(call inherit-product, $(LOCAL_PATH)/optee/kmgk.mk)
 
 PRODUCT_PACKAGES += android.hardware.drm@1.4-service.clearkey
 
@@ -294,7 +291,7 @@ endif
 endif
 # RecoveryOS
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init.recovery.am62x.rc:recovery/root/vendor/etc/init/init.recovery.am62x.rc
+    device/ti/am62x/init.recovery.am62x.rc:recovery/root/vendor/etc/init/init.recovery.am62x.rc
 
 # Media
 PRODUCT_COPY_FILES += \

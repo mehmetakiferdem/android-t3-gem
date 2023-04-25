@@ -13,8 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# optee
 
+$(call inherit-product, device/ti/am62x/optee/kmgk.mk)
+
+# optee
 OPTEE_OS_DIR := vendor/linaro/optee-os
 OPTEE_TA_TARGETS := ta_arm64
 OPTEE_CFG_ARM64_CORE := y
@@ -26,14 +28,14 @@ OPTEE_CFG_CORE_HEAP_SIZE=131072
 CFG_TEE_FS_PARENT_PATH := /mnt/vendor/persist/tee
 CFG_TEE_CLIENT_LOAD_PATH := /vendor/lib/
 
-BUILD_OPTEE_MK := $(LOCAL_PATH)/build_optee.mk
+BUILD_OPTEE_MK := device/ti/am62x/optee/build_optee.mk
 
 PRODUCT_PACKAGES += \
     libteec \
     tee-supplicant
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init.optee.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.optee.rc
+    device/ti/am62x/optee/init.optee.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.optee.rc
 
 # tee-supplicant test plugin
 PRODUCT_PACKAGES_DEBUG += f07bfc66-958c-4a15-99c0-260e4e7375dd.plugin
@@ -69,3 +71,11 @@ XTEST_TRUSTED_APPLICATIONS += 25497083-a58a-4fc5-8a72-1ad7b69b8562.ta # large
 define optee-add-all-xtest-ta
 $(foreach ta,$(XTEST_TRUSTED_APPLICATIONS), $(call optee-add-ta, $(1)/$(ta)))
 endef
+
+$(call optee-add-ta, vendor/ti/am62x/optee/ta/380231ac-fb99-47ad-a689-9e017eb6e78a.ta) # supp_plugin
+$(call optee-add-all-xtest-ta, vendor/ti/am62x/optee/ta)
+
+# gatekeeper
+$(call optee-add-ta, vendor/ti/am62x/optee/ta/4d573443-6a56-4272-ac6f-2425af9ef9bb.ta)
+# keymaster
+$(call optee-add-ta, vendor/ti/am62x/optee/ta/dba51a17-0563-11e7-93b1-6fa7b0071a51.ta)
