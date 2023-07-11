@@ -176,6 +176,8 @@ BOARD_HOSTAPD_DRIVER := NL80211
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/zsmalloc.ko \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/zram.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti-msgmgr.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_sci.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_sci_pm_domains.ko \
@@ -244,6 +246,7 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-haps.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-of-simple.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps6598x.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rti_wdt.ko
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rti_wdt.ko \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-dev.ko
 
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD +=  $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES)
