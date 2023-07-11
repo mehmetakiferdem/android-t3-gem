@@ -131,8 +131,6 @@ BOARD_SEPOLICY_DIRS += device/ti/am62x/sepolicy/mmc/
 endif
 PRODUCT_PRIVATE_SEPOLICY_DIRS += device/ti/am62x/sepolicy-private
 
-BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
-
 # Copy Bootloader prebuilts and prebuilts images
 PRODUCT_COPY_FILES += \
         vendor/ti/am62x/bootloader/$(TARGET_BL_NAME)/tiboot3.bin:$(TARGET_OUT)/tiboot3.bin \
