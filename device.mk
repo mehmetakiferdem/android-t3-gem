@@ -242,7 +242,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
 
-PRODUCT_PACKAGES += android.hardware.drm@1.4-service.clearkey
+PRODUCT_PACKAGES += android.hardware.drm@latest-service.clearkey
 
 # Thermal
 PRODUCT_PACKAGES += \
