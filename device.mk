@@ -154,8 +154,8 @@ PRODUCT_PACKAGES += android.hardware.power-service.example
 
 # Health: Install default binderized implementation to vendor.
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-service \
-    android.hardware.health@2.1-impl-cuttlefish
+    android.hardware.health-service.cuttlefish \
+    android.hardware.health-service.cuttlefish_recovery
 
 # Health Storage
 PRODUCT_PACKAGES += \
