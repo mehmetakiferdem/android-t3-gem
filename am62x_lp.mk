@@ -16,9 +16,7 @@
 TARGET_WIFI_SUPPORT := false
 TARGET_BL_NAME := am62x-lp-sk
 
-ifndef TARGET_KERNEL_USE
-TARGET_KERNEL_USE := 5.10
-endif
+TARGET_KERNEL_USE ?= 5.10
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
