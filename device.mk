@@ -172,7 +172,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196609
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.hwc.drm.device=/dev/dri/card1
+    vendor.hwc.drm.device=/dev/dri/card0
 
 # Public Libraries
 PRODUCT_COPY_FILES += \

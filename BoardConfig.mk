@@ -247,6 +247,10 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-of-simple.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps6598x.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rti_wdt.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-dev.ko
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-dev.ko \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tidss.ko \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sii902x.ko \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/display-connector.ko \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/panel-simple.ko
 
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD +=  $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES)
