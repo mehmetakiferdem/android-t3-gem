@@ -265,7 +265,7 @@ PRODUCT_COPY_FILES += \
         device/ti/am62x/init.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.am62x.rc \
         device/ti/am62x/init.am62x.zygote_wakelock.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.am62x.zygote_wakelock.rc \
         device/ti/am62x/init.am62x.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.am62x.usb.rc \
-        device/ti/am62x/ueventd.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
+        device/ti/am62x/ueventd.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
 
 # fstab
 ifeq ($(TARGET_SDCARD_BOOT), true)
