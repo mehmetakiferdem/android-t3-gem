@@ -309,7 +309,7 @@ PRODUCT_PACKAGES += \
 
 # Dumpstate
 PRODUCT_PACKAGES += \
-        android.hardware.dumpstate@1.1-service.example
+        android.hardware.dumpstate-service.example
 
 # Atrace
 PRODUCT_PACKAGES += \
