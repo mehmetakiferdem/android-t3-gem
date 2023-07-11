@@ -16,7 +16,7 @@
 TARGET_WIFI_SUPPORT := true
 TARGET_BL_NAME := am62x-sk
 
-TARGET_KERNEL_USE ?= 5.10
+TARGET_KERNEL_USE ?= 6.1
 
 include device/ti/am62x/optee/device-optee.mk
 $(call inherit-product, device/google_car/common/pre_google_car.mk)
