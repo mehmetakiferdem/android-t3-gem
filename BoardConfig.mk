@@ -27,7 +27,8 @@ BOARD_AVB_ENABLE := true
 else
 BOARD_AVB_ENABLE := false
 endif
-
+# BT configs
+BOARD_HAVE_BLUETOOTH := true
 # Primary Arch
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a

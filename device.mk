@@ -344,6 +344,16 @@ PRODUCT_PACKAGES += \
         Launcher3QuickStep \
         WallpaperPicker
 
+#
+# Enable bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.1-service.btlinux
+
+# Bluetooth se policies
+BOARD_SEPOLICY_DIRS += system/bt/vendor_libs/linux/sepolicy
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml
+
 # Include hardware projects (HALs)
 $(call inherit-product-if-exists, hardware/ti/am62x/am62x.mk)
 
