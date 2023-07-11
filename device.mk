@@ -99,9 +99,6 @@ PRODUCT_PACKAGES += \
 	android.hardware.fastboot@1.1-impl-mock \
 	fastbootd
 
-# All VNDK libraries (HAL interfaces, VNDK, VNDK-SP, LL-NDK)
-PRODUCT_PACKAGES += vndk_package
-
 # Set lowram options and enable traced by default
 PRODUCT_VENDOR_PROPERTIES += \
      ro.config.low_ram=true
