@@ -13,8 +13,15 @@ DTBIMAGE := $(PRODUCT_OUT)/dtb.img
 
 # Please keep this list fixed: add new files in the end of the list
 DTB_FILES := \
-	$(LOCAL_DTB)/k3-am625-sk.dtb \
+	$(LOCAL_DTB)/k3-am625-sk.dtb
+
+ifeq ($(TARGET_KERNEL_USE), 6.1)
+DTB_FILES += \
+	$(LOCAL_DTB)/k3-am62-lp-sk.dtb
+else
+DTB_FILES += \
 	$(LOCAL_DTB)/k3-am62x-lp-sk.dtb
+endif
 
 $(DTBIMAGE): $(DTB_FILES)
 	cat $^ > $@
