@@ -13,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-PRODUCT_SET_DEBUGFS_RESTRICTIONS := false
-
 TARGET_WIFI_SUPPORT := false
 TARGET_BL_NAME := am62x-lp-sk
 
