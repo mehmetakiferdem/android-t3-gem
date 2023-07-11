@@ -171,13 +171,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196609
 
-ifeq ($(filter $(TARGET_KERNEL_USE), "5.10-gki" "6.1"),)
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.hwc.drm.device=/dev/dri/card1
-else
-PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.hwc.drm.device=/dev/dri/card0
-endif
 
 # Public Libraries
 PRODUCT_COPY_FILES += \
