@@ -6,26 +6,33 @@ set -o pipefail
 function usage {
 	echo "Usage: sudo flashall.sh <options>";
 	echo "options:";
+	echo "  --board To select good bootloader, board supported: am62x-sk, am62x-lp-sk"
 	echo "  --help Show this message and exit"
 	exit 1;
 }
 
 function main {
-	local opts_args="sdcard:,help,hsfs"
+	local opts_args="sdcard:,help,hsfs,board:"
 	local opts=$(getopt -o '' -l "${opts_args}" -- "$@")
 	eval set -- "${opts}"
 
+	local board=""
 	local sd_dev=""
 	local hsfs="false"
 	while true; do
 		case "$1" in
+			--board) board="$2"; shift 2 ;;
 			--sdcard) sd_dev="$2"; shift 2 ;;
 			--hsfs) hsfs="true"; shift ;;
 			--help) usage; exit 0 ;;
-			--) shift; break ;;
+			--) shift; break;;
 		esac
 	done
-
+	echo "board: ${board}"
+	if  [ -z "${board}" ]; then
+		echo "Error you need to specify board name"
+		usage
+	fi
 	if  ! [ -z "${sd_dev}" ]; then
 		if [ "$EUID" -ne 0 ]
 		then echo "Please run as root/sudo"
@@ -69,10 +76,10 @@ FDISK_CMDS
 		echo "When it's Done"
 		read -p "Press any key to continue... " -n1 -s
 	fi
-		dd if=/dev/zero of=bootloader.img bs=1048576 count=8
-		mkfs.vfat bootloader.img
-		mcopy -i bootloader.img tispl.bin ::tispl.bin
-		mcopy -i bootloader.img u-boot.img ::u-boot.img
+		dd if=/dev/zero of=bootloader-${board}.img bs=1048576 count=8
+		mkfs.vfat bootloader-${board}.img
+		mcopy -i bootloader-${board}.img tispl-${board}.bin ::tispl.bin
+		mcopy -i bootloader-${board}.img u-boot-${board}.img ::u-boot.img
 		# Pre-packaged DB
 		if [[ -x "fastboot" ]] && [[ ! -v FASTBOOT ]]; then
 			export FASTBOOT="./fastboot"
@@ -124,11 +131,11 @@ FDISK_CMDS
 
 		# Create the filename
 		if [[ "${hsfs}" == "true" ]]; then
-			tiboot3bin="${PRODUCT_OUT}tiboot3-hsfs.bin"
+			tiboot3bin="${PRODUCT_OUT}tiboot3-${board}-hsfs.bin"
 		else
-			tiboot3bin="${PRODUCT_OUT}tiboot3.bin"
+			tiboot3bin="${PRODUCT_OUT}tiboot3-${board}.bin"
 		fi
-		bootloaderimg="${PRODUCT_OUT}bootloader.img"
+		bootloaderimg="${PRODUCT_OUT}bootloader-${board}.img"
 		userdataimg="${PRODUCT_OUT}userdata.img"
 		superimg="${PRODUCT_OUT}super.img"
 		bootimg="${PRODUCT_OUT}boot.img"

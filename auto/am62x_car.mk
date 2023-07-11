@@ -13,9 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-TARGET_WIFI_SUPPORT := true
-TARGET_BL_NAME := am62x-sk
-
 TARGET_KERNEL_USE ?= 6.1
 
 include device/ti/am62x/optee/device-optee.mk
