@@ -56,4 +56,4 @@
 /mnt/vendor/persist/tee(/.*)?                                    u:object_r:tee_data_file:s0
 
 # Camera HAL
-/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-service_64 u:object_r:hal_camera_service_exec:s0
+/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-service_64 u:object_r:hal_camera_default_exec:s0
