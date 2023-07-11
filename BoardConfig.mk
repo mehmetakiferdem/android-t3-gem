@@ -116,7 +116,7 @@ endif
 BOARD_KERNEL_CMDLINE += init=/init
 BOARD_KERNEL_CMDLINE += cma=512M
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
-BOARD_KERNEL_CMDLINE += androidboot.hardware=am62x
+BOARD_KERNEL_CMDLINE += androidboot.hardware=am62x 8250.nr_uarts=10
 ifeq ($(TARGET_KERNEL_USE), 5.10)
 BOARD_KERNEL_CMDLINE += fw_devlink=permissive
 else
