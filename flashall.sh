@@ -33,6 +33,15 @@ function main {
 		echo "Error you need to specify board name"
 		usage
 	fi
+
+    export PRODUCT_OUT=${PRODUCT_OUT-"./"}
+	# Create the filename
+	if [[ "${hsfs}" == "true" ]]; then
+		tiboot3bin="${PRODUCT_OUT}tiboot3-${board}-hsfs.bin"
+	else
+		tiboot3bin="${PRODUCT_OUT}tiboot3-${board}.bin"
+	fi
+	
 	if  ! [ -z "${sd_dev}" ]; then
 		if [ "$EUID" -ne 0 ]
 		then echo "Please run as root/sudo"
@@ -56,12 +65,14 @@ FDISK_CMDS
 			name 2 tiboot3 \
 			name 1 bootloader
 
-		dd if=tiboot3.bin of=${sd_dev}2
+		dd if=${tiboot3bin} of=${sd_dev}2
 		sync
-		mkfs.vfat -F 32 -n "bootloader" "${sd_dev}1"
+		mkfs.vfat -F 32 -n "boot" "${sd_dev}1"
 		mkdir boot
 		mount  ${sd_dev}1 boot/
-		cp ti* u-boot.img boot/
+		cp ${tiboot3bin} boot/tiboot3.bin
+		cp tispl-${board}.bin boot/tispl.bin
+		cp u-boot-${board}.img boot/u-boot.img
 		umount boot
 		rm -r boot
 		echo "Insert SD card on board, Power ON and interrupt U-Boot to go in console to do this command:"
@@ -70,7 +81,7 @@ FDISK_CMDS
 		echo "=> mmc dev 0 1"
 		echo "=> mmc erase 0 0x10000"
 		echo "=> env default -a"
-		echo "=> run set_android_boot; setenv mmcdev 1; saveenv; reset;"
+		echo "=> setenv mmcdev 1; saveenv; reset;"
 		echo " Interrupt U-boot  to go in console:"
 		echo "=> fastboot 0"
 		echo "When it's Done"
@@ -85,7 +96,6 @@ FDISK_CMDS
 			export FASTBOOT="./fastboot"
 		fi
 		export FASTBOOT=${FASTBOOT-$(which fastboot)}
-		export PRODUCT_OUT=${PRODUCT_OUT-"./"}
 		export LD_LIBRARY_PATH=./
 
 		echo "Fastboot: $FASTBOOT"
