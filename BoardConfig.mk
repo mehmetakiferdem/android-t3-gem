@@ -154,6 +154,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
         device/ti/am62x/flashall.sh:$(TARGET_OUT)/flashall.sh \
 
+# Copy snagrecover config file
+PRODUCT_COPY_FILES += \
+        device/ti/am62x/config/dfu/am62x-sk-evm.yaml:$(TARGET_OUT)/am62x-sk-evm.yaml
+
 # Copy kernel modules into /vendor/lib/modules
 BOARD_ALL_MODULES := $(shell find device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE) -type f -iname '*.ko')
 BOARD_VENDOR_KERNEL_MODULES += $(BOARD_ALL_MODULES)
