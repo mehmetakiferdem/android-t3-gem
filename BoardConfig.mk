@@ -208,6 +208,7 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/system_heap.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/gpio-davinci.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/gpio-pca953x.ko \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/gpio-regulator.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/drm_dma_helper.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/omap_hwspinlock.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-omap.ko \
@@ -218,7 +219,6 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/leds-tlc591xx.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/omap-mailbox.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/palmas.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/cqhci.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sdhci_am654.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mux-core.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mux-mmio.ko \
@@ -249,7 +249,6 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/optee.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3_bandgap.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3_j72xx_bandgap.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/8250_omap.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-am62.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-haps.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-of-simple.ko \
