@@ -105,7 +105,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version 2
 ifneq ($(TARGET_BUILD_VARIANT), user)
-BOARD_KERNEL_CMDLINE += no_console_suspend console=ttyS2,115200
+BOARD_KERNEL_CMDLINE += console=ttyS2,115200
 BOARD_KERNEL_CMDLINE += printk.devkmsg=on
 endif
 ifeq ($(TARGET_SDCARD_BOOT), true)
@@ -241,7 +241,6 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/pru_rproc.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_k3_common.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_k3_dsp_remoteproc.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_k3_m4_remoteproc.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_k3_r5_remoteproc.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rpmsg_kdrv.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rpmsg_kdrv_switch.ko \
