@@ -149,6 +149,7 @@ FDISK_CMDS
 		userdataimg="${PRODUCT_OUT}userdata.img"
 		superimg="${PRODUCT_OUT}super.img"
 		bootimg="${PRODUCT_OUT}boot.img"
+		vendorbootimg="${PRODUCT_OUT}vendor_boot.img"
 		vbmetaimg="${PRODUCT_OUT}vbmeta.img"
 		dtboimg="${PRODUCT_OUT}dtbo.img"
 		dtbouimg="${PRODUCT_OUT}dtbo-unsigned.img"
@@ -177,6 +178,10 @@ FDISK_CMDS
 		echo "Missing ${bootimg}"
 		exit -1;
 		fi
+		if [ ! -e "${vendorbootimg}" ] ; then
+		echo "Missing ${vendorbootimg}"
+		exit -1;
+		fi
 		if [ ! -e "${persistimg}" ] ; then
 		echo "Missing ${persistimg}"
 		exit -1;
@@ -201,6 +206,10 @@ FDISK_CMDS
 		echo "Flashing Boot Image"
 		${FASTBOOT} flash boot_a ${bootimg}
 		${FASTBOOT} flash boot_b ${bootimg}
+
+		echo "Flashing Vendor Boot Image"
+		${FASTBOOT} flash vendor_boot_a ${vendorbootimg}
+		${FASTBOOT} flash vendor_boot_b ${vendorbootimg}
 
 		echo "Flashing userdata Image"
 		${FASTBOOT} flash userdata ${userdataimg}
