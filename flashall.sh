@@ -34,14 +34,14 @@ function main {
 		usage
 	fi
 
-    export PRODUCT_OUT=${PRODUCT_OUT-"./"}
+	export PRODUCT_OUT=${PRODUCT_OUT-"./"}
 	# Create the filename
 	if [[ "${hsfs}" == "true" ]]; then
 		tiboot3bin="${PRODUCT_OUT}tiboot3-${board}-hsfs.bin"
 	else
 		tiboot3bin="${PRODUCT_OUT}tiboot3-${board}.bin"
 	fi
-	
+
 	if  ! [ -z "${sd_dev}" ]; then
 		if [ "$EUID" -ne 0 ]
 		then echo "Please run as root/sudo"
