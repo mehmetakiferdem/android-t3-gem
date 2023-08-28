@@ -24,7 +24,7 @@ genfscon sysfs /devices/platform/bus@f0000/f910000.dwc3-usb/wakeup              
 genfscon sysfs /devices/platform/bus@f0000/f900000.dwc3-usb/wakeup/wakeup4                                                u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/f910000.dwc3-usb/wakeup/wakeup5                                                u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/20000000.i2c/i2c-0/0-003f/power_supply/tps6598x-source-psy-0-003f/wakeup6      u:object_r:sysfs_wakeup:s0
-
+genfscon sysfs /devices/platform/bus@f0000/20000000.i2c/i2c-0/0-003f/power_supply/tps6598x-source-psy-0-003f/wakeup7      u:object_r:sysfs_wakeup:s0
 genfscon proc /pvr                                    u:object_r:vendor_proc_pvr:s0
 
 # Storage
