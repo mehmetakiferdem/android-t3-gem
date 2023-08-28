@@ -1,0 +1,6 @@
+tiboot3:
+   path: tiboot3-am62x-lp-sk-dfu-hsfs.bin
+tispl:
+   path: tispl-am62x-lp-sk-dfu.bin
+u-boot:
+   path: u-boot-am62x-lp-sk-dfu.img

@@ -1,0 +1,6 @@
+tiboot3:
+   path: tiboot3-am625-beagleplay-dfu.bin
+tispl:
+   path: tispl-am625-beagleplay-dfu.bin
+u-boot:
+   path: u-boot-am625-beagleplay-dfu.img

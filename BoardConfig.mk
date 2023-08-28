@@ -183,7 +183,11 @@ PRODUCT_COPY_FILES += \
 
 # Copy snagrecover config file
 PRODUCT_COPY_FILES += \
-        device/ti/am62x/config/dfu/am62x-sk-evm.yaml:$(TARGET_OUT)/am62x-sk-evm.yaml
+        device/ti/am62x/config/dfu/am62x-sk-evm.yaml:$(TARGET_OUT)/am62x-sk-evm.yaml \
+        device/ti/am62x/config/dfu/am62x-sk-evm-hsfs.yaml:$(TARGET_OUT)/am62x-sk-evm-hsfs.yaml \
+        device/ti/am62x/config/dfu/am62x-lp-sk-evm.yaml:$(TARGET_OUT)/am62x-lp-sk-evm.yaml \
+        device/ti/am62x/config/dfu/am62x-lp-sk-evm-hsfs.yaml:$(TARGET_OUT)/am62x-lp-sk-evm-hsfs.yaml \
+        device/ti/am62x/config/dfu/am625-beagleplay.yaml:$(TARGET_OUT)/am625-beagleplay.yaml \
 
 # Copy kernel modules into /vendor/lib/modules
 BOARD_ALL_MODULES := $(shell find device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE) -type f -iname '*.ko')
