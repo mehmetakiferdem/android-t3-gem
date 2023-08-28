@@ -168,6 +168,12 @@ PRODUCT_COPY_FILES += \
         vendor/ti/am62x/bootloader/am62x-sk-dfu/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-sk-dfu-hsfs.bin \
         vendor/ti/am62x/bootloader/am62x-sk-dfu/tispl.bin:$(TARGET_OUT)/tispl-am62x-sk-dfu.bin \
         vendor/ti/am62x/bootloader/am62x-sk-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am62x-sk-dfu.img \
+        vendor/ti/am62x/bootloader/am625-beagleplay/tiboot3.bin:$(TARGET_OUT)/tiboot3-am625-beagleplay.bin \
+        vendor/ti/am62x/bootloader/am625-beagleplay/tispl.bin:$(TARGET_OUT)/tispl-am625-beagleplay.bin \
+        vendor/ti/am62x/bootloader/am625-beagleplay/u-boot.img:$(TARGET_OUT)/u-boot-am625-beagleplay.img \
+        vendor/ti/am62x/bootloader/am625-beagleplay-dfu/tiboot3.bin:$(TARGET_OUT)/tiboot3-am625-beagleplay-dfu.bin \
+        vendor/ti/am62x/bootloader/am625-beagleplay-dfu/tispl.bin:$(TARGET_OUT)/tispl-am625-beagleplay-dfu.bin \
+        vendor/ti/am62x/bootloader/am625-beagleplay-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am625-beagleplay-dfu.img \
         vendor/ti/am62x/binaries/persist.img:$(TARGET_OUT)/persist.img \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dtbo.img:$(TARGET_OUT)/dtbo-unsigned.img
 
@@ -289,6 +295,10 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tidss.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sii902x.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/display-connector.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/panel-simple.ko
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/panel-simple.ko \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ite-it66121.ko \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219.ko \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219-pwrbutton.ko \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219-regulator.ko
 
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD +=  $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES)

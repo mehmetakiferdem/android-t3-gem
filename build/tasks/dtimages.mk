@@ -14,7 +14,8 @@ DTBIMAGE := $(PRODUCT_OUT)/dtb.img
 # Please keep this list fixed: add new files in the end of the list
 DTB_FILES := \
 	$(LOCAL_DTB)/k3-am625-sk.dtb \
-	$(LOCAL_DTB)/k3-am62-lp-sk.dtb
+	$(LOCAL_DTB)/k3-am62-lp-sk.dtb \
+	$(LOCAL_DTB)/k3-am625-beagleplay.dtb
 
 $(DTBIMAGE): $(DTB_FILES)
 	cat $^ > $@
