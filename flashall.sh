@@ -7,7 +7,7 @@ function usage {
 	echo "Usage: sudo flashall.sh <options>";
 	echo "options:";
 	echo "  --board To select good bootloader, board supported: am62x-sk, am62x-lp-sk, am625-beagleplay, am62px-sk"
-	echo "  --hsfs for HS-FS devices which require bootloader authentication"
+	echo "  --hsfs for HS-FS devices which require bootloader authentication (default for am62px-sk)"
 	echo "  --help Show this message and exit"
 	exit 1;
 }
@@ -33,6 +33,10 @@ function main {
 	if  [ -z "${board}" ]; then
 		echo "Error you need to specify board name"
 		usage
+	fi
+
+	if [[ "${board}" == "am62px-sk" ]]; then
+	        hsfs="true"
 	fi
 
 	export PRODUCT_OUT=${PRODUCT_OUT-"./"}
