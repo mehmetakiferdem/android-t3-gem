@@ -185,6 +185,7 @@ BOARD_HOSTAPD_DRIVER := NL80211
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/8250_omap.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/zsmalloc.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/zram.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti-msgmgr.ko \
