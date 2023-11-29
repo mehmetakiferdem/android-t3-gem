@@ -238,7 +238,6 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/pru_rproc.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_k3_common.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_k3_dsp_remoteproc.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_k3_r5_remoteproc.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rpmsg_kdrv.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rpmsg_kdrv_switch.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rpmsg_ns.ko \
