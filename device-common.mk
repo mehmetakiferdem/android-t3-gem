@@ -174,6 +174,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.hwc.drm.device=/dev/dri/card0
 
+PRODUCT_VENDOR_PROPERTIES += \
+	graphics.gpu.profiler.support=true
+
 # Public Libraries
 PRODUCT_COPY_FILES += \
     device/ti/am62x/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
