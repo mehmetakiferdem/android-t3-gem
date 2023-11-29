@@ -119,6 +119,8 @@ BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --pagesize 4096
 
+BOARD_BOOTCONFIG += androidboot.load_modules_parallel=true
+
 #fstab
 ifeq ($(TARGET_SDCARD_BOOT), true)
 ifeq ($(TARGET_AVB_ENABLE), true)
