@@ -6,7 +6,7 @@ set -o pipefail
 function usage {
 	echo "Usage: sudo flashall.sh <options>";
 	echo "options:";
-	echo "  --board To select good bootloader, board supported: am62x-sk, am62x-lp-sk, am625-beagleplay"
+	echo "  --board To select good bootloader, board supported: am62x-sk, am62x-lp-sk, am625-beagleplay, am62px-sk"
 	echo "  --hsfs for HS-FS devices which require bootloader authentication"
 	echo "  --help Show this message and exit"
 	exit 1;
