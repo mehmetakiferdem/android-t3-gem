@@ -35,5 +35,9 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
     ro.soc.model=$(PRODUCT_DEVICE)
 
+# Audio HAL
+PRODUCT_COPY_FILES += \
+    device/ti/am62x/audio_hal_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.am62p.xml
+
 # Include vendor binaries
 $(call inherit-product-if-exists, vendor/ti/am62x/am62p.mk)
