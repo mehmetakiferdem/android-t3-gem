@@ -59,10 +59,6 @@ PRODUCT_VENDOR_PROPERTIES += \
 allowed_list := product_manifest.xml
 $(call enforce-product-packages-exist, $(allowed_list))
 
-# Audio HAL 
-PRODUCT_COPY_FILES += \
-    device/ti/am62x/audio_hal_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.am62x.xml \
-
 include device/ti/am62x/optee/device-optee.mk
 
 # Include vendor binaries

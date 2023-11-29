@@ -168,7 +168,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.hwcomposer=drm \
     ro.hardware.egl=powervr \
-    ro.hardware.vulkan=powervr
+    ro.hardware.vulkan=powervr \
+    ro.hardware.gralloc=$(PRODUCT_PLATFORM)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.hwc.drm.device=/dev/dri/card0
@@ -196,6 +197,12 @@ PRODUCT_PACKAGES += \
 # Audio USB HAL
 PRODUCT_PACKAGES += \
     audio.usb.default
+
+PRODUCT_PACKAGES += audio.primary.$(PRODUCT_PLATFORM)
+
+# Audio HAL
+PRODUCT_COPY_FILES += \
+    device/ti/am62x/audio_hal_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.$(PRODUCT_PLATFORM).xml
 
 # audio policy configuration
 USE_XML_AUDIO_POLICY_CONF := 1
@@ -247,14 +254,14 @@ PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.software.secure_lock_screen.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.secure_lock_screen.xml
 
 PRODUCT_COPY_FILES += \
-        device/ti/am62x/init.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.am62x.rc \
-        device/ti/am62x/init.am62x.zygote_wakelock.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.am62x.zygote_wakelock.rc \
-        device/ti/am62x/init.am62x.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.am62x.usb.rc \
+        device/ti/am62x/init.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).rc \
+        device/ti/am62x/init.am62x.zygote_wakelock.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).zygote_wakelock.rc \
+        device/ti/am62x/init.am62x.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).usb.rc \
         device/ti/am62x/ueventd.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
 
 # RecoveryOS
 PRODUCT_COPY_FILES += \
-    device/ti/am62x/init.recovery.am62x.rc:recovery/root/vendor/etc/init/init.recovery.am62x.rc
+    device/ti/am62x/init.recovery.am62x.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.$(PRODUCT_PLATFORM).rc
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -291,6 +298,7 @@ PRODUCT_COPY_FILES +=  \
 
 # CSI Camera using libcamera
 PRODUCT_COPY_FILES += \
+     device/ti/am62x/camera/android.hardware.camera.provider@2.5-service_64_am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.camera.provider@2.5-service_64_$(PRODUCT_PLATFORM).rc \
      device/ti/am62x/camera/camera_hal.yaml:$(TARGET_COPY_OUT_VENDOR)/etc/libcamera/camera_hal.yaml
 
 PRODUCT_PACKAGES_DEBUG += cam
