@@ -351,6 +351,9 @@ PRODUCT_COPY_FILES += \
 # Demo apps
 PRODUCT_PACKAGES_DEBUG += cabin_demo
 
+# i2c-tools for Display
+PRODUCT_PACKAGES_DEBUG += i2ctransfer
+
 # Include hardware projects (HALs)
 $(call inherit-product-if-exists, hardware/ti/am62x/am62x.mk)
 
