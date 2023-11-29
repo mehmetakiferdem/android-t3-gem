@@ -54,6 +54,9 @@ TARGET_NO_KERNEL := false
 # AB support
 TARGET_NO_RECOVERY := true
 
+# Recovery
+TARGET_RECOVERY_FSTAB_GENRULE := gen_fstab_am62_mmc
+
 AB_OTA_UPDATER := true
 
 AB_OTA_PARTITIONS := \
@@ -115,6 +118,21 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --pagesize 4096
+
+#fstab
+ifeq ($(TARGET_SDCARD_BOOT), true)
+ifeq ($(TARGET_AVB_ENABLE), true)
+BOARD_BOOTCONFIG += androidboot.fstab_suffix=am62.sdcard.avb
+else
+BOARD_BOOTCONFIG += androidboot.fstab_suffix=am62.sdcard
+endif
+else
+ifeq ($(TARGET_AVB_ENABLE), true)
+BOARD_BOOTCONFIG += androidboot.fstab_suffix=am62.mmc.avb
+else
+BOARD_BOOTCONFIG += androidboot.fstab_suffix=am62.mmc
+endif
+endif
 
 # Init Boot partition
 BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 0x800000

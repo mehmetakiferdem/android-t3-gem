@@ -72,7 +72,7 @@ on early-fs
     start vold
 
 on fs
-    mount_all /vendor/etc/fstab.${ro.hardware} --early
+    mount_all --early
 
 on post-fs
     # set RLIMIT_MEMLOCK to 64MB
@@ -103,7 +103,7 @@ on property:sys.boot_completed=1
     write /sys/block/mmcblk0/queue/iostats 1
 
     # Enable ZRAM on boot_complete
-    swapon_all /vendor/etc/fstab.${ro.hardware}
+    swapon_all
     write /proc/sys/vm/swappiness 100
 
     # Back to default VM settings

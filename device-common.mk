@@ -49,6 +49,17 @@ VENDOR_SECURITY_PATCH = $(PLATFORM_SECURITY_PATCH)
 # Set boot SPL
 BOOT_SECURITY_PATCH = $(PLATFORM_SECURITY_PATCH)
 
+# fstab
+PRODUCT_PACKAGES += \
+    fstab.am62.sdcard.avb \
+    fstab.am62.sdcard.avb.vendor_ramdisk \
+    fstab.am62.sdcard \
+    fstab.am62.sdcard.vendor_ramdisk \
+    fstab.am62.mmc.avb \
+    fstab.am62.mmc.avb.vendor_ramdisk \
+    fstab.am62.mmc \
+    fstab.am62.mmc.vendor_ramdisk
+
 # Dynamic partitions
 PRODUCT_BUILD_SUPER_PARTITION := true
 PRODUCT_USE_DYNAMIC_PARTITIONS := true

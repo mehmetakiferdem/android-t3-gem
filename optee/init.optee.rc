@@ -3,7 +3,7 @@ on post-fs
 
 on late-fs
     exec_start wait_for_keymaster_optee
-    mount_all /vendor/etc/fstab.${ro.hardware} --late
+    mount_all --late
 
 service tee-supplicant /vendor/bin/tee-supplicant
     class early_hal
