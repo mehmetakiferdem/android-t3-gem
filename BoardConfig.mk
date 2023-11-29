@@ -130,15 +130,17 @@ BOARD_KERNEL_CMDLINE += console=ttyS2,115200
 BOARD_KERNEL_CMDLINE += printk.devkmsg=on
 endif
 ifeq ($(TARGET_SDCARD_BOOT), true)
-BOARD_KERNEL_CMDLINE += androidboot.boot_devices=bus@f0000/fa00000.mmc
+BOARD_BOOTCONFIG += androidboot.boot_devices=bus@f0000/fa00000.mmc
 else
-BOARD_KERNEL_CMDLINE += androidboot.boot_devices=bus@f0000/fa10000.mmc
+BOARD_BOOTCONFIG += androidboot.boot_devices=bus@f0000/fa10000.mmc
 endif
 BOARD_KERNEL_CMDLINE += init=/init
 BOARD_KERNEL_CMDLINE += cma=512M
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
-BOARD_KERNEL_CMDLINE += androidboot.hardware=am62x 8250.nr_uarts=10
-BOARD_KERNEL_CMDLINE += mem_sleep_default=deep
+BOARD_KERNEL_CMDLINE += mem_sleep_default=deep 
+BOARD_KERNEL_CMDLINE += 8250.nr_uarts=10
+
+BOARD_BOOTCONFIG += androidboot.hardware=am62x 
 
 DEVICE_MANIFEST_FILE += device/ti/am62x/manifest.xml
 DEVICE_MATRIX_FILE := device/ti/am62x/compatibility_matrix.xml
