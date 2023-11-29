@@ -276,6 +276,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
         device/ti/am62x/am62x.media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
 
+# Codec2: create input surface on the framework side
+PRODUCT_VENDOR_PROPERTIES += \
+    debug.stagefright.c2inputsurface=-1
+
 # Memtrack
 PRODUCT_PACKAGES += \
         android.hardware.memtrack-service.example
