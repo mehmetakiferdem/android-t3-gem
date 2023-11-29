@@ -1,5 +1,4 @@
-<manifest version="1.0" type="device" target-level="6">
-    <kernel target-level="5" />
+<manifest version="1.0" type="device" target-level="7">
     <hal format="hidl">
         <name>android.hardware.bluetooth</name>
         <transport>hwbinder</transport>
@@ -55,15 +54,6 @@
         <version>2.4</version>
         <interface>
             <name>IComposer</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>android.hardware.memtrack</name>
-        <transport>hwbinder</transport>
-        <version>1</version>
-        <interface>
-            <name>IMemtrack</name>
             <instance>default</instance>
         </interface>
     </hal>
