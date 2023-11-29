@@ -23,20 +23,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl">
-        <name>android.hardware.automotive.vehicle</name>
-        <interface>
-            <name>IVehicle</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>android.hardware.automotive.audiocontrol</name>
-        <interface>
-            <name>IAudioControl</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <hal format="hidl">
         <name>android.hardware.automotive.can</name>
         <version>1.0</version>

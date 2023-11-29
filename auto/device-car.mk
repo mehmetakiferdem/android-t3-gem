@@ -15,6 +15,12 @@
 #
 BOARD_IS_AUTOMOTIVE := true
 PRODUCT_IS_AUTO := true
+ENABLE_EVS_SERVICE := true
+ENABLE_CAREVSSERVICE_SAMPLE := true
+ENABLE_SAMPLE_EVS_APP := true
+ENABLE_CARTELEMETRY_SERVICE := true
+ENABLE_CAMERA_SERVICE := true
+ENABLE_REAR_VIEW_CAMERA_SAMPLE := true
 
 include device/ti/am62x/auto/BoardConfig_car.mk
 
@@ -23,12 +29,13 @@ TARGET_BOARD_INFO_FILE ?= device/google/cuttlefish/shared/auto/android-info.txt
 # Bluetooth Audio
 PRODUCT_PACKAGES += android.hardware.bluetooth.audio@2.1-impl 
 
-# vehicle HAL
-PRODUCT_PACKAGES += android.hardware.automotive.vehicle@V1-default-service \
-					android.hardware.automotive.evs-aidl-default-service
+BOARD_SEPOLICY_DIRS += device/ti/am62x/auto/sepolicy/vhal
+BOARD_SEPOLICY_DIRS += device/ti/am62x/auto/sepolicy/vendor
+BOARD_SEPOLICY_DIRS += device/ti/am62x/auto/sepolicy/audio
+BOARD_SEPOLICY_DIRS += device/ti/am62x/auto/sepolicy/evs
 
-BOARD_SEPOLICY_DIRS += device/google/cuttlefish/shared/auto/sepolicy/vhal
-BOARD_SEPOLICY_DIRS += device/google/cuttlefish/shared/auto/sepolicy/vendor
+# Occupant Awareness HAL
+BOARD_SEPOLICY_DIRS += packages/services/Car/car_product/occupant_awareness/sepolicy
 
 # AudioControl HAL
 PRODUCT_PACKAGES += android.hardware.automotive.audiocontrol-service.example
@@ -38,13 +45,8 @@ PRODUCT_PACKAGES += android.hardware.soundtrigger@2.3-impl
 PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
 TARGET_NO_TELEPHONY := true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-	android.car.drawer.unlimited=true \
-	android.car.hvac.demo=true \
-	com.android.car.radio.demo=true \
-	com.android.car.radio.demo.dual=true
-
+PRODUCT_COPY_FILES += \
+    device/ti/am62x/auto/evs/evs_app_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/automotive/evs/config_override.json
 #
 # GPS
 #
@@ -54,3 +56,15 @@ PRODUCT_PACKAGES += \
 ### For local provisioning 
 # FOR TESTING ONLY
 PRODUCT_PACKAGES += FrameworksServicesTests
+
+# CAN bus HAL
+PRODUCT_PACKAGES += android.hardware.automotive.can-service
+PRODUCT_PACKAGES_DEBUG += canhalctrl \
+    canhaldump \
+    canhalsend
+
+# Remote access HAL
+PRODUCT_PACKAGES += android.hardware.automotive.remoteaccess@V1-default-service \
+	 android.hardware.automotive.ivn@V1-default-service \
+
+DEVICE_PACKAGE_OVERLAYS := device/ti/am62x/auto/overlay

@@ -23,8 +23,7 @@
   <bool name="config_guestUserEphemeral" translatable="false">true</bool>
   <!--  Maximum number of users allowed on the device. -->
   <integer name="config_multiuserMaximumUsers" translatable="false">4</integer>
-  <!-- Restricting eth2 -->
-  <string-array translatable="false" name="config_ethernet_interfaces">
-    <item>eth2;11,12,14;;</item>
-  </string-array>
+
+  <bool name="config_disableLockscreenByDefault">true</bool>
+  <bool name="config_showNavigationBar">true</bool> 
 </resources>
