@@ -1,0 +1,2 @@
+# Allow shell to read the build properties for attestation feature
+get_prop(shell, build_attestation_prop)
