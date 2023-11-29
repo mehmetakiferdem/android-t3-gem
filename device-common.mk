@@ -37,6 +37,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/android_t_baseline.mk)
 PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
+# Add snapuserd to vendor ramdisk: required since we have no dedicated recovery partition
+# This can be removed once we have init_boot fully enabled.
+PRODUCT_PACKAGES += \
+    snapuserd.vendor_ramdisk \
 
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 DEVICE_PACKAGE_OVERLAYS := device/ti/am62x/overlay
