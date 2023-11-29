@@ -140,9 +140,9 @@ BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
 BOARD_KERNEL_CMDLINE += androidboot.hardware=am62x 8250.nr_uarts=10
 BOARD_KERNEL_CMDLINE += mem_sleep_default=deep
 
-DEVICE_MANIFEST_FILE := device/ti/am62x/manifest.xml
+DEVICE_MANIFEST_FILE += device/ti/am62x/manifest.xml
 DEVICE_MATRIX_FILE := device/ti/am62x/compatibility_matrix.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := device/ti/am62x/framework_compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/ti/am62x/framework_compatibility_matrix.xml
 
 BOARD_SEPOLICY_DIRS += device/ti/am62x/sepolicy/common/
 ifeq ($(TARGET_SDCARD_BOOT), true)

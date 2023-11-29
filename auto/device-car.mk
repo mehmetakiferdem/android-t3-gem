@@ -22,32 +22,24 @@ $(call inherit-product, device/ti/am62x/device.mk)
 
 TARGET_BOARD_INFO_FILE ?= device/google/cuttlefish/shared/auto/android-info.txt
 
-# Broadcast Radio
-PRODUCT_PACKAGES += android.hardware.broadcastradio@2.0-service \
-    android.hardware.automotive.vehicle@2.0-manager-lib \
-    android.hardware.bluetooth.audio@2.1-impl
+# Bluetooth Audio
+PRODUCT_PACKAGES += android.hardware.bluetooth.audio@2.1-impl 
 
 # vehicle HAL
-PRODUCT_PACKAGES += android.hardware.automotive.vehicle@2.0-service
+PRODUCT_PACKAGES += android.hardware.automotive.vehicle@V1-default-service \
+					android.hardware.automotive.evs-aidl-default-service
+
 BOARD_SEPOLICY_DIRS += device/google/cuttlefish/shared/auto/sepolicy/vhal
 BOARD_SEPOLICY_DIRS += device/google/cuttlefish/shared/auto/sepolicy/vendor
 
 # AudioControl HAL
 PRODUCT_PACKAGES += android.hardware.automotive.audiocontrol-service.example
-    
-# CAN bus HAL
-PRODUCT_PACKAGES += android.hardware.automotive.can@1.0-service
-PRODUCT_PACKAGES_DEBUG += canhalctrl \
-    canhaldump \
-    canhalsend
 
 PRODUCT_PACKAGES += android.hardware.soundtrigger@2.3-impl
 
 PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
 TARGET_NO_TELEPHONY := true
-
-DEVICE_MANIFEST_FILE += device/ti/am62x/auto/manifest_car.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	android.car.drawer.unlimited=true \

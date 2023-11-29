@@ -17,5 +17,6 @@ TARGET_RECOVERY_UI_MARGIN_HEIGHT := 165
 TARGET_SCREEN_DENSITY := 180
 
 DEVICE_MANIFEST_FILE := device/ti/am62x/auto/manifest_device.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/ti/am62x/auto/framework_compatibility_matrix.xml
 
 BOARD_SEPOLICY_DIRS += device/ti/am62x/auto/sepolicy/public/
