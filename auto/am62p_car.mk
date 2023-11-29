@@ -34,3 +34,6 @@ PRODUCT_MANUFACTURER := TexasInstruments
 PRODUCT_VENDOR_PROPERTIES += \
     ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
     ro.soc.model=$(PRODUCT_DEVICE)
+
+# Include vendor binaries
+$(call inherit-product-if-exists, vendor/ti/am62x/am62p.mk)
