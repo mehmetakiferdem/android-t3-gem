@@ -27,7 +27,7 @@ PRODUCT_MANUFACTURER := TexasInstruments
 PRODUCT_CHARACTERISTICS := tablet
 
 # Set lowram options
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     dalvik.vm.dex2oat64.enabled=false \
     dalvik.vm.heapstartsize=1m \
     dalvik.vm.heapgrowthlimit=192m \

@@ -66,23 +66,23 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
 # Set default log size to 1M
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
   ro.logd.size=1M
 
 #enforce permission allowlists for system apps.
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
   ro.control_privapp_permissions=enforce
 
 # Enable Incremental on the device
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
 	ro.incremental.enable=true
 
 # Enable zygote critical window.
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
 	zygote.critical_window.minute=10
 
 # Disable screen lock by default
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
 	ro.lockscreen.disable.default=true
 
 PRODUCT_COPY_FILES += \
@@ -90,7 +90,7 @@ PRODUCT_COPY_FILES += \
 
 # Add wifi-related packages
 PRODUCT_PACKAGES += libwpa_client wpa_supplicant hostapd wificond wpa_cli
-PRODUCT_PROPERTY_OVERRIDES += wifi.interface=wlan0 \
+PRODUCT_VENDOR_PROPERTIES += wifi.interface=wlan0 \
                               wifi.supplicant_scan_interval=15
 
 PRODUCT_COPY_FILES += \
@@ -165,13 +165,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     hwcomposer.drm
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     ro.hardware.hwcomposer=drm \
     ro.hardware.egl=powervr \
     ro.hardware.vulkan=powervr \
     ro.hardware.gralloc=$(PRODUCT_PLATFORM)
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     vendor.hwc.drm.device=/dev/dri/card0
 
 PRODUCT_VENDOR_PROPERTIES += \
@@ -310,7 +310,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5-service_64 \
     camera.libcamera
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     ro.hardware.camera=libcamera
 
 PRODUCT_PACKAGES += \

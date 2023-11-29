@@ -15,12 +15,12 @@
 #
 
 # gatekeeper
-PRODUCT_PROPERTY_OVERRIDES += ro.hardware.gatekeeper=optee
+PRODUCT_VENDOR_PROPERTIES += ro.hardware.gatekeeper=optee
 PRODUCT_PACKAGES += \
      android.hardware.gatekeeper@1.0-service.optee
 
 # keymaster
-PRODUCT_PROPERTY_OVERRIDES += ro.hardware.keystore=optee
+PRODUCT_VENDOR_PROPERTIES += ro.hardware.keystore=optee
 PRODUCT_PACKAGES += \
      android.hardware.keymaster@3.0-service.optee \
      wait_for_keymaster_optee
