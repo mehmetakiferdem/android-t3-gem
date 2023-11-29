@@ -62,10 +62,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.control_privapp_permissions=enforce
 
-# disable 64-bit dex2oat to save memory.
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat64.enabled=false
-
 # Enable Incremental on the device
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.incremental.enable=true
@@ -96,14 +92,6 @@ PRODUCT_PACKAGES += \
 	android.hardware.fastboot@1.1 \
 	android.hardware.fastboot@1.1-impl-mock \
 	fastbootd
-
-# Set lowram options and enable traced by default
-PRODUCT_VENDOR_PROPERTIES += \
-     ro.config.low_ram=true
-
-
-# Speed profile services and wifi-service to reduce RAM and storage.
-PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
 
 # A/B support
 PRODUCT_PACKAGES += \
@@ -164,13 +152,9 @@ PRODUCT_PACKAGES += \
     hwcomposer.drm
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.gralloc=am62x \
     ro.hardware.hwcomposer=drm \
     ro.hardware.egl=powervr \
     ro.hardware.vulkan=powervr
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=196609
 
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.hwc.drm.device=/dev/dri/card0
@@ -195,8 +179,6 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.effect@6.0-impl
 
-PRODUCT_PACKAGES += audio.primary.am62x
-
 # Audio USB HAL
 PRODUCT_PACKAGES += \
     audio.usb.default
@@ -204,7 +186,6 @@ PRODUCT_PACKAGES += \
 # audio policy configuration
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \
-    device/ti/am62x/audio_hal_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.am62x.xml \
     device/ti/am62x/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
@@ -257,32 +238,6 @@ PRODUCT_COPY_FILES += \
         device/ti/am62x/init.am62x.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.am62x.usb.rc \
         device/ti/am62x/ueventd.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
 
-# fstab
-ifeq ($(TARGET_SDCARD_BOOT), true)
-ifeq ($(TARGET_AVB_ENABLE), true)
-PRODUCT_COPY_FILES += \
-    device/ti/am62x/fstab.am62x.avb.sdcard:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.am62x \
-    device/ti/am62x/fstab.am62x.avb.sdcard:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.am62x \
-    device/ti/am62x/fstab.am62x.avb.sdcard:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/etc/fstab.am62x
-else
-PRODUCT_COPY_FILES += \
-    device/ti/am62x/fstab.am62x.sdcard:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.am62x \
-    device/ti/am62x/fstab.am62x.sdcard:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.am62x \
-    device/ti/am62x/fstab.am62x.sdcard:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/etc/fstab.am62x
-endif
-else
-ifeq ($(TARGET_AVB_ENABLE), true)
-PRODUCT_COPY_FILES += \
-    device/ti/am62x/fstab.am62x.avb:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.am62x \
-    device/ti/am62x/fstab.am62x.avb:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.am62x \
-    device/ti/am62x/fstab.am62x.avb:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/etc/fstab.am62x
-else
-PRODUCT_COPY_FILES += \
-    device/ti/am62x/fstab.am62x:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.am62x \
-    device/ti/am62x/fstab.am62x:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.am62x \
-    device/ti/am62x/fstab.am62x:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/etc/fstab.am62x
-endif
-endif
 # RecoveryOS
 PRODUCT_COPY_FILES += \
     device/ti/am62x/init.recovery.am62x.rc:recovery/root/vendor/etc/init/init.recovery.am62x.rc
@@ -322,8 +277,7 @@ PRODUCT_COPY_FILES +=  \
 
 # CSI Camera using libcamera
 PRODUCT_COPY_FILES += \
-     device/ti/am62x/camera/camera_hal.yaml:$(TARGET_COPY_OUT_VENDOR)/etc/libcamera/camera_hal.yaml \
-     device/ti/am62x/camera/android.hardware.camera.provider@2.5-service_64_am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.camera.provider@2.5-service_64_am62x.rc
+     device/ti/am62x/camera/camera_hal.yaml:$(TARGET_COPY_OUT_VENDOR)/etc/libcamera/camera_hal.yaml
 
 PRODUCT_PACKAGES_DEBUG += cam
 
@@ -356,6 +310,3 @@ PRODUCT_PACKAGES_DEBUG += i2ctransfer
 
 # Include hardware projects (HALs)
 $(call inherit-product-if-exists, hardware/ti/am62x/am62x.mk)
-
-# Include vendor binaries
-$(call inherit-product-if-exists, vendor/ti/am62x/am62x.mk)

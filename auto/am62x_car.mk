@@ -18,6 +18,7 @@ TARGET_KERNEL_USE ?= 6.1
 include device/ti/am62x/optee/device-optee.mk
 $(call inherit-product, device/google_car/common/pre_google_car.mk)
 $(call inherit-product, device/ti/am62x/auto/device-car.mk)
+$(call inherit-product, device/ti/am62x/am62x/device.mk)
 $(call inherit-product, device/google_car/common/post_google_car.mk)
 
 PRODUCT_PACKAGE_OVERLAYS := device/ti/am62x/auto/overlay

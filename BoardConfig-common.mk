@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-TARGET_BOARD_PLATFORM := am62x
-TARGET_BOOTLOADER_BOARD_NAME := am62x
-
 # AVB
 ifeq ($(TARGET_BUILD_VARIANT), user)
 TARGET_AVB_ENABLE := true
@@ -77,7 +74,6 @@ BOARD_PREBUILT_DTBOIMAGE := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/d
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608 # 8 MiB
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE ?= ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 10662969344
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_COPY_OUT_VENDOR := vendor
@@ -98,7 +94,6 @@ TARGET_SCREEN_DENSITY ?= 240
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-TARGET_RECOVERY_FSTAB := device/ti/am62x/fstab.am62x
 TARGET_RECOVERY_WIPE := device/ti/am62x/recovery.wipe
 
 # Boot Image v4 support
@@ -126,21 +121,11 @@ BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 0x800000
 BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
 ifneq ($(TARGET_BUILD_VARIANT), user)
-BOARD_KERNEL_CMDLINE += console=ttyS2,115200
 BOARD_KERNEL_CMDLINE += printk.devkmsg=on
 endif
-ifeq ($(TARGET_SDCARD_BOOT), true)
-BOARD_BOOTCONFIG += androidboot.boot_devices=bus@f0000/fa00000.mmc
-else
-BOARD_BOOTCONFIG += androidboot.boot_devices=bus@f0000/fa10000.mmc
-endif
 BOARD_KERNEL_CMDLINE += init=/init
-BOARD_KERNEL_CMDLINE += cma=512M
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
 BOARD_KERNEL_CMDLINE += mem_sleep_default=deep 
-BOARD_KERNEL_CMDLINE += 8250.nr_uarts=10
-
-BOARD_BOOTCONFIG += androidboot.hardware=am62x 
 
 DEVICE_MANIFEST_FILE += device/ti/am62x/manifest.xml
 DEVICE_MATRIX_FILE := device/ti/am62x/compatibility_matrix.xml
@@ -156,42 +141,12 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS += device/ti/am62x/sepolicy-private
 
 # Copy Bootloader prebuilts and prebuilts images
 PRODUCT_COPY_FILES += \
-        vendor/ti/am62x/bootloader/am62x-lp-sk/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62x-lp-sk.bin \
-        vendor/ti/am62x/bootloader/am62x-lp-sk/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-lp-sk-hsfs.bin \
-        vendor/ti/am62x/bootloader/am62x-lp-sk/tispl.bin:$(TARGET_OUT)/tispl-am62x-lp-sk.bin \
-        vendor/ti/am62x/bootloader/am62x-lp-sk/u-boot.img:$(TARGET_OUT)/u-boot-am62x-lp-sk.img \
-        vendor/ti/am62x/bootloader/am62x-sk/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62x-sk.bin \
-        vendor/ti/am62x/bootloader/am62x-sk/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-sk-hsfs.bin \
-        vendor/ti/am62x/bootloader/am62x-sk/tispl.bin:$(TARGET_OUT)/tispl-am62x-sk.bin \
-        vendor/ti/am62x/bootloader/am62x-sk/u-boot.img:$(TARGET_OUT)/u-boot-am62x-sk.img \
-        vendor/ti/am62x/bootloader/am62x-lp-sk-dfu/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62x-lp-sk-dfu.bin \
-        vendor/ti/am62x/bootloader/am62x-lp-sk-dfu/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-lp-sk-dfu-hsfs.bin \
-        vendor/ti/am62x/bootloader/am62x-lp-sk-dfu/tispl.bin:$(TARGET_OUT)/tispl-am62x-lp-sk-dfu.bin \
-        vendor/ti/am62x/bootloader/am62x-lp-sk-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am62x-lp-sk-dfu.img \
-        vendor/ti/am62x/bootloader/am62x-sk-dfu/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62x-sk-dfu.bin \
-        vendor/ti/am62x/bootloader/am62x-sk-dfu/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-sk-dfu-hsfs.bin \
-        vendor/ti/am62x/bootloader/am62x-sk-dfu/tispl.bin:$(TARGET_OUT)/tispl-am62x-sk-dfu.bin \
-        vendor/ti/am62x/bootloader/am62x-sk-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am62x-sk-dfu.img \
-        vendor/ti/am62x/bootloader/am625-beagleplay/tiboot3.bin:$(TARGET_OUT)/tiboot3-am625-beagleplay.bin \
-        vendor/ti/am62x/bootloader/am625-beagleplay/tispl.bin:$(TARGET_OUT)/tispl-am625-beagleplay.bin \
-        vendor/ti/am62x/bootloader/am625-beagleplay/u-boot.img:$(TARGET_OUT)/u-boot-am625-beagleplay.img \
-        vendor/ti/am62x/bootloader/am625-beagleplay-dfu/tiboot3.bin:$(TARGET_OUT)/tiboot3-am625-beagleplay-dfu.bin \
-        vendor/ti/am62x/bootloader/am625-beagleplay-dfu/tispl.bin:$(TARGET_OUT)/tispl-am625-beagleplay-dfu.bin \
-        vendor/ti/am62x/bootloader/am625-beagleplay-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am625-beagleplay-dfu.img \
         vendor/ti/am62x/binaries/persist.img:$(TARGET_OUT)/persist.img \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dtbo.img:$(TARGET_OUT)/dtbo-unsigned.img
 
 # Copy Android Flashing Script
 PRODUCT_COPY_FILES += \
-        device/ti/am62x/flashall.sh:$(TARGET_OUT)/flashall.sh \
-
-# Copy snagrecover config file
-PRODUCT_COPY_FILES += \
-        device/ti/am62x/config/dfu/am62x-sk-evm.yaml:$(TARGET_OUT)/am62x-sk-evm.yaml \
-        device/ti/am62x/config/dfu/am62x-sk-evm-hsfs.yaml:$(TARGET_OUT)/am62x-sk-evm-hsfs.yaml \
-        device/ti/am62x/config/dfu/am62x-lp-sk-evm.yaml:$(TARGET_OUT)/am62x-lp-sk-evm.yaml \
-        device/ti/am62x/config/dfu/am62x-lp-sk-evm-hsfs.yaml:$(TARGET_OUT)/am62x-lp-sk-evm-hsfs.yaml \
-        device/ti/am62x/config/dfu/am625-beagleplay.yaml:$(TARGET_OUT)/am625-beagleplay.yaml \
+        device/ti/am62x/flashall.sh:$(TARGET_OUT)/flashall.sh
 
 # Copy kernel modules into /vendor/lib/modules
 BOARD_ALL_MODULES := $(shell find device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE) -type f -iname '*.ko')

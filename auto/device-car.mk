@@ -18,8 +18,6 @@ PRODUCT_IS_AUTO := true
 
 include device/ti/am62x/auto/BoardConfig_car.mk
 
-$(call inherit-product, device/ti/am62x/device.mk)
-
 TARGET_BOARD_INFO_FILE ?= device/google/cuttlefish/shared/auto/android-info.txt
 
 # Bluetooth Audio
