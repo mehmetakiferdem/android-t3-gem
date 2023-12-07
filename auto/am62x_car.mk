@@ -16,18 +16,15 @@
 TARGET_KERNEL_USE ?= 6.1
 
 include device/ti/am62x/optee/device-optee.mk
-$(call inherit-product, device/google_car/common/pre_google_car.mk)
 $(call inherit-product, device/ti/am62x/auto/device-car.mk)
 $(call inherit-product, device/ti/am62x/am62x/device.mk)
-$(call inherit-product, device/google_car/common/post_google_car.mk)
 
+PRODUCT_CHARACTERISTICS := automotive
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
-PRODUCT_NAME := am62x_car
-PRODUCT_DEVICE := am62x
-PRODUCT_BRAND := TI
-PRODUCT_MODEL := AOSP Car on AM62X EVM
-PRODUCT_MANUFACTURER := TexasInstruments
+
 
 # Set SOC information
 PRODUCT_VENDOR_PROPERTIES += \
@@ -36,3 +33,10 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Include vendor binaries
 $(call inherit-product-if-exists, vendor/ti/am62x/am62x.mk)
+
+PRODUCT_NAME := am62x_car
+PRODUCT_DEVICE := am62x
+PRODUCT_BRAND := TI
+PRODUCT_MODEL := AOSP Car on AM62X EVM
+PRODUCT_MANUFACTURER := TexasInstruments
+PRODUCT_RELEASE_NAME := AM62X

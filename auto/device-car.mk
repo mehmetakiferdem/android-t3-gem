@@ -16,6 +16,7 @@
 BOARD_IS_AUTOMOTIVE := true
 PRODUCT_IS_AUTO := true
 ENABLE_EVS_SERVICE := true
+ENABLE_EVS_SAMPLE := true
 ENABLE_CAREVSSERVICE_SAMPLE := true
 ENABLE_SAMPLE_EVS_APP := true
 ENABLE_CARTELEMETRY_SERVICE := true
@@ -41,6 +42,8 @@ BOARD_SEPOLICY_DIRS += device/ti/am62x/auto/sepolicy/audio
 BOARD_SEPOLICY_DIRS += device/ti/am62x/auto/sepolicy/evs
 
 # Occupant Awareness HAL
+PRODUCT_PACKAGES += android.hardware.automotive.occupant_awareness@1.0-service
+include packages/services/Car/car_product/occupant_awareness/OccupantAwareness.mk
 BOARD_SEPOLICY_DIRS += packages/services/Car/car_product/occupant_awareness/sepolicy
 
 # AudioControl HAL
@@ -59,10 +62,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.gnss-service.example
 
-### For local provisioning 
-# FOR TESTING ONLY
-PRODUCT_PACKAGES += FrameworksServicesTests
-
 # CAN bus HAL
 PRODUCT_PACKAGES += android.hardware.automotive.can-service
 PRODUCT_PACKAGES_DEBUG += canhalctrl \
@@ -73,4 +72,19 @@ PRODUCT_PACKAGES_DEBUG += canhalctrl \
 PRODUCT_PACKAGES += android.hardware.automotive.remoteaccess@V1-default-service \
 	 android.hardware.automotive.ivn@V1-default-service \
 
-DEVICE_PACKAGE_OVERLAYS := device/ti/am62x/auto/overlay
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.software.activities_on_secondary_displays.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.activities_on_secondary_displays.xml \
+    frameworks/native/data/etc/car_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/car_core_hardware.xml
+
+# Broadcast radio
+PRODUCT_PACKAGES += \
+    android.hardware.broadcastradio-service.default
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.broadcastradio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.broadcastradio.xml
+
+# Vehicle
+PRODUCT_PACKAGES += \
+    android.hardware.automotive.vehicle@2.0-default-service
+
