@@ -53,33 +53,26 @@ function main {
 		exit
 		fi
 
-sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << FDISK_CMDS  | fdisk ${sd_dev}
-g      # create new GPT partition
-n      # add new partition
-2      # partition number
-8192	# first sector
-+1MiB # partition size
-n      # add new partition
-1      # partition number
-10240	# default - first sector
-+8Mib	# default - last sector
-w      # write partition table and exit
-FDISK_CMDS
+		dd if=/dev/zero of=./installer.img count=40960
 
-		parted --align optimal --script  ${sd_dev} \
-			name 2 tiboot3 \
-			name 1 bootloader
-
-		dd if=${tiboot3bin} of=${sd_dev}2
+		loopdev=$(sudo losetup -f)
+		losetup "${loopdev}" installer.img
+		parted "${loopdev}"  mktable gpt
+		parted "${loopdev}"  mkpart primary fat32 5MiB 13MiB
+		parted "${loopdev}"  mkpart primary 4MiB 5MiB
+		mkfs.vfat -F 32 -n "boot" "${loopdev}p1"
+		dd if=${tiboot3bin} of="${loopdev}p2"
 		sync
-		mkfs.vfat -F 32 -n "boot" "${sd_dev}1"
 		mkdir boot
-		mount  ${sd_dev}1 boot/
+		mount  ${loopdev}p1 boot
 		cp ${tiboot3bin} boot/tiboot3.bin
 		cp tispl-${board}.bin boot/tispl.bin
 		cp u-boot-${board}.img boot/u-boot.img
 		umount boot
-		rm -r boot
+		losetup -d ${loopdev}
+		dd if=installer.img of=${sd_dev}
+		rm -rf boot installer.img
+		eject ${sd_dev}
 		echo "Insert SD card on board, Power ON and interrupt U-Boot to go in console to do this command:"
 		echo "=> mmc dev 0 0"
 		echo "=> mmc erase 0 0x10000"
