@@ -73,33 +73,13 @@ PRODUCT_BUILD_SUPER_PARTITION := true
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
-# Set default log size to 1M
-PRODUCT_VENDOR_PROPERTIES += \
-  ro.logd.size=1M
-
-#enforce permission allowlists for system apps.
-PRODUCT_VENDOR_PROPERTIES += \
-  ro.control_privapp_permissions=enforce
-
-# Enable Incremental on the device
-PRODUCT_VENDOR_PROPERTIES += \
-	ro.incremental.enable=true
-
-# Enable zygote critical window.
-PRODUCT_VENDOR_PROPERTIES += \
-	zygote.critical_window.minute=10
-
-# Disable screen lock by default
-PRODUCT_VENDOR_PROPERTIES += \
-	ro.lockscreen.disable.default=true
+TARGET_PRODUCT_PROP := device/ti/am62x/product.prop
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
 
 # Add wifi-related packages
 PRODUCT_PACKAGES += libwpa_client wpa_supplicant hostapd wificond wpa_cli
-PRODUCT_VENDOR_PROPERTIES += wifi.interface=wlan0 \
-                              wifi.supplicant_scan_interval=15
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
@@ -174,16 +154,8 @@ PRODUCT_PACKAGES += \
     hwcomposer.drm
 
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.hardware.hwcomposer=drm \
-    ro.hardware.egl=powervr \
-    ro.hardware.vulkan=powervr \
     ro.hardware.gralloc=$(PRODUCT_PLATFORM)
 
-PRODUCT_VENDOR_PROPERTIES += \
-    vendor.hwc.drm.device=/dev/dri/card0
-
-PRODUCT_VENDOR_PROPERTIES += \
-	graphics.gpu.profiler.support=true
 
 # Public Libraries
 PRODUCT_COPY_FILES += \
@@ -284,10 +256,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
         device/ti/am62x/am62x.media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
 
-# Codec2: create input surface on the framework side
-PRODUCT_VENDOR_PROPERTIES += \
-    debug.stagefright.c2inputsurface=-1
-
 # Memtrack
 PRODUCT_PACKAGES += \
         android.hardware.memtrack-service.example
@@ -321,9 +289,6 @@ PRODUCT_PACKAGES_DEBUG += cam
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5-service_64 \
     camera.libcamera
-
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.hardware.camera=libcamera
 
 PRODUCT_PACKAGES += \
         Launcher3QuickStep \
