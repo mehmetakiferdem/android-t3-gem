@@ -21,7 +21,6 @@ $(call inherit-product, device/ti/am62x/auto/device-car.mk)
 $(call inherit-product, device/ti/am62x/am62x/device.mk)
 $(call inherit-product, device/google_car/common/post_google_car.mk)
 
-PRODUCT_PACKAGE_OVERLAYS := device/ti/am62x/auto/overlay
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
 PRODUCT_NAME := am62x_car

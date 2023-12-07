@@ -24,6 +24,12 @@ ENABLE_REAR_VIEW_CAMERA_SAMPLE := true
 
 include device/ti/am62x/auto/BoardConfig_car.mk
 
+# Overlays
+PRODUCT_PACKAGES += \
+    AndroidAM62Overlay \
+    SettingsProviderAM62Overlay \
+    CarServiceAM62Overlay
+
 TARGET_BOARD_INFO_FILE ?= device/google/cuttlefish/shared/auto/android-info.txt
 
 # Bluetooth Audio
