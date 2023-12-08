@@ -35,11 +35,9 @@ BOARD_BOOTCONFIG += androidboot.hardware=am62p
 
 # Copy Bootloader prebuilts and prebuilts images
 PRODUCT_COPY_FILES += \
-        vendor/ti/am62x/bootloader/am62px-sk/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62px-sk.bin \
         vendor/ti/am62x/bootloader/am62px-sk/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62px-sk-hsfs.bin \
         vendor/ti/am62x/bootloader/am62px-sk/tispl.bin:$(TARGET_OUT)/tispl-am62px-sk.bin \
         vendor/ti/am62x/bootloader/am62px-sk/u-boot.img:$(TARGET_OUT)/u-boot-am62px-sk.img \
-        vendor/ti/am62x/bootloader/am62px-sk-dfu/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62px-sk-dfu.bin \
         vendor/ti/am62x/bootloader/am62px-sk-dfu/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62px-sk-dfu-hsfs.bin \
         vendor/ti/am62x/bootloader/am62px-sk-dfu/tispl.bin:$(TARGET_OUT)/tispl-am62px-sk-dfu.bin \
         vendor/ti/am62x/bootloader/am62px-sk-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am62px-sk-dfu.img
