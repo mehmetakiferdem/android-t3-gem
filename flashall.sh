@@ -8,6 +8,7 @@ function usage {
 	echo "options:";
 	echo "  --board To select good bootloader, board supported: am62x-sk, am62x-lp-sk, am625-beagleplay, am62px-sk"
 	echo "  --hsfs for HS-FS devices which require bootloader authentication (default for am62px-sk)"
+	echo "  --sdcard /dev/<SDCARD> to generate a bootable SD card"
 	echo "  --help Show this message and exit"
 	exit 1;
 }
