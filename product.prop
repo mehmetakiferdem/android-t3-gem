@@ -26,3 +26,6 @@ vendor.hwc.drm.device=/dev/dri/card0
 
 # Codec2: create input surface on the framework side
 debug.stagefright.c2inputsurface=-1
+
+# Give us 10 seconds to reboot/shutdown cleanly
+ro.build.shutdown_timeout=10
