@@ -46,6 +46,19 @@ function main {
 		tiboot3bin="tiboot3-${board}.bin"
 	fi
 
+	required_bootloaders=(
+		"${tiboot3bin}"
+		"tispl-${board}.bin"
+		"u-boot-${board}.img"
+	)
+
+	for img in ${required_bootloaders[@]}; do
+		if [ ! -e "${img}" ] ; then
+			echo "Missing ${img}"
+			exit -1;
+		fi
+	done
+
 	if  ! [ -z "${sd_dev}" ]; then
 		if [ "$EUID" -ne 0 ]; then
 			echo "Please run as root/sudo"
