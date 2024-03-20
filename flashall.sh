@@ -39,12 +39,11 @@ function main {
 
 	echo "board: ${board}"
 
-	export PRODUCT_OUT=${PRODUCT_OUT-"./"}
 	# Create the filename
 	if [[ "${hsfs}" == "true" ]]; then
-		tiboot3bin="${PRODUCT_OUT}tiboot3-${board}-hsfs.bin"
+		tiboot3bin="tiboot3-${board}-hsfs.bin"
 	else
-		tiboot3bin="${PRODUCT_OUT}tiboot3-${board}.bin"
+		tiboot3bin="tiboot3-${board}.bin"
 	fi
 
 	if  ! [ -z "${sd_dev}" ]; then
@@ -98,7 +97,6 @@ function main {
 	export LD_LIBRARY_PATH=./
 
 	echo "Fastboot: $FASTBOOT"
-	echo "Image location: $PRODUCT_OUT"
 
 	# =============================================================================
 	# pre-run
@@ -137,16 +135,16 @@ function main {
 		exit -1;
 	fi
 
-	bootloaderimg="${PRODUCT_OUT}bootloader-${board}.img"
-	userdataimg="${PRODUCT_OUT}userdata.img"
-	superimg="${PRODUCT_OUT}super.img"
-	bootimg="${PRODUCT_OUT}boot.img"
-	vendorbootimg="${PRODUCT_OUT}vendor_boot.img"
-	initbootimg="${PRODUCT_OUT}init_boot.img"
-	vbmetaimg="${PRODUCT_OUT}vbmeta.img"
-	dtboimg="${PRODUCT_OUT}dtbo.img"
-	dtbouimg="${PRODUCT_OUT}dtbo-unsigned.img"
-	persistimg="${PRODUCT_OUT}persist.img"
+	bootloaderimg="bootloader-${board}.img"
+	userdataimg="userdata.img"
+	superimg="super.img"
+	bootimg="boot.img"
+	vendorbootimg="vendor_boot.img"
+	initbootimg="init_boot.img"
+	vbmetaimg="vbmeta.img"
+	dtboimg="dtbo.img"
+	dtbouimg="dtbo-unsigned.img"
+	persistimg="persist.img"
 
 	# Verify that all the files required for the fastboot flash
 	# process are available
