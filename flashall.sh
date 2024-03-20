@@ -203,9 +203,6 @@ function main {
 	echo "   bootloader:  ${bootloaderimg}"
 	${FASTBOOT} flash bootloader	${bootloaderimg}
 
-	echo "Flash android partitions"
-	${FASTBOOT} flash super	${superimg}
-
 	echo "Flashing Boot Image"
 	${FASTBOOT} flash boot_a ${bootimg}
 	${FASTBOOT} flash boot_b ${bootimg}
@@ -257,6 +254,9 @@ function main {
 
 	fi
 	set -e
+
+	echo "Flash android super partitions"
+	${FASTBOOT} flash super	${superimg}
 }
 
 if [ "$0" = "$BASH_SOURCE" ]; then
