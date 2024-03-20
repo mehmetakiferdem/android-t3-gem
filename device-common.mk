@@ -118,10 +118,8 @@ PRODUCT_PACKAGES += \
 
 # Boot control
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl \
-    android.hardware.boot@1.2-impl.recovery \
-    android.hardware.boot@1.2-service \
-    bootctrl.default
+    android.hardware.boot-service.default \
+    android.hardware.boot-service.default_recovery
 
 ifeq ($(TARGET_AVB_ENABLE), true)
 #copy xml file to tell PackageManager that the system supports Verified Boot
