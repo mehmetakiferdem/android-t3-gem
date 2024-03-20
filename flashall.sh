@@ -21,7 +21,7 @@ function generate_bootloader_image {
 	local tisplbin=$2
 	local ubootimg=$3
 	echo "Generating bootloader-${board}.img ..."
-	dd if=/dev/zero of=bootloader-${board}.img bs=1048576 count=8
+	dd if=/dev/zero of=bootloader-${board}.img bs=1048576 count=8 status=none
 	mkfs.vfat bootloader-${board}.img
 	mcopy -i bootloader-${board}.img ${tisplbin} ::tispl.bin
 	mcopy -i bootloader-${board}.img ${ubootimg} ::u-boot.img
@@ -38,7 +38,7 @@ function run_sdcard_creation {
 		exit
 	fi
 
-	dd if=/dev/zero of=./installer.img count=40960
+	dd if=/dev/zero of=./installer.img count=40960 status=none
 
 	loopdev=$(sudo losetup -f)
 	losetup "${loopdev}" installer.img
@@ -46,7 +46,7 @@ function run_sdcard_creation {
 	parted "${loopdev}"  mkpart primary fat32 5MiB 13MiB
 	parted "${loopdev}"  mkpart primary 4MiB 5MiB
 	mkfs.vfat -F 32 -n "boot" "${loopdev}p1"
-	dd if=${tiboot3bin} of="${loopdev}p2"
+	dd if=${tiboot3bin} of="${loopdev}p2" status=none
 	sync
 	mkdir boot
 	mount  ${loopdev}p1 boot
@@ -55,7 +55,7 @@ function run_sdcard_creation {
 	cp u-boot-${board}.img boot/u-boot.img
 	umount boot
 	losetup -d ${loopdev}
-	dd if=installer.img of=${sd_dev}
+	dd if=installer.img of=${sd_dev} status=none
 	rm -rf boot installer.img
 	eject ${sd_dev}
 	echo "Insert SD card on board, Power ON and interrupt U-Boot to go in console to do this command:"
