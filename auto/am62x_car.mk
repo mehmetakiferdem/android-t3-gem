@@ -20,7 +20,6 @@ $(call inherit-product, device/ti/am62x/auto/device-car.mk)
 $(call inherit-product, device/ti/am62x/am62x/device.mk)
 
 PRODUCT_CHARACTERISTICS := automotive
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 

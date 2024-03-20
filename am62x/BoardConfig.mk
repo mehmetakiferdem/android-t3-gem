@@ -13,6 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# Primary Arch
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_VARIANT := cortex-a53
+
+TARGET_IS_64_BIT := false
+TARGET_USES_64_BIT_BINDER := true
+# Disable 64 bit mediadrmserver
+TARGET_ENABLE_MEDIADRM_64 :=
 
 TARGET_BOARD_PLATFORM := am62x
 TARGET_BOOTLOADER_BOARD_NAME := am62x
