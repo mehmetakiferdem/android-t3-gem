@@ -98,39 +98,7 @@ function main {
 
 	echo "Fastboot: $FASTBOOT"
 
-	# =============================================================================
-	# pre-run
-	# =============================================================================
-
-	# Verify fastboot program is available
-	# Verify user permission to run fastboot
-	# Verify fastboot detects a device, otherwise exit
-	if [ -f ${FASTBOOT} ]; then
-		fastboot_status=`${FASTBOOT} devices 2>&1`
-		if [ `echo $fastboot_status | grep -wc "no permissions"` -gt 0 ]; then
-			cat <<-EOF >&2
-			-------------------------------------------
-			Fastboot requires administrator permissions
-			Please run the script as root or create a
-			fastboot udev rule, e.g:
-
-			% cat /etc/udev/rules.d/99_android.rules
-			SUBSYSTEM=="usb",
-			SYSFS{idVendor}=="0451"
-			OWNER="<username>"
-			GROUP="adm"
-			-------------------------------------------
-			EOF
-			exit 1
-		elif [ "X$fastboot_status" = "X" ]; then
-			echo "No device detected. Please ensure that" \
-				"fastboot is running on the target device"
-			exit -1;
-		else
-			device=`echo $fastboot_status | awk '{print$1}'`
-			echo -e "\nFastboot - device detected: $device\n"
-		fi
-	else
+	if [ ! -f ${FASTBOOT} ]; then
 		echo "Error: fastboot is not available at ${FASTBOOT}"
 		exit -1;
 	fi
