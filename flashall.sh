@@ -32,6 +32,7 @@ function run_sdcard_creation {
 	local sd_dev=$1
 	local board=$2
 	local tiboot3bin=$3
+	local bootloader_only=$4
 
 	if [ "$EUID" -ne 0 ]; then
 		echo "Please run as root/sudo"
@@ -60,6 +61,12 @@ function run_sdcard_creation {
 	set +e
 	eject ${sd_dev}
 	set -e
+
+	if [[ "$bootloader_only" == "true" ]]; then
+		echo "Done preparing bootstrap SD Card"
+		exit 0
+	fi
+
 	echo "Insert SD card on board, Power ON and interrupt U-Boot to go in console to do this command:"
 	echo "=> mmc dev 0 0"
 	echo "=> mmc erase 0 0x10000"
@@ -117,7 +124,7 @@ function main {
 	done
 
 	if  ! [ -z "${sd_dev}" ]; then
-		run_sdcard_creation "${sd_dev}" "${board}" "${tiboot3bin}"
+		run_sdcard_creation "${sd_dev}" "${board}" "${tiboot3bin}" "${bootloader_only}"
 	fi
 
 	generate_bootloader_image "${board}" "${tisplbin}" "${ubootimg}"
