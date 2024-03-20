@@ -30,15 +30,14 @@ function main {
 			--) shift; break;;
 		esac
 	done
-	echo "board: ${board}"
-	if  [ -z "${board}" ]; then
-		echo "Error you need to specify board name"
-		usage
-	fi
 
-	if [[ "${board}" == "am62px-sk" ]]; then
-	        hsfs="true"
-	fi
+	case "${board}" in
+		"am62x-sk"|"am62x-lp-sk"|"am625-beagleplay") ;;
+		"am62px-sk") hsfs="true";;
+		*) echo "invalid board: $board"; usage;;
+	esac
+
+	echo "board: ${board}"
 
 	export PRODUCT_OUT=${PRODUCT_OUT-"./"}
 	# Create the filename
