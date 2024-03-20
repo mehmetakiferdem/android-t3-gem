@@ -36,6 +36,6 @@ genfscon sysfs /devices/platform/bus@f0000/fd00000.gpu           u:object_r:sysf
 # net
 genfscon sysfs /devices/platform/bus@f0000/8000000.ethernet/net/eth0                                                    u:object_r:sysfs_net:s0
 genfscon sysfs /devices/platform/bus@f0000/8000000.ethernet/net/eth1                                                    u:object_r:sysfs_net:s0
-genfscon sysfs /devices/platform/bus@f0000/fa20000.mmc/mmc_host/mmc2/mmc2:0001/mmc2:0001:2/wl18xx.1.auto/net/wlan0       u:object_r:sysfs_net:s0
+genfscon sysfs /devices/platform/bus@f0000/fa20000.mmc/mmc_host/mmc2/mmc2:0001/mmc2:0001:2/wl18xx.3.auto/net/wlan0      u:object_r:sysfs_net:s0
 
 genfscon sysfs /devices/virtual/misc/usb_accessory u:object_r:sysfs_uhid:s0
