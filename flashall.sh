@@ -14,6 +14,59 @@ function usage {
 	exit 1;
 }
 
+# The bootloader-${board}.img is a vfat partition with 2 files: tispl.bin and u-boot.img
+# Both are flashed on the same partition in the User Data Area (UDA) labeled "bootloader"
+function generate_bootloader_image {
+	local board=$1
+	dd if=/dev/zero of=bootloader-${board}.img bs=1048576 count=8
+	mkfs.vfat bootloader-${board}.img
+	mcopy -i bootloader-${board}.img tispl-${board}.bin ::tispl.bin
+	mcopy -i bootloader-${board}.img u-boot-${board}.img ::u-boot.img
+}
+
+function run_sdcard_creation {
+	local sd_dev=$1
+	local board=$2
+	local tiboot3bin=$3
+
+	if [ "$EUID" -ne 0 ]; then
+		echo "Please run as root/sudo"
+		exit
+	fi
+
+	dd if=/dev/zero of=./installer.img count=40960
+
+	loopdev=$(sudo losetup -f)
+	losetup "${loopdev}" installer.img
+	parted "${loopdev}"  mktable gpt
+	parted "${loopdev}"  mkpart primary fat32 5MiB 13MiB
+	parted "${loopdev}"  mkpart primary 4MiB 5MiB
+	mkfs.vfat -F 32 -n "boot" "${loopdev}p1"
+	dd if=${tiboot3bin} of="${loopdev}p2"
+	sync
+	mkdir boot
+	mount  ${loopdev}p1 boot
+	cp ${tiboot3bin} boot/tiboot3.bin
+	cp tispl-${board}.bin boot/tispl.bin
+	cp u-boot-${board}.img boot/u-boot.img
+	umount boot
+	losetup -d ${loopdev}
+	dd if=installer.img of=${sd_dev}
+	rm -rf boot installer.img
+	eject ${sd_dev}
+	echo "Insert SD card on board, Power ON and interrupt U-Boot to go in console to do this command:"
+	echo "=> mmc dev 0 0"
+	echo "=> mmc erase 0 0x10000"
+	echo "=> mmc dev 0 1"
+	echo "=> mmc erase 0 0x10000"
+	echo "=> env default -a"
+	echo "=> setenv mmcdev 1; saveenv; reset;"
+	echo " Interrupt U-boot  to go in console:"
+	echo "=> fastboot 0"
+	echo "When it's Done"
+	read -p "Press any key to continue... " -n1 -s
+}
+
 function main {
 	local opts_args="sdcard:,help,hsfs,board:,bootloader"
 	local opts=$(getopt -o '' -l "${opts_args}" -- "$@")
@@ -63,48 +116,10 @@ function main {
 	done
 
 	if  ! [ -z "${sd_dev}" ]; then
-		if [ "$EUID" -ne 0 ]; then
-			echo "Please run as root/sudo"
-			exit
-		fi
-
-		dd if=/dev/zero of=./installer.img count=40960
-
-		loopdev=$(sudo losetup -f)
-		losetup "${loopdev}" installer.img
-		parted "${loopdev}"  mktable gpt
-		parted "${loopdev}"  mkpart primary fat32 5MiB 13MiB
-		parted "${loopdev}"  mkpart primary 4MiB 5MiB
-		mkfs.vfat -F 32 -n "boot" "${loopdev}p1"
-		dd if=${tiboot3bin} of="${loopdev}p2"
-		sync
-		mkdir boot
-		mount  ${loopdev}p1 boot
-		cp ${tiboot3bin} boot/tiboot3.bin
-		cp tispl-${board}.bin boot/tispl.bin
-		cp u-boot-${board}.img boot/u-boot.img
-		umount boot
-		losetup -d ${loopdev}
-		dd if=installer.img of=${sd_dev}
-		rm -rf boot installer.img
-		eject ${sd_dev}
-		echo "Insert SD card on board, Power ON and interrupt U-Boot to go in console to do this command:"
-		echo "=> mmc dev 0 0"
-		echo "=> mmc erase 0 0x10000"
-		echo "=> mmc dev 0 1"
-		echo "=> mmc erase 0 0x10000"
-		echo "=> env default -a"
-		echo "=> setenv mmcdev 1; saveenv; reset;"
-		echo " Interrupt U-boot  to go in console:"
-		echo "=> fastboot 0"
-		echo "When it's Done"
-		read -p "Press any key to continue... " -n1 -s
+		run_sdcard_creation "${sd_dev}" "${board}" "${tiboot3bin}"
 	fi
 
-	dd if=/dev/zero of=bootloader-${board}.img bs=1048576 count=8
-	mkfs.vfat bootloader-${board}.img
-	mcopy -i bootloader-${board}.img tispl-${board}.bin ::tispl.bin
-	mcopy -i bootloader-${board}.img u-boot-${board}.img ::u-boot.img
+	generate_bootloader_image "${board}"
 	# Pre-packaged DB
 	if [[ -x "fastboot" ]] && [[ ! -v FASTBOOT ]]; then
 		export FASTBOOT="./fastboot"
