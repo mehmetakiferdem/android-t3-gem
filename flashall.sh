@@ -127,15 +127,12 @@ function main {
 		run_sdcard_creation "${sd_dev}" "${board}" "${tiboot3bin}" "${bootloader_only}"
 	fi
 
-	# Pre-packaged DB
 	if [[ -x "fastboot" ]] && [[ ! -v FASTBOOT ]]; then
 		export FASTBOOT="./fastboot"
 	fi
 	export FASTBOOT=${FASTBOOT-$(which fastboot)}
 	export LD_LIBRARY_PATH=./
-
 	echo "Fastboot: $FASTBOOT"
-
 	if [ ! -f ${FASTBOOT} ]; then
 		echo "Error: fastboot is not available at ${FASTBOOT}"
 		exit -1;
@@ -189,12 +186,13 @@ function main {
 	sleep 3
 
 	echo "Flashing tiboot3....."
-	echo "   tiboot3bin:     ${tiboot3bin}"
-	${FASTBOOT} flash tiboot3	${tiboot3bin}
+	echo "   tiboot3bin:  ${tiboot3bin}"
+	${FASTBOOT} flash tiboot3 ${tiboot3bin}
 
 	sleep 3
+	echo "Flashing bootloader....."
 	echo "   bootloader:  ${bootloaderimg}"
-	${FASTBOOT} flash bootloader	${bootloaderimg}
+	${FASTBOOT} flash bootloader ${bootloaderimg}
 
 	if [[ "$bootloader_only" == "true" ]]; then
 		echo "Done flashing bootloaders"
@@ -213,7 +211,7 @@ function main {
 	${FASTBOOT} flash init_boot_a ${initbootimg}
 	${FASTBOOT} flash init_boot_b ${initbootimg}
 
-	echo "Flashing userdata Image"
+	echo "Flashing Userdata Image"
 	${FASTBOOT} flash userdata ${userdataimg}
 
 	if [ -e "${vbmetaimg}" ]; then
@@ -224,15 +222,15 @@ function main {
 		${FASTBOOT} flash dtbo_a ${dtboimg}
 		${FASTBOOT} flash dtbo_b ${dtboimg}
 	else
-		echo "Flashing DTBO Image Unsigned"
+		echo "Flashing DTBO Unsigned Image"
 		${FASTBOOT} flash dtbo_a ${dtbouimg}
 		${FASTBOOT} flash dtbo_b ${dtbouimg}
 	fi
 
-	echo "Flashing persist partition"
+	echo "Flashing Persist Partition"
 	${FASTBOOT} flash persist ${persistimg}
 
-	echo "Erasing misc partitions"
+	echo "Erasing Misc Partition"
 	${FASTBOOT} erase misc
 
 	echo "Formatting metadata partition"
@@ -245,7 +243,7 @@ function main {
 	fi
 	set -e
 
-	echo "Flash android super partitions"
+	echo "Flashing Android Super Image"
 	${FASTBOOT} flash super	${superimg}
 }
 
