@@ -147,6 +147,7 @@ function main {
 	vendorbootimg="vendor_boot.img"
 	initbootimg="init_boot.img"
 	vbmetaimg="vbmeta.img"
+	vbmetavendordlkmimg="vbmeta_vendor_dlkm.img"
 	dtboimg="dtbo.img"
 	dtbouimg="dtbo-unsigned.img"
 	persistimg="persist.img"
@@ -220,6 +221,9 @@ function main {
 		echo "Flashing vbmeta Image"
 		${FASTBOOT} flash vbmeta_a ${vbmetaimg}
 		${FASTBOOT} flash vbmeta_b ${vbmetaimg}
+		echo "Flashing vbmeta vendor dlkm Image"
+		${FASTBOOT} flash vbmeta_vendor_dlkm_a ${vbmetavendordlkmimg}
+		${FASTBOOT} flash vbmeta_vendor_dlkm_b ${vbmetavendordlkmimg}
 		echo "Flashing DTBO Image"
 		${FASTBOOT} flash dtbo_a ${dtboimg}
 		${FASTBOOT} flash dtbo_b ${dtboimg}
