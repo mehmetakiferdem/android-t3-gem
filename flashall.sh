@@ -18,10 +18,14 @@ function usage {
 # Both are flashed on the same partition in the User Data Area (UDA) labeled "bootloader"
 function generate_bootloader_image {
 	local board=$1
+	local tisplbin=$2
+	local ubootimg=$3
+	echo "Generating bootloader-${board}.img ..."
 	dd if=/dev/zero of=bootloader-${board}.img bs=1048576 count=8
 	mkfs.vfat bootloader-${board}.img
-	mcopy -i bootloader-${board}.img tispl-${board}.bin ::tispl.bin
-	mcopy -i bootloader-${board}.img u-boot-${board}.img ::u-boot.img
+	mcopy -i bootloader-${board}.img ${tisplbin} ::tispl.bin
+	mcopy -i bootloader-${board}.img ${ubootimg} ::u-boot.img
+	echo "Generating bootloader-${board}.img: DONE"
 }
 
 function run_sdcard_creation {
@@ -95,19 +99,14 @@ function main {
 
 	echo "board: ${board}"
 
-	# Create the filename
+	tiboot3bin="tiboot3-${board}.bin"
 	if [[ "${hsfs}" == "true" ]]; then
 		tiboot3bin="tiboot3-${board}-hsfs.bin"
-	else
-		tiboot3bin="tiboot3-${board}.bin"
 	fi
+	tisplbin="tispl-${board}.bin"
+	ubootimg="u-boot-${board}.img"
 
-	required_bootloaders=(
-		"${tiboot3bin}"
-		"tispl-${board}.bin"
-		"u-boot-${board}.img"
-	)
-
+	required_bootloaders=("${tiboot3bin}" "${tisplbin}" "${ubootimg}")
 	for img in ${required_bootloaders[@]}; do
 		if [ ! -e "${img}" ] ; then
 			echo "Missing ${img}"
@@ -119,7 +118,7 @@ function main {
 		run_sdcard_creation "${sd_dev}" "${board}" "${tiboot3bin}"
 	fi
 
-	generate_bootloader_image "${board}"
+	generate_bootloader_image "${board}" "${tisplbin}" "${ubootimg}"
 	# Pre-packaged DB
 	if [[ -x "fastboot" ]] && [[ ! -v FASTBOOT ]]; then
 		export FASTBOOT="./fastboot"
