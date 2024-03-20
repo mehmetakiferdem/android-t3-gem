@@ -86,5 +86,5 @@ PRODUCT_COPY_FILES += \
 
 # Vehicle
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.vehicle@2.0-default-service
+    android.hardware.automotive.vehicle@V1-default-service
 
