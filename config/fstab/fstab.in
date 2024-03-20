@@ -3,7 +3,7 @@ vendor                                                       /vendor         ext
 /dev/block/platform/bus@f0000/@sdio_node@/by-name/vendor_boot /vendor_boot   emmc    defaults                         recoveryonly,slotselect
 /dev/block/platform/bus@f0000/@sdio_node@/by-name/boot       /boot           emmc    defaults                         recoveryonly,slotselect,first_stage_mount
 /dev/block/platform/bus@f0000/@sdio_node@/by-name/init_boot  /init_boot      emmc    defaults                         recoveryonly,slotselect,first_stage_mount
-/dev/block/platform/bus@f0000/@sdio_node@/by-name/metadata   /metadata       ext4    noatime,nosuid,nodev,discard     wait,check,formattable,first_stage_mount
+/dev/block/platform/bus@f0000/@sdio_node@/by-name/metadata   /metadata       f2fs    noatime,nosuid,nodev,sync        wait,check,formattable,first_stage_mount
 /dev/block/platform/bus@f0000/@sdio_node@/by-name/userdata   /data           f2fs    noatime,nosuid,nodev,discard,reserve_root=32768,fsync_mode=nobarrier             latemount,wait,check,quota,fileencryption=aes-256-xts:aes-256-cts,keydirectory=/metadata/vold/metadata_encryption,reservedsize=32M,checkpoint=fs,formattable
 /dev/block/platform/bus@f0000/@sdio_node@/by-name/persist    /mnt/vendor/persist     ext4    noatime,nosuid,nodev,barrier=1,data=ordered,nodelalloc,errors=panic   wait,check,formattable,first_stage_mount
 /dev/block/platform/bus@f0000/@sdio_node@/by-name/misc       /misc           emmc    defaults                         defaults
