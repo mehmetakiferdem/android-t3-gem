@@ -2,7 +2,6 @@ on post-fs
     restorecon_recursive /mnt/vendor/persist/
 
 on late-fs
-    exec_start wait_for_keymaster_optee
     mount_all --late
 
 service tee-supplicant /vendor/bin/tee-supplicant

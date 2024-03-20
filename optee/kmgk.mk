@@ -21,6 +21,4 @@ PRODUCT_PACKAGES += \
 
 # keymaster
 PRODUCT_VENDOR_PROPERTIES += ro.hardware.keystore=optee
-PRODUCT_PACKAGES += \
-     android.hardware.keymaster@3.0-service.optee \
-     wait_for_keymaster_optee
+PRODUCT_PACKAGES += android.hardware.security.keymint-service.optee
