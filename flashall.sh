@@ -57,7 +57,9 @@ function run_sdcard_creation {
 	losetup -d ${loopdev}
 	dd if=installer.img of=${sd_dev} status=none
 	rm -rf boot installer.img
+	set +e
 	eject ${sd_dev}
+	set -e
 	echo "Insert SD card on board, Power ON and interrupt U-Boot to go in console to do this command:"
 	echo "=> mmc dev 0 0"
 	echo "=> mmc erase 0 0x10000"
