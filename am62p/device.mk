@@ -10,7 +10,8 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Ueventd
 PRODUCT_COPY_FILES += \
-    device/ti/am62x/am62p/ueventd.am62p.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
+    device/ti/am62x/am62p/ueventd.am62p.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc \
+    device/ti/am62x/camera/android.hardware.camera.provider@2.5-service_64_am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.camera.provider@2.5-service_64_$(PRODUCT_PLATFORM).rc
 
 # V4L2 Codec2
 PRODUCT_SOONG_NAMESPACES += external/v4l2_codec2
@@ -34,5 +35,12 @@ PRODUCT_PACKAGES += \
 # for documentation on the bitmask values
 PRODUCT_VENDOR_PROPERTIES += \
     debug.stagefright.c2-poolmask=0xf50000
+
+# Camera
+PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.5-service_64
+
+# Enable USB Camera
+PRODUCT_PACKAGES += android.hardware.camera.provider@2.5-external-service_64.ti
 
 include device/ti/am62x/device-common.mk

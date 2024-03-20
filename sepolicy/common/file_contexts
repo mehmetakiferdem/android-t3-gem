@@ -58,7 +58,10 @@
 /mnt/vendor/persist/tee(/.*)?                                      u:object_r:tee_data_file:s0
 
 # Camera HAL
-/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-service_64 u:object_r:hal_camera_default_exec:s0
+/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-service_64               u:object_r:hal_camera_default_exec:s0
+/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-service                  u:object_r:hal_camera_default_exec:s0
+/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-external-service\.ti     u:object_r:hal_camera_default_exec:s0
+/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-external-service_64\.ti  u:object_r:hal_camera_default_exec:s0
 
 # V4L2 Codec2
 /vendor/bin/hw/android\.hardware\.media\.c2@1\.0-service-v4l2(.*)?              u:object_r:mediacodec_exec:s0
