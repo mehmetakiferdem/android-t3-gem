@@ -25,13 +25,11 @@ CFG_SECSTOR_TA_MGMT_PTA := y
 CFG_SECURE_DATA_PATH := y
 OPTEE_CFG_CORE_HEAP_SIZE=131072
 
-CFG_TEE_FS_PARENT_PATH := /mnt/vendor/persist/tee
-CFG_TEE_CLIENT_LOAD_PATH := /vendor/lib/
-
 BUILD_OPTEE_MK := device/ti/am62x/optee/build_optee.mk
 
 # optee-client (libteec and tee-supplicant)
 include vendor/linaro/optee_client/optee_client.device.mk
+$(call soong_config_set,optee_client,cfg_tee_fs_parent_path,/mnt/vendor/persist/tee)
 
 PRODUCT_PACKAGES += \
     libteec \
