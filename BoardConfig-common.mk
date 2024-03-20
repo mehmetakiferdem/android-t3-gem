@@ -161,6 +161,7 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS += device/ti/am62x/sepolicy-private
 # Copy Bootloader prebuilts and prebuilts images
 PRODUCT_COPY_FILES += \
         vendor/ti/am62x/binaries/persist.img:$(TARGET_OUT)/persist.img \
+        vendor/ti/am62x/binaries/metadata.img:$(TARGET_OUT)/metadata.img \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dtbo.img:$(TARGET_OUT)/dtbo-unsigned.img
 
 # Copy Android Flashing Script

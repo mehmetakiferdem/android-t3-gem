@@ -150,6 +150,7 @@ function main {
 	dtboimg="dtbo.img"
 	dtbouimg="dtbo-unsigned.img"
 	persistimg="persist.img"
+	metadataimg="metadata.img"
 
 	# Verify that all the files required for the fastboot flash
 	# process are available
@@ -162,6 +163,7 @@ function main {
 		"${vendorbootimg}"
 		"${initbootimg}"
 		"${persistimg}"
+		"${metadataimg}"
 	)
 
 	if [ -e "${vbmetaimg}" ] ; then
@@ -233,15 +235,8 @@ function main {
 	echo "Erasing Misc Partition"
 	${FASTBOOT} erase misc
 
-	echo "Formatting metadata partition"
-	set +e
-	${FASTBOOT} format metadata
-	if [ $? -eq 1 ]; then
-		echo "formating failed"
-		${FASTBOOT} erase metadata
-
-	fi
-	set -e
+	echo "Flashing metadata partition"
+	${FASTBOOT} flash metadata ${metadataimg}
 
 	echo "Flashing Android Super Image"
 	${FASTBOOT} flash super	${superimg}
