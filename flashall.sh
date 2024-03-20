@@ -137,12 +137,6 @@ function main {
 		exit -1;
 	fi
 
-	# Create the filename
-	if [[ "${hsfs}" == "true" ]]; then
-		tiboot3bin="${PRODUCT_OUT}tiboot3-${board}-hsfs.bin"
-	else
-		tiboot3bin="${PRODUCT_OUT}tiboot3-${board}.bin"
-	fi
 	bootloaderimg="${PRODUCT_OUT}bootloader-${board}.img"
 	userdataimg="${PRODUCT_OUT}userdata.img"
 	superimg="${PRODUCT_OUT}super.img"
