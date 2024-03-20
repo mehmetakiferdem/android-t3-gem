@@ -1,10 +1,11 @@
 # devices
-/dev/block/zram0       u:object_r:swap_block_device:s0
-/dev/ttyS2             u:object_r:console_device:s0
-/dev/dri/card[0-9]*    u:object_r:dri_device:s0
-/dev/dri/renderD128    u:object_r:gpu_device:s0
-/dev/pvr_sync          u:object_r:gpu_device:s0
-/dev/dma_heap/reserved u:object_r:dmabuf_cma_heap_device:s0
+/dev/block/zram0                u:object_r:swap_block_device:s0
+/dev/ttyS2                      u:object_r:console_device:s0
+/dev/dri/card[0-9]*             u:object_r:dri_device:s0
+/dev/dri/renderD128             u:object_r:gpu_device:s0
+/dev/pvr_sync                   u:object_r:gpu_device:s0
+/dev/dma_heap/reserved          u:object_r:dmabuf_cma_heap_device:s0
+/dev/dma_heap/carveout_video    u:object_r:dmabuf_system_heap_device:s0
 
 # video devices
 /dev/media[0-2]                         u:object_r:video_device:s0

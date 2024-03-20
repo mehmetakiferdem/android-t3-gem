@@ -1,6 +1,7 @@
 modalias_handling enabled
 
-/dev/dma_heap/reserved      0666   system     graphics
+/dev/dma_heap/reserved           0666   system     graphics
+/dev/dma_heap/carveout_video     0666   system     graphics
 
 # for android sync framework
 /dev/pvr_sync             0666   system     graphics

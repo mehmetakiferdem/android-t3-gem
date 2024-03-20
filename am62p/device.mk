@@ -34,7 +34,7 @@ PRODUCT_PACKAGES += \
 # https://android.googlesource.com/platform/external/v4l2_codec2/#quick-start-guide
 # for documentation on the bitmask values
 PRODUCT_VENDOR_PROPERTIES += \
-    debug.stagefright.c2-poolmask=0xf50000
+    debug.stagefright.c2-poolmask=0x1f50000
 
 # Camera
 PRODUCT_PACKAGES += \
