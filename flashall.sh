@@ -127,7 +127,6 @@ function main {
 		run_sdcard_creation "${sd_dev}" "${board}" "${tiboot3bin}" "${bootloader_only}"
 	fi
 
-	generate_bootloader_image "${board}" "${tisplbin}" "${ubootimg}"
 	# Pre-packaged DB
 	if [[ -x "fastboot" ]] && [[ ! -v FASTBOOT ]]; then
 		export FASTBOOT="./fastboot"
@@ -142,7 +141,9 @@ function main {
 		exit -1;
 	fi
 
+	generate_bootloader_image "${board}" "${tisplbin}" "${ubootimg}"
 	bootloaderimg="bootloader-${board}.img"
+
 	userdataimg="userdata.img"
 	superimg="super.img"
 	bootimg="boot.img"
