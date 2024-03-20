@@ -116,39 +116,32 @@ function main {
 
 	# Verify that all the files required for the fastboot flash
 	# process are available
+	required_images=(
+		"${tiboot3bin}"
+		"${bootloaderimg}"
+		"${superimg}"
+		"${userdataimg}"
+		"${bootimg}"
+		"${vendorbootimg}"
+		"${initbootimg}"
+		"${persistimg}"
+	)
 
-	if [ ! -e "${tiboot3bin}" ] ; then
-	echo "Missing ${tiboot3bin}"
-	exit -1;
+	if [ -e "${vbmetaimg}" ] ; then
+		# When a vbmeta.img is available, AVB is enabled
+		# In that case, we use a signed dtbo.img
+		required_images+=("${vbmetaimg}" "${dtboimg}")
+	else
+		# otherwise, we use the dtbo-unsigned.img
+		required_images+=("${dtbouimg}")
 	fi
-	if [ ! -e "${bootloaderimg}" ] ; then
-	echo "Missing ${bootloaderimg}"
-	exit -1;
-	fi
-	if [ ! -e "${superimg}" ] ; then
-	echo "Missing ${superimg}"
-	exit -1;
-	fi
-	if [ ! -e "${userdataimg}" ] ; then
-	echo "Missing ${userdataimg}"
-	exit -1;
-	fi
-	if [ ! -e "${bootimg}" ] ; then
-	echo "Missing ${bootimg}"
-	exit -1;
-	fi
-	if [ ! -e "${vendorbootimg}" ] ; then
-	echo "Missing ${vendorbootimg}"
-	exit -1;
-	fi
-	if [ ! -e "${initbootimg}" ] ; then
-	echo "Missing ${initbootimg}"
-	exit -1;
-	fi
-	if [ ! -e "${persistimg}" ] ; then
-	echo "Missing ${persistimg}"
-	exit -1;
-	fi
+
+	for img in ${required_images[@]}; do
+		if [ ! -e "${img}" ] ; then
+			echo "Missing ${img}"
+			exit -1;
+		fi
+	done
 
 	echo "Create GPT partition table"
 	${FASTBOOT} oem format
@@ -179,10 +172,6 @@ function main {
 	${FASTBOOT} flash userdata ${userdataimg}
 
 	if [ -e "${vbmetaimg}" ]; then
-		if [ ! -e "${dtboimg}" ]; then
-			echo "Missing ${dtboimg}"
-			exit -1;
-		fi
 		echo "Flashing vbmeta Image"
 		${FASTBOOT} flash vbmeta_a ${vbmetaimg}
 		${FASTBOOT} flash vbmeta_b ${vbmetaimg}
@@ -190,10 +179,6 @@ function main {
 		${FASTBOOT} flash dtbo_a ${dtboimg}
 		${FASTBOOT} flash dtbo_b ${dtboimg}
 	else
-		if [ ! -e "${dtbouimg}" ]; then
-			echo "Missing ${dtbouimg}"
-			exit -1;
-		fi
 		echo "Flashing DTBO Image Unsigned"
 		${FASTBOOT} flash dtbo_a ${dtbouimg}
 		${FASTBOOT} flash dtbo_b ${dtbouimg}
