@@ -7,6 +7,7 @@ function usage {
 	echo "Usage: sudo flashall.sh <options>";
 	echo "options:";
 	echo "  --board To select good bootloader, board supported: am62x-sk, am62x-lp-sk, am625-beagleplay, am62px-sk"
+	echo "  --bootloader To flash bootloader only. Useful when partitioning changes occur"
 	echo "  --hsfs for HS-FS devices which require bootloader authentication (default for am62px-sk)"
 	echo "  --sdcard /dev/<SDCARD> to generate a bootable SD card"
 	echo "  --help Show this message and exit"
@@ -14,18 +15,20 @@ function usage {
 }
 
 function main {
-	local opts_args="sdcard:,help,hsfs,board:"
+	local opts_args="sdcard:,help,hsfs,board:,bootloader"
 	local opts=$(getopt -o '' -l "${opts_args}" -- "$@")
 	eval set -- "${opts}"
 
 	local board=""
 	local sd_dev=""
 	local hsfs="false"
+	local bootloader_only="false"
 	while true; do
 		case "$1" in
 			--board) board="$2"; shift 2 ;;
 			--sdcard) sd_dev="$2"; shift 2 ;;
 			--hsfs) hsfs="true"; shift ;;
+			--bootloader) bootloader_only="true"; shift ;;
 			--help) usage; exit 0 ;;
 			--) shift; break;;
 		esac
@@ -168,6 +171,11 @@ function main {
 	sleep 3
 	echo "   bootloader:  ${bootloaderimg}"
 	${FASTBOOT} flash bootloader	${bootloaderimg}
+
+	if [[ "$bootloader_only" == "true" ]]; then
+		echo "Done flashing bootloaders"
+		exit 0
+	fi
 
 	echo "Flashing Boot Image"
 	${FASTBOOT} flash boot_a ${bootimg}
