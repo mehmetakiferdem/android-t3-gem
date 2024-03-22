@@ -221,6 +221,7 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-udma.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-udma-glue.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-ringacc.ko \
+        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/pruss.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/irq-ti-sci-inta.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/irq-ti-sci-intr.ko \
         device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/irq-pruss-intc.ko \
