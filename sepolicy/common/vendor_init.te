@@ -8,11 +8,6 @@ allow vendor_init proc_dirty:file write;
 allow vendor_init proc_sched:file write;
 allow vendor_init system_prop:file read;
 
-# TODO: remove this when the following change is merged
-# https://android-review.googlesource.com/c/platform/system/sepolicy/+/2356622
-allow vendor_init sysfs_wake_lock:file rw_file_perms;
-allow vendor_init self:global_capability2_class_set block_suspend;
-
 dontaudit vendor_init vendor_debugfs_pvr:file setattr;
 
 recovery_only(`
