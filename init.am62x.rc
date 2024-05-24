@@ -55,10 +55,6 @@ on init
 
     start watchdogd
 
-on early-boot
-    # Update dm-verity state and set partition.*.verified properties
-    verity_update_state
-
 on boot
     # Allow to access debugfs for system:system
     chmod 0755 /sys/kernel/debug
