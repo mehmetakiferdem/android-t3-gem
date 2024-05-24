@@ -1,8 +1,5 @@
-on post-fs
+on fs
     restorecon_recursive /mnt/vendor/persist/
-
-on late-fs
-    mount_all --late
 
 service tee-supplicant /vendor/bin/tee-supplicant
     class early_hal
