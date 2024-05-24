@@ -90,7 +90,6 @@ on late-fs
     mount_all --late
 
 on post-fs-data
-    setprop vold.post_fs_data_done 1
     # Create the directories used by the Wireless subsystem
     mkdir /data/vendor/wifi 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
