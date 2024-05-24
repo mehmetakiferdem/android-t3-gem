@@ -154,6 +154,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_VENDOR_PROPERTIES += \
     ro.hardware.gralloc=$(PRODUCT_PLATFORM)
 
+ifneq ($(TARGET_BUILD_VARIANT), user)
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.logd.logpersistd=logcatd
+endif
 
 # Public Libraries
 PRODUCT_COPY_FILES += \

@@ -16,3 +16,7 @@ recovery_only(`
 ');
 
 set_prop(vendor_init, vendor_cf_graphics_config_prop)
+
+userdebug_or_eng(`
+set_prop(vendor_init, logpersistd_logging_prop)
+');
