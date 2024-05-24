@@ -309,3 +309,6 @@ $(call inherit-product-if-exists, hardware/ti/am62x/am62x.mk)
 # Storage: for factory reset protection feature
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.frp.pst=/dev/block/by-name/frp
+
+# APEXes flattened and not updatable
+OVERRIDE_TARGET_FLATTEN_APEX := true
