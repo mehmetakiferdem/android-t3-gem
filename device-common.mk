@@ -74,6 +74,10 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
 TARGET_PRODUCT_PROP := device/ti/am62x/product.prop
+ifeq ($(TARGET_ADB_USER_ENABLE), true)
+TARGET_PRODUCT_PROP += device/ti/am62x/cts.prop
+endif # eq $(TARGET_ADB_USER_ENABLE), true
+
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
