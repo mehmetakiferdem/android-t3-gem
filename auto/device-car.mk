@@ -88,3 +88,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@V1-default-service
 
+# Maps application, from:
+# https://github.com/snappautomotive/firmware-vendor_snappautomotive_packages_maps
+PRODUCT_PACKAGES_DEBUG += \
+    osmdroid
