@@ -313,6 +313,7 @@ PRODUCT_PACKAGES_DEBUG += i2ctransfer
 
 # Include hardware projects (HALs)
 $(call inherit-product-if-exists, hardware/ti/am62x/am62x.mk)
+$(call inherit-product, hardware/ti/am62x/light/lights.mk)
 
 # Storage: for factory reset protection feature
 PRODUCT_PROPERTY_OVERRIDES += \
