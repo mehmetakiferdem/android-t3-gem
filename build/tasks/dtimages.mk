@@ -19,7 +19,7 @@ DTB_FILES := \
 	$(LOCAL_DTB)/k3-am62p5-sk.dtb
 
 $(DTBIMAGE): $(DTB_FILES) $(MKDTIMG)
-	$(MKDTIMG) create $@ --page_size=4096 $(DTB_FILES) 
+	$(MKDTIMG) create $@ --page_size=4096 $(DTB_FILES)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := dtbimage

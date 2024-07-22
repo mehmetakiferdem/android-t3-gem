@@ -41,7 +41,7 @@ endif
 BOARD_KERNEL_CMDLINE += cma=768M
 BOARD_KERNEL_CMDLINE += 8250.nr_uarts=10
 
-BOARD_BOOTCONFIG += androidboot.hardware=am62p 
+BOARD_BOOTCONFIG += androidboot.hardware=am62p
 
 # Copy Bootloader prebuilts and prebuilts images
 PRODUCT_COPY_FILES += \

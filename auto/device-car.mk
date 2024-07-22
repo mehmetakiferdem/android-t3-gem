@@ -34,7 +34,7 @@ PRODUCT_PACKAGES += \
 TARGET_BOARD_INFO_FILE ?= device/google/cuttlefish/shared/auto/android-info.txt
 
 # Bluetooth Audio
-PRODUCT_PACKAGES += android.hardware.bluetooth.audio@2.1-impl 
+PRODUCT_PACKAGES += android.hardware.bluetooth.audio@2.1-impl
 
 BOARD_SEPOLICY_DIRS += device/ti/am62x/auto/sepolicy/vhal
 BOARD_SEPOLICY_DIRS += device/ti/am62x/auto/sepolicy/vendor

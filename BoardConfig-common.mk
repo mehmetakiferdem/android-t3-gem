@@ -136,10 +136,10 @@ BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 ifneq ($(TARGET_BUILD_VARIANT), user)
 BOARD_KERNEL_CMDLINE += printk.devkmsg=on
 endif
-BOARD_KERNEL_CMDLINE += init=/init 
+BOARD_KERNEL_CMDLINE += init=/init
 BOARD_KERNEL_CMDLINE += quiet
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
-BOARD_KERNEL_CMDLINE += mem_sleep_default=deep 
+BOARD_KERNEL_CMDLINE += mem_sleep_default=deep
 
 DEVICE_MANIFEST_FILE += device/ti/am62x/manifest.xml
 DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/ti/am62x/framework_compatibility_matrix.xml

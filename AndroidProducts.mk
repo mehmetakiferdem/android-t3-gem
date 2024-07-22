@@ -19,7 +19,7 @@ PRODUCT_MAKEFILES := \
 	$(LOCAL_DIR)/am62p.mk \
 	$(LOCAL_DIR)/auto/am62x_car.mk \
 	$(LOCAL_DIR)/auto/am62p_car.mk \
-	
+
 COMMON_LUNCH_CHOICES := \
 	am62x-userdebug \
 	am62x-user \
