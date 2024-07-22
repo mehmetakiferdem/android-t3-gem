@@ -42,7 +42,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES_DEBUG += f07bfc66-958c-4a15-99c0-260e4e7375dd.plugin
 
 # xtest
-PRODUCT_PACKAGES_DEBUG += xtest
+# TODO: uncomment once the following PR is merged upstream
+# https://github.com/OP-TEE/optee_test/pull/751
+# PRODUCT_PACKAGES_DEBUG += xtest
 
 # Trusted Applications
 define optee-add-ta
