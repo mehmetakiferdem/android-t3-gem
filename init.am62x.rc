@@ -3,6 +3,9 @@ on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
 
 on init
+    # Force performance governor
+    write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor performance
+
     # Boot time fs tuning
     write /sys/block/sda/queue/iostats 0
     write /sys/block/sda/queue/scheduler bfq
