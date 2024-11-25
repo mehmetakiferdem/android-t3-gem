@@ -1,0 +1,2 @@
+# Codec2: create input surface on the framework side
+debug.stagefright.c2inputsurface=-1

@@ -14,8 +14,5 @@ ro.lockscreen.disable.default=true
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=15
 
-# Codec2: create input surface on the framework side
-debug.stagefright.c2inputsurface=-1
-
 # Give us 10 seconds to reboot/shutdown cleanly
 ro.build.shutdown_timeout=10

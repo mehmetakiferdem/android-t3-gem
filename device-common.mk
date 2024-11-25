@@ -202,16 +202,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/ti/am62x/init.recovery.am62x.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.$(PRODUCT_PLATFORM).rc
 
-# Media
-PRODUCT_COPY_FILES += \
-	frameworks/av/media/libstagefright/data/media_codecs_google_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_audio.xml \
-
-# Media configuration
-PRODUCT_COPY_FILES += \
-	device/ti/am62x/am62x.media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
-
 # Memtrack
 PRODUCT_PACKAGES += \
 	android.hardware.memtrack-service.example
@@ -254,3 +244,4 @@ OVERRIDE_TARGET_FLATTEN_APEX := true
 $(call inherit-product, device/ti/am62x/shared/graphics/device_vendor.mk)
 $(call inherit-product, device/ti/am62x/shared/camera/device_vendor.mk)
 $(call inherit-product, device/ti/am62x/shared/audio/device_vendor.mk)
+$(call inherit-product, device/ti/am62x/shared/media/device_vendor.mk)
