@@ -49,7 +49,9 @@ BOARD_SEPOLICY_DIRS += packages/services/Car/car_product/occupant_awareness/sepo
 # AudioControl HAL
 PRODUCT_PACKAGES += android.hardware.automotive.audiocontrol-service.example
 
-PRODUCT_PACKAGES += android.hardware.soundtrigger@2.3-impl
+# Enable soundtrigger3 mock instance
+PRODUCT_PROPERTY_OVERRIDES += \
+	debug.soundtrigger_middleware.use_mock_hal=3
 
 PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
