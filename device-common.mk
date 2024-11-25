@@ -224,7 +224,7 @@ PRODUCT_PACKAGES += android.hardware.drm@latest-service.clearkey
 
 # Thermal
 PRODUCT_PACKAGES += \
-        android.hardware.thermal@2.0-service.ti
+        com.android.hardware.thermal.ti
 
 # Copy hardware config file(s)
 PRODUCT_COPY_FILES += \
