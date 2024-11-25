@@ -14,6 +14,7 @@
 # limitations under the License.
 #
 TARGET_KERNEL_USE ?= 6.1
+TARGET_BOOTLOADER_VERSION ?= 2024.04
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, device/ti/am62x/am62x/device.mk)
