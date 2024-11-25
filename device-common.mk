@@ -293,7 +293,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
         Launcher3QuickStep \
-        WallpaperPicker
+        ThemePicker
 
 #
 # Enable bluetooth
