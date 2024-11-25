@@ -137,7 +137,7 @@ PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 PRODUCT_PRODUCT_VNDK_VERSION := current
 
 # Power HAL
-PRODUCT_PACKAGES += android.hardware.power-service.example
+PRODUCT_PACKAGES += com.android.hardware.power
 
 # Health: Install default binderized implementation to vendor.
 PRODUCT_PACKAGES += \
