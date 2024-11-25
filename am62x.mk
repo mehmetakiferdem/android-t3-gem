@@ -16,6 +16,7 @@
 TARGET_KERNEL_USE ?= 6.6
 TARGET_BOOTLOADER_VERSION ?= 2024.04
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, device/ti/am62x/am62x/device.mk)
 
@@ -28,7 +29,6 @@ PRODUCT_CHARACTERISTICS := tablet
 
 # Set lowram options
 PRODUCT_VENDOR_PROPERTIES += \
-	dalvik.vm.dex2oat64.enabled=false \
 	dalvik.vm.heapstartsize=1m \
 	dalvik.vm.heapgrowthlimit=192m \
 	dalvik.vm.heapsize=384m \
