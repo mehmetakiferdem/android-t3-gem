@@ -137,7 +137,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 endif # eq $(TARGET_AVB_ENABLE), true
 
-PRODUCT_SHIPPING_API_LEVEL := 34
+PRODUCT_SHIPPING_API_LEVEL := 35
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 # Enforce the Product interface
 PRODUCT_PRODUCT_VNDK_VERSION := current
