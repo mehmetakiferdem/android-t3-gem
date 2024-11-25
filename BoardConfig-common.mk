@@ -196,12 +196,6 @@ BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 endif
 
-# Audio HAL
-BOARD_USES_TINYHAL_AUDIO := true
-TINYALSA_NO_ADD_NEW_CTRLS := true
-TINYALSA_NO_CTL_GET_ID := true
-TINYCOMPRESS_TSTAMP_IS_LONG := true
-
 # generic wifi
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_ti
@@ -282,3 +276,4 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += $(BOARD_VENDOR_KERNEL_MODULES)
 
 -include device/ti/am62x/shared/graphics/BoardConfig.mk
 -include device/ti/am62x/shared/camera/BoardConfig.mk
+-include device/ti/am62x/shared/audio/BoardConfig.mk
