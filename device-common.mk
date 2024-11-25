@@ -78,22 +78,6 @@ ifeq ($(TARGET_ADB_USER_ENABLE), true)
 TARGET_PRODUCT_PROP += device/ti/am62x/cts.prop
 endif # eq $(TARGET_ADB_USER_ENABLE), true
 
-
-PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
-
-# Add wifi-related packages
-PRODUCT_PACKAGES += libwpa_client wpa_supplicant hostapd wificond wpa_cli
-
-PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
-
-# Wifi configuration files
-PRODUCT_COPY_FILES += \
-	device/ti/am62x/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
-	device/ti/am62x/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
-	device/ti/am62x/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf
-
 PRODUCT_PACKAGES += \
 	android.hardware.fastboot@1.1 \
 	android.hardware.fastboot@1.1-impl-mock \
@@ -245,3 +229,4 @@ $(call inherit-product, device/ti/am62x/shared/graphics/device_vendor.mk)
 $(call inherit-product, device/ti/am62x/shared/camera/device_vendor.mk)
 $(call inherit-product, device/ti/am62x/shared/audio/device_vendor.mk)
 $(call inherit-product, device/ti/am62x/shared/media/device_vendor.mk)
+$(call inherit-product, device/ti/am62x/shared/wifi/device_vendor.mk)

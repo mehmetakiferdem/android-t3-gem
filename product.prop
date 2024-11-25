@@ -10,9 +10,5 @@ zygote.critical_window.minute=10
 # Disable screen lock by default
 ro.lockscreen.disable.default=true
 
-# wifi
-wifi.interface=wlan0
-wifi.supplicant_scan_interval=15
-
 # Give us 10 seconds to reboot/shutdown cleanly
 ro.build.shutdown_timeout=10

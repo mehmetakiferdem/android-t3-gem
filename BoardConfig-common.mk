@@ -196,14 +196,6 @@ BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 endif
 
-# generic wifi
-WPA_SUPPLICANT_VERSION := VER_0_8_X
-BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_ti
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_ti
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_HOSTAPD_DRIVER := NL80211
-WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
-
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
 	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/8250_omap.ko \
 	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/zsmalloc.ko \
@@ -278,3 +270,4 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += $(BOARD_VENDOR_KERNEL_MODULES)
 -include device/ti/am62x/shared/camera/BoardConfig.mk
 -include device/ti/am62x/shared/audio/BoardConfig.mk
 -include device/ti/am62x/shared/media/BoardConfig.mk
+-include device/ti/am62x/shared/wifi/BoardConfig.mk
