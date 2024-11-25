@@ -86,7 +86,7 @@ PRODUCT_COPY_FILES += \
 
 # Vehicle
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.vehicle@V1-default-service
+    android.hardware.automotive.vehicle@V3-emulator-service
 
 # Maps application, from:
 # https://github.com/snappautomotive/firmware-vendor_snappautomotive_packages_maps
