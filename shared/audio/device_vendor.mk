@@ -15,8 +15,8 @@ PRODUCT_COPY_FILES += \
 
 # Low level audio tools for debugging
 PRODUCT_PACKAGES_DEBUG += \
-	tinyplay \
-	tinycap \
-	tinymix \
-	tinypcminfo \
+	tinyplay2 \
+	tinycap2 \
+	tinymix2 \
+	tinypcminfo2 \
 	cplay
