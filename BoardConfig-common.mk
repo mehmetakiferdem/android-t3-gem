@@ -14,6 +14,15 @@
 # limitations under the License.
 #
 
+# Primary Arch
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := cortex-a53
+
+TARGET_IS_64_BIT := true
+
 # AVB
 ifeq ($(TARGET_BUILD_VARIANT), user)
 TARGET_AVB_ENABLE := true
