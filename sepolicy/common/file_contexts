@@ -38,6 +38,9 @@
 /vendor/bin/hw/android\.hardware\.health-service\.cuttlefish                        u:object_r:hal_health_default_exec:s0
 /vendor/bin/hw/android\.hardware\.health\.storage-service\.cuttlefish               u:object_r:hal_health_storage_default_exec:s0
 
+# Hardware Composer HAL
+/vendor/bin/hw/android\.hardware\.composer\.hwc3-service\.drm           u:object_r:hal_graphics_composer_default_exec:s0
+
 # drm
 /vendor/bin/hw/android\.hardware\.drm@[0-9]+\.[0-9]+-service\.clearkey     u:object_r:hal_drm_clearkey_exec:s0
 /data/vendor/mediadrm(/.*)?    u:object_r:mediadrm_vendor_data_file:s0

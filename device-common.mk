@@ -150,10 +150,7 @@ PRODUCT_PACKAGES += \
 
 # Graphics
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.4-service
-
-PRODUCT_PACKAGES += \
-    hwcomposer.drm
+    android.hardware.composer.hwc3-service.drm
 
 PRODUCT_VENDOR_PROPERTIES += \
     ro.hardware.gralloc=$(PRODUCT_PLATFORM)
