@@ -32,11 +32,11 @@ include vendor/linaro/optee_client/optee_client.device.mk
 $(call soong_config_set,optee_client,cfg_tee_fs_parent_path,/mnt/vendor/persist/tee)
 
 PRODUCT_PACKAGES += \
-    libteec \
-    tee-supplicant
+	libteec \
+	tee-supplicant
 
 PRODUCT_COPY_FILES += \
-    device/ti/am62x/optee/init.optee.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.optee.rc
+	device/ti/am62x/optee/init.optee.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.optee.rc
 
 # tee-supplicant test plugin
 PRODUCT_PACKAGES_DEBUG += f07bfc66-958c-4a15-99c0-260e4e7375dd.plugin

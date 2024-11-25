@@ -25,7 +25,7 @@ LOCAL_KERNEL := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/Image.lz4
 LOCAL_DTB := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)
 
 PRODUCT_COPY_FILES += \
-        $(LOCAL_KERNEL):kernel
+	$(LOCAL_KERNEL):kernel
 
 # Build and run only ART
 PRODUCT_RUNTIMES := runtime_libart_default
@@ -40,14 +40,14 @@ PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 # Add snapuserd to vendor ramdisk: required since we have no dedicated recovery partition
 # This can be removed once we have init_boot fully enabled.
 PRODUCT_PACKAGES += \
-    snapuserd.vendor_ramdisk \
+	snapuserd.vendor_ramdisk \
 
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
 # Overlays
 PRODUCT_PACKAGES += \
-    AndroidAM62Overlay \
-    SettingsProviderAM62Overlay
+	AndroidAM62Overlay \
+	SettingsProviderAM62Overlay
 
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
@@ -59,14 +59,14 @@ BOOT_SECURITY_PATCH = $(PLATFORM_SECURITY_PATCH)
 
 # fstab
 PRODUCT_PACKAGES += \
-    fstab.am62.sdcard.avb \
-    fstab.am62.sdcard.avb.vendor_ramdisk \
-    fstab.am62.sdcard \
-    fstab.am62.sdcard.vendor_ramdisk \
-    fstab.am62.mmc.avb \
-    fstab.am62.mmc.avb.vendor_ramdisk \
-    fstab.am62.mmc \
-    fstab.am62.mmc.vendor_ramdisk
+	fstab.am62.sdcard.avb \
+	fstab.am62.sdcard.avb.vendor_ramdisk \
+	fstab.am62.sdcard \
+	fstab.am62.sdcard.vendor_ramdisk \
+	fstab.am62.mmc.avb \
+	fstab.am62.mmc.avb.vendor_ramdisk \
+	fstab.am62.mmc \
+	fstab.am62.mmc.vendor_ramdisk
 
 # Dynamic partitions
 PRODUCT_BUILD_SUPER_PARTITION := true
@@ -80,19 +80,19 @@ endif # eq $(TARGET_ADB_USER_ENABLE), true
 
 
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
+	frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
 
 # Add wifi-related packages
 PRODUCT_PACKAGES += libwpa_client wpa_supplicant hostapd wificond wpa_cli
 
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
+	frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
 
 # Wifi configuration files
 PRODUCT_COPY_FILES += \
-    device/ti/am62x/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
-    device/ti/am62x/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
-    device/ti/am62x/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf
+	device/ti/am62x/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
+	device/ti/am62x/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
+	device/ti/am62x/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf
 
 PRODUCT_PACKAGES += \
 	android.hardware.fastboot@1.1 \
@@ -101,26 +101,26 @@ PRODUCT_PACKAGES += \
 
 # A/B support
 PRODUCT_PACKAGES += \
-    otapreopt_script \
-    cppreopts.sh \
-    update_engine \
-    update_engine_sideload \
-    update_verifier \
-    sg_write_buffer \
-    f2fs_io \
-    check_f2fs
+	otapreopt_script \
+	cppreopts.sh \
+	update_engine \
+	update_engine_sideload \
+	update_verifier \
+	sg_write_buffer \
+	f2fs_io \
+	check_f2fs
 
 # TODO(b/218588089) remove this once cuttlefish can drop HIDL.
 # This adds hwservicemanager and the allocator service to the device.
 PRODUCT_PACKAGES += \
-    hwservicemanager \
-    android.hidl.allocator@1.0-service
+	hwservicemanager \
+	android.hidl.allocator@1.0-service
 
 # The following modules are included in debuggable builds only.
 PRODUCT_PACKAGES_DEBUG += \
-    bootctl \
-    update_engine_client \
-    SystemUpdaterSample
+	bootctl \
+	update_engine_client \
+	SystemUpdaterSample
 
 # Userdata Checkpointing OTA GC
 PRODUCT_PACKAGES += \
@@ -128,13 +128,13 @@ PRODUCT_PACKAGES += \
 
 # Boot control
 PRODUCT_PACKAGES += \
-    com.android.hardware.boot \
-    android.hardware.boot-service.default_recovery
+	com.android.hardware.boot \
+	android.hardware.boot-service.default_recovery
 
 ifeq ($(TARGET_AVB_ENABLE), true)
 #copy xml file to tell PackageManager that the system supports Verified Boot
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
+	frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 endif # eq $(TARGET_AVB_ENABLE), true
 
 PRODUCT_SHIPPING_API_LEVEL := 35
@@ -147,162 +147,162 @@ PRODUCT_PACKAGES += com.android.hardware.power
 
 # Health: Install default binderized implementation to vendor.
 PRODUCT_PACKAGES += \
-    com.google.cf.health \
-    android.hardware.health-service.cuttlefish_recovery
+	com.google.cf.health \
+	android.hardware.health-service.cuttlefish_recovery
 
 # Health Storage
 PRODUCT_PACKAGES += \
-    com.google.cf.health.storage
+	com.google.cf.health.storage
 
 # Graphics
 PRODUCT_PACKAGES += \
-    android.hardware.composer.hwc3-service.drm
+	android.hardware.composer.hwc3-service.drm
 
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.hardware.gralloc=$(PRODUCT_PLATFORM)
+	ro.hardware.gralloc=$(PRODUCT_PLATFORM)
 
 ifneq ($(TARGET_BUILD_VARIANT), user)
 PRODUCT_VENDOR_PROPERTIES += \
-    persist.logd.logpersistd=logcatd
+	persist.logd.logpersistd=logcatd
 endif
 
 # Public Libraries
 PRODUCT_COPY_FILES += \
-    device/ti/am62x/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
+	device/ti/am62x/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
 # Vulkan
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.vulkan.version-1_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
+	frameworks/native/data/etc/android.hardware.vulkan.version-1_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
+	frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
+	frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
 	frameworks/native/data/etc/android.software.vulkan.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
 	frameworks/native/data/etc/android.software.opengles.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml
 
 # Audio:
 # NOTE: each product should also add audio.primary.$(TARGET_DEVICE) to its PRODUCT_PACKAGES
 PRODUCT_PACKAGES += \
-    audio.r_submix.default \
-    android.hardware.audio.service \
-    android.hardware.audio@6.0-impl \
-    android.hardware.audio.effect@6.0-impl
+	audio.r_submix.default \
+	android.hardware.audio.service \
+	android.hardware.audio@6.0-impl \
+	android.hardware.audio.effect@6.0-impl
 
 # Audio USB HAL
 PRODUCT_PACKAGES += \
-    audio.usb.default
+	audio.usb.default
 
 PRODUCT_PACKAGES += audio.primary.$(PRODUCT_PLATFORM)
 
 # Audio HAL
 PRODUCT_COPY_FILES += \
-    device/ti/am62x/audio_hal_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.$(PRODUCT_PLATFORM).xml
+	device/ti/am62x/audio_hal_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.$(PRODUCT_PLATFORM).xml
 
 # audio policy configuration
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \
-    device/ti/am62x/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
-    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
-    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
-    frameworks/av/media/libeffects/data/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
+	device/ti/am62x/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+	frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
+	frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
+	frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
+	frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
+	frameworks/av/media/libeffects/data/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
 
 # Low level audio tools for debugging
 PRODUCT_PACKAGES_DEBUG += \
-    tinyplay \
-    tinycap \
-    tinymix \
-    tinypcminfo \
-    cplay
+	tinyplay \
+	tinycap \
+	tinymix \
+	tinypcminfo \
+	cplay
 
 # USB HAL
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.2-service.generic
+	android.hardware.usb@1.2-service.generic
 
 PRODUCT_COPY_FILES += \
-    hardware/ti/am62x/usb/1.2/init.gadgethal.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.gadgethal.sh
+	hardware/ti/am62x/usb/1.2/init.gadgethal.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.gadgethal.sh
 
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
+	frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
+	frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
 
 PRODUCT_PACKAGES += android.hardware.drm@latest-service.clearkey
 
 # Thermal
 PRODUCT_PACKAGES += \
-        com.android.hardware.thermal.ti
+	com.android.hardware.thermal.ti
 
 # Copy hardware config file(s)
 PRODUCT_COPY_FILES += \
-        device/linaro/hikey/etc/permissions/android.hardware.screen.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.screen.xml \
-        device/ti/am62x/android.software.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.xml \
-        frameworks/native/data/etc/android.software.cts.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.cts.xml \
-        frameworks/native/data/etc/android.software.app_widgets.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.app_widgets.xml \
-        frameworks/native/data/etc/android.software.backup.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.backup.xml \
-        frameworks/native/data/etc/android.software.voice_recognizers.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.voice_recognizers.xml \
-        frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.ethernet.xml \
-        frameworks/native/data/etc/android.software.device_admin.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_admin.xml \
-        device/ti/am62x/android.hardware.hardware_keystore.optee-keymint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.hardware_keystore.optee-keymint.xml \
-        frameworks/native/data/etc/android.software.secure_lock_screen.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.secure_lock_screen.xml
+	device/linaro/hikey/etc/permissions/android.hardware.screen.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.screen.xml \
+	device/ti/am62x/android.software.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.xml \
+	frameworks/native/data/etc/android.software.cts.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.cts.xml \
+	frameworks/native/data/etc/android.software.app_widgets.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.app_widgets.xml \
+	frameworks/native/data/etc/android.software.backup.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.backup.xml \
+	frameworks/native/data/etc/android.software.voice_recognizers.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.voice_recognizers.xml \
+	frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.ethernet.xml \
+	frameworks/native/data/etc/android.software.device_admin.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_admin.xml \
+	device/ti/am62x/android.hardware.hardware_keystore.optee-keymint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.hardware_keystore.optee-keymint.xml \
+	frameworks/native/data/etc/android.software.secure_lock_screen.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.secure_lock_screen.xml
 
 PRODUCT_COPY_FILES += \
-        device/ti/am62x/init.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).rc \
-        device/ti/am62x/init.am62x.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).usb.rc
+	device/ti/am62x/init.am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).rc \
+	device/ti/am62x/init.am62x.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).usb.rc
 
 # RecoveryOS
 PRODUCT_COPY_FILES += \
-    device/ti/am62x/init.recovery.am62x.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.$(PRODUCT_PLATFORM).rc
+	device/ti/am62x/init.recovery.am62x.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.$(PRODUCT_PLATFORM).rc
 
 # Media
 PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_audio.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_audio.xml \
 
 # Media configuration
 PRODUCT_COPY_FILES += \
-        device/ti/am62x/am62x.media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
+	device/ti/am62x/am62x.media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
 
 # Memtrack
 PRODUCT_PACKAGES += \
-        android.hardware.memtrack-service.example
+	android.hardware.memtrack-service.example
 
 # Dumpstate
 PRODUCT_PACKAGES += \
-        android.hardware.dumpstate-service.example
+	android.hardware.dumpstate-service.example
 
 # Enable USB Camera
 PRODUCT_COPY_FILES += \
-    device/ti/am62x/camera/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
+	device/ti/am62x/camera/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
 
 PRODUCT_COPY_FILES +=  \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
-    frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
+	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+	frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
+	frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
+	frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
 
 # CSI Camera using libcamera
 PRODUCT_COPY_FILES += \
-     device/ti/am62x/camera/camera_hal.yaml:$(TARGET_COPY_OUT_VENDOR)/etc/libcamera/camera_hal.yaml
+	device/ti/am62x/camera/camera_hal.yaml:$(TARGET_COPY_OUT_VENDOR)/etc/libcamera/camera_hal.yaml
 
 PRODUCT_PACKAGES_DEBUG += cam
 
 PRODUCT_PACKAGES += \
-    camera.libcamera
+	camera.libcamera
 
 PRODUCT_PACKAGES += \
-        Launcher3QuickStep \
-        ThemePicker
+	Launcher3QuickStep \
+	ThemePicker
 
 #
 # Enable bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth-service.default
+	android.hardware.bluetooth-service.default
 
 # Bluetooth se policies
 BOARD_SEPOLICY_DIRS += system/bt/vendor_libs/linux/sepolicy
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml
+	frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml
 
 # Demo apps
 PRODUCT_PACKAGES_DEBUG += cabin_demo

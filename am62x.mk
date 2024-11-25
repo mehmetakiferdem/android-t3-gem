@@ -28,24 +28,24 @@ PRODUCT_CHARACTERISTICS := tablet
 
 # Set lowram options
 PRODUCT_VENDOR_PROPERTIES += \
-    dalvik.vm.dex2oat64.enabled=false \
-    dalvik.vm.heapstartsize=1m \
-    dalvik.vm.heapgrowthlimit=192m \
-    dalvik.vm.heapsize=384m \
-    dalvik.vm.heaptargetutilization=0.90 \
-    dalvik.vm.heapminfree=512k \
-    dalvik.vm.heapmaxfree=2m \
-    dalvik.vm.usejit=true \
-    ro.lmk.medium=700 \
-    ro.lmk.critical_upgrade=true \
-    ro.lmk.upgrade_pressure=40 \
-    ro.lmk.downgrade_pressure=60 \
-    ro.lmk.kill_heaviest_task=false \
-    pm.dexopt.downgrade_after_inactive_days=10 \
-    pm.dexopt.shared=quicken
+	dalvik.vm.dex2oat64.enabled=false \
+	dalvik.vm.heapstartsize=1m \
+	dalvik.vm.heapgrowthlimit=192m \
+	dalvik.vm.heapsize=384m \
+	dalvik.vm.heaptargetutilization=0.90 \
+	dalvik.vm.heapminfree=512k \
+	dalvik.vm.heapmaxfree=2m \
+	dalvik.vm.usejit=true \
+	ro.lmk.medium=700 \
+	ro.lmk.critical_upgrade=true \
+	ro.lmk.upgrade_pressure=40 \
+	ro.lmk.downgrade_pressure=60 \
+	ro.lmk.kill_heaviest_task=false \
+	pm.dexopt.downgrade_after_inactive_days=10 \
+	pm.dexopt.shared=quicken
 
 PRODUCT_VENDOR_PROPERTIES += \
-     ro.config.low_ram=true
+	ro.config.low_ram=true
 
 # WORKAROUND for OTA:
 #
@@ -66,15 +66,15 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Thus UsePerAppMemcg will return false and snapuserd_proxy won't try to access
 # to /dev/memcg/apps*.
 PRODUCT_VENDOR_PROPERTIES += \
-     ro.config.per_app_memcg=false
+	ro.config.per_app_memcg=false
 
 # Speed profile services and wifi-service to reduce RAM and storage.
 PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
 
 # Set SOC information
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
-    ro.soc.model=$(PRODUCT_DEVICE)
+	ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
+	ro.soc.model=$(PRODUCT_DEVICE)
 
 # clean-up all unknown PRODUCT_PACKAGES
 allowed_list := product_manifest.xml

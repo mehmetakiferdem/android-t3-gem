@@ -47,13 +47,13 @@ TARGET_RECOVERY_FSTAB_GENRULE := gen_fstab_am62_mmc
 AB_OTA_UPDATER := true
 
 AB_OTA_PARTITIONS := \
-    boot \
-    dtbo \
-    system \
-    vendor \
-    vendor_boot \
-    init_boot \
-    vendor_dlkm
+	boot \
+	dtbo \
+	system \
+	vendor \
+	vendor_boot \
+	init_boot \
+	vendor_dlkm
 
 ifeq ($(TARGET_AVB_ENABLE), true)
 AB_OTA_PARTITIONS += vbmeta vbmeta_vendor_dlkm
@@ -154,13 +154,13 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS += device/ti/am62x/sepolicy-private
 
 # Copy Bootloader prebuilts and prebuilts images
 PRODUCT_COPY_FILES += \
-        vendor/ti/am62x/binaries/persist.img:$(TARGET_OUT)/persist.img \
-        vendor/ti/am62x/binaries/metadata.img:$(TARGET_OUT)/metadata.img \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dtbo.img:$(TARGET_OUT)/dtbo-unsigned.img
+	vendor/ti/am62x/binaries/persist.img:$(TARGET_OUT)/persist.img \
+	vendor/ti/am62x/binaries/metadata.img:$(TARGET_OUT)/metadata.img \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dtbo.img:$(TARGET_OUT)/dtbo-unsigned.img
 
 # Copy Android Flashing Script
 PRODUCT_COPY_FILES += \
-        device/ti/am62x/flashall.sh:$(TARGET_OUT)/flashall.sh
+	device/ti/am62x/flashall.sh:$(TARGET_OUT)/flashall.sh
 
 # Copy kernel modules into /vendor/lib/modules
 BOARD_ALL_MODULES := $(shell find device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE) -type f -iname '*.ko')
@@ -168,7 +168,7 @@ BOARD_VENDOR_KERNEL_MODULES += $(BOARD_ALL_MODULES)
 
 # USB Hal
 BOARD_SEPOLICY_DIRS += \
-        hardware/ti/am62x/usb/1.2/sepolicy
+	hardware/ti/am62x/usb/1.2/sepolicy
 
 ifeq ($(TARGET_AVB_ENABLE), true)
 # Enable chained vbmeta for boot images
@@ -211,70 +211,70 @@ BOARD_HOSTAPD_DRIVER := NL80211
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/8250_omap.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/zsmalloc.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/zram.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/cma_heap.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/system_heap.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/omap-mailbox.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti-msgmgr.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-psil-lib.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-udma.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-udma-glue.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-ringacc.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/irq-ti-sci-inta.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/irq-ti-sci-intr.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_sci.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_sci_pm_domains.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/syscon-clk.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tee.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sci-clk.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/reset-ti-sci.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/reset-ti-syscon.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rtc-ti-k3.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/optee-rng.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sa2ul.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/gpio-davinci.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/gpio-pca953x.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/gpio-regulator.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/drm_dma_helper.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/omap_hwspinlock.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-omap.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-mux.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-mux-pca954x.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-dev.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ili210x.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-omap-usb2.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/palmas.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sdhci_am654.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mux-core.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mux-mmio.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/davinci_mdio.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mdio-bitbang.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mdio-gpio.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/cdns-dphy-rx.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/cdns-dphy.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-cadence-torrent.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-can-transceiver.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-gmii-sel.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-j721e-wiz.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/palmas-regulator.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/optee.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3_bandgap.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3_j72xx_bandgap.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-am62.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-haps.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-of-simple.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps6598x.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rti_wdt.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tidss.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/display-connector.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/panel-simple.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sii902x.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ite-it66121.ko  \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219-pwrbutton.ko \
-        device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219-regulator.ko
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/8250_omap.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/zsmalloc.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/zram.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/cma_heap.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/system_heap.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/omap-mailbox.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti-msgmgr.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-psil-lib.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-udma.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-udma-glue.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-ringacc.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/irq-ti-sci-inta.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/irq-ti-sci-intr.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_sci.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_sci_pm_domains.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/syscon-clk.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tee.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sci-clk.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/reset-ti-sci.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/reset-ti-syscon.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rtc-ti-k3.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/optee-rng.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sa2ul.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/gpio-davinci.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/gpio-pca953x.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/gpio-regulator.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/drm_dma_helper.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/omap_hwspinlock.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-omap.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-mux.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-mux-pca954x.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-dev.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ili210x.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-omap-usb2.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/palmas.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sdhci_am654.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mux-core.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mux-mmio.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/davinci_mdio.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mdio-bitbang.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mdio-gpio.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/cdns-dphy-rx.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/cdns-dphy.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-cadence-torrent.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-can-transceiver.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-gmii-sel.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-j721e-wiz.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/palmas-regulator.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/optee.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3_bandgap.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3_j72xx_bandgap.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-am62.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-haps.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-of-simple.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps6598x.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rti_wdt.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tidss.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/display-connector.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/panel-simple.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sii902x.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ite-it66121.ko  \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219-pwrbutton.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219-regulator.ko
 
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD +=  $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES)
 

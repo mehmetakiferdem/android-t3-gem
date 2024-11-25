@@ -29,8 +29,8 @@ PRODUCT_CHARACTERISTICS := tablet
 
 # Set SOC information
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
-    ro.soc.model=$(PRODUCT_DEVICE)
+	ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
+	ro.soc.model=$(PRODUCT_DEVICE)
 
 # clean-up all unknown PRODUCT_PACKAGES
 allowed_list := product_manifest.xml

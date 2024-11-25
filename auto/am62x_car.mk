@@ -28,8 +28,8 @@ $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
 # Set SOC information
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
-    ro.soc.model=$(PRODUCT_DEVICE)
+	ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
+	ro.soc.model=$(PRODUCT_DEVICE)
 
 # Include vendor binaries
 $(call inherit-product-if-exists, vendor/ti/am62x/am62x.mk)
