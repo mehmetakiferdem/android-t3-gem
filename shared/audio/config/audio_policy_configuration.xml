@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 
-<audioPolicyConfiguration version="1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+<audioPolicyConfiguration version="7.0" xmlns:xi="http://www.w3.org/2001/XInclude">
     <!-- version section contains a “version” tag in the form “major.minor” e.g version=”1.0” -->
 
     <!-- Global configuration Declaration -->
@@ -51,11 +51,11 @@
             <defaultOutputDevice>Wired Headphones</defaultOutputDevice>
             <mixPorts>
                 <mixPort name="primary output" role="source" flags="AUDIO_OUTPUT_FLAG_PRIMARY">
-                    <profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
+                    <profile format="AUDIO_FORMAT_PCM_32_BIT"
                              samplingRates="32000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
                 <mixPort name="primary input" role="sink">
-                    <profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
+                    <profile format="AUDIO_FORMAT_PCM_32_BIT"
                              samplingRates="44100" 
                              channelMasks="AUDIO_CHANNEL_IN_STEREO"/>
                 </mixPort>
@@ -63,11 +63,11 @@
             <devicePorts>
                 <!-- Output devices declaration, i.e. Sink DEVICE PORT -->
                 <devicePort tagName="Wired Headphones" type="AUDIO_DEVICE_OUT_WIRED_HEADPHONE" role="sink">
-                    <profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
+                    <profile format="AUDIO_FORMAT_PCM_32_BIT"
                              samplingRates="32000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </devicePort>
                 <devicePort tagName="Builtin Mic" type="AUDIO_DEVICE_IN_BUILTIN_MIC" role="source">
-                    <profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
+                    <profile format="AUDIO_FORMAT_PCM_32_BIT"
                              samplingRates="44100" channelMasks="AUDIO_CHANNEL_IN_STEREO"/>
                 </devicePort>
             </devicePorts>
