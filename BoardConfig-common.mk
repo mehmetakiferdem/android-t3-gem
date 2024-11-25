@@ -119,12 +119,14 @@ BOARD_BOOTCONFIG += androidboot.fstab_suffix=am62.sdcard.avb
 else
 BOARD_BOOTCONFIG += androidboot.fstab_suffix=am62.sdcard
 endif
+BOARD_BOOTCONFIG += androidboot.boot_devices=bus@f0000/fa00000.mmc
 else
 ifeq ($(TARGET_AVB_ENABLE), true)
 BOARD_BOOTCONFIG += androidboot.fstab_suffix=am62.mmc.avb
 else
 BOARD_BOOTCONFIG += androidboot.fstab_suffix=am62.mmc
 endif
+BOARD_BOOTCONFIG += androidboot.boot_devices=bus@f0000/fa10000.mmc
 endif
 
 # Init Boot partition

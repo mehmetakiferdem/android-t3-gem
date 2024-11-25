@@ -28,11 +28,6 @@ TARGET_BOOTLOADER_BOARD_NAME := am62x
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 10662838272
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 
-ifeq ($(TARGET_SDCARD_BOOT), true)
-BOARD_BOOTCONFIG += androidboot.boot_devices=bus@f0000/fa00000.mmc
-else
-BOARD_BOOTCONFIG += androidboot.boot_devices=bus@f0000/fa10000.mmc
-endif
 BOARD_KERNEL_CMDLINE += cma=512M
 
 BOARD_BOOTCONFIG += androidboot.hardware=am62x
