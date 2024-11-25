@@ -265,10 +265,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
         android.hardware.dumpstate-service.example
 
-# Atrace
-PRODUCT_PACKAGES += \
-        android.hardware.atrace@1.0-service
-
 # Enable USB Camera
 PRODUCT_COPY_FILES += \
     device/ti/am62x/camera/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
