@@ -52,7 +52,7 @@
             <mixPorts>
                 <mixPort name="primary output" role="source" flags="AUDIO_OUTPUT_FLAG_PRIMARY">
                     <profile format="AUDIO_FORMAT_PCM_32_BIT"
-                             samplingRates="32000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                             samplingRates="44100" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
                 <mixPort name="primary input" role="sink">
                     <profile format="AUDIO_FORMAT_PCM_32_BIT"
@@ -63,7 +63,7 @@
                 <!-- Output devices declaration, i.e. Sink DEVICE PORT -->
                 <devicePort tagName="Speaker" type="AUDIO_DEVICE_OUT_SPEAKER" role="sink">
                     <profile format="AUDIO_FORMAT_PCM_32_BIT"
-                             samplingRates="32000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                             samplingRates="44100" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </devicePort>
                 <devicePort tagName="Builtin Mic" type="AUDIO_DEVICE_IN_BUILTIN_MIC" role="source">
                     <profile format="AUDIO_FORMAT_PCM_32_BIT"
