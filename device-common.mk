@@ -154,13 +154,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	com.google.cf.health.storage
 
-# Graphics
-PRODUCT_PACKAGES += \
-	android.hardware.composer.hwc3-service.drm
-
-PRODUCT_VENDOR_PROPERTIES += \
-	ro.hardware.gralloc=$(PRODUCT_PLATFORM)
-
 ifneq ($(TARGET_BUILD_VARIANT), user)
 PRODUCT_VENDOR_PROPERTIES += \
 	persist.logd.logpersistd=logcatd
@@ -169,14 +162,6 @@ endif
 # Public Libraries
 PRODUCT_COPY_FILES += \
 	device/ti/am62x/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
-
-# Vulkan
-PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.vulkan.version-1_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
-	frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
-	frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
-	frameworks/native/data/etc/android.software.vulkan.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
-	frameworks/native/data/etc/android.software.opengles.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml
 
 # Audio:
 # NOTE: each product should also add audio.primary.$(TARGET_DEVICE) to its PRODUCT_PACKAGES
@@ -320,3 +305,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # APEXes flattened and not updatable
 OVERRIDE_TARGET_FLATTEN_APEX := true
+
+$(call inherit-product, device/ti/am62x/shared/graphics/device_vendor.mk)
