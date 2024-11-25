@@ -29,16 +29,12 @@ TARGET_BOOTLOADER_BOARD_NAME := am62p
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 26744696832
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 
-ifneq ($(TARGET_BUILD_VARIANT), user)
-BOARD_KERNEL_CMDLINE += console=ttyS2,115200
-endif
 ifeq ($(TARGET_SDCARD_BOOT), true)
 BOARD_BOOTCONFIG += androidboot.boot_devices=bus@f0000/fa00000.mmc
 else
 BOARD_BOOTCONFIG += androidboot.boot_devices=bus@f0000/fa10000.mmc
 endif
 BOARD_KERNEL_CMDLINE += cma=768M
-BOARD_KERNEL_CMDLINE += 8250.nr_uarts=10
 
 BOARD_BOOTCONFIG += androidboot.hardware=am62p
 
