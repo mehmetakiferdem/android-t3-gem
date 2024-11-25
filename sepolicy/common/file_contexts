@@ -4,10 +4,6 @@
 /dev/dma_heap/reserved          u:object_r:dmabuf_cma_heap_device:s0
 /dev/dma_heap/carveout_video    u:object_r:dmabuf_system_heap_device:s0
 
-# video devices
-/dev/media[0-2]                         u:object_r:video_device:s0
-/dev/v4l-subdev.*                       u:object_r:video_device:s0
-
 # binaries
 /vendor/bin/hw/android\.hardware\.atrace@1\.0-service\.img                          u:object_r:hal_atrace_default_exec:s0
 /vendor/bin/hw/android\.hardware\.dumpstate@1\.1-service\.img                       u:object_r:hal_dumpstate_default_exec:s0
@@ -33,12 +29,6 @@
 /data/vendor/tee(/.*)?                                             u:object_r:tee_data_file:s0
 /mnt/vendor/persist(/.*)?                                          u:object_r:vendor_data_file:s0
 /mnt/vendor/persist/tee(/.*)?                                      u:object_r:tee_data_file:s0
-
-# Camera HAL
-/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-service_64               u:object_r:hal_camera_default_exec:s0
-/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-service                  u:object_r:hal_camera_default_exec:s0
-/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-external-service\.ti     u:object_r:hal_camera_default_exec:s0
-/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-external-service_64\.ti  u:object_r:hal_camera_default_exec:s0
 
 # V4L2 Codec2
 /vendor/bin/hw/android\.hardware\.media\.c2@1\.2-service-v4l2(.*)?              u:object_r:mediacodec_exec:s0

@@ -281,3 +281,4 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD +=  $(BOARD_VENDOR_RAMDISK_KERNEL_MODUL
 BOARD_VENDOR_KERNEL_MODULES_LOAD += $(BOARD_VENDOR_KERNEL_MODULES)
 
 -include device/ti/am62x/shared/graphics/BoardConfig.mk
+-include device/ti/am62x/shared/camera/BoardConfig.mk

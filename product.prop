@@ -1,5 +1,3 @@
-ro.hardware.camera=libcamera
-
 # Set default log size to 1M
 ro.logd.size=1M
 
