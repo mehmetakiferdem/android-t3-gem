@@ -17,7 +17,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SOONG_NAMESPACES += external/v4l2_codec2
 
 PRODUCT_COPY_FILES += \
-    device/ti/am62x/am62p/codec2.vendor.ext.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.vendor.ext.policy \
+    device/ti/am62x/am62p/android.hardware.media.c2-extended-seccomp_policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/android.hardware.media.c2-extended-seccomp_policy \
     device/ti/am62x/am62p/media_codecs_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml
 
 # Set the customized property of v4l2_codec2, including:
