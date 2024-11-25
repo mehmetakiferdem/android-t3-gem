@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-TARGET_KERNEL_USE ?= 6.1
+TARGET_KERNEL_USE ?= 6.6
 TARGET_BOOTLOADER_VERSION ?= 2024.04
 
 include device/ti/am62x/optee/device-optee.mk
