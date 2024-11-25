@@ -149,10 +149,10 @@ PRODUCT_COPY_FILES += \
 
 # USB HAL
 PRODUCT_PACKAGES += \
-	android.hardware.usb@1.2-service.generic
+	android.hardware.usb-service.generic
 
 PRODUCT_COPY_FILES += \
-	hardware/ti/am62x/usb/1.2/init.gadgethal.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.gadgethal.sh
+	hardware/ti/am62x/usb/aidl/init.gadgethal.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.gadgethal.sh
 
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \

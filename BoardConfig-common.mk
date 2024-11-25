@@ -166,7 +166,7 @@ BOARD_VENDOR_KERNEL_MODULES += $(BOARD_ALL_MODULES)
 
 # USB Hal
 BOARD_SEPOLICY_DIRS += \
-	hardware/ti/am62x/usb/1.2/sepolicy
+	hardware/ti/am62x/usb/aidl/sepolicy
 
 ifeq ($(TARGET_AVB_ENABLE), true)
 # Enable chained vbmeta for boot images
