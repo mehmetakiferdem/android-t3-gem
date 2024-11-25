@@ -27,7 +27,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.v4l2_codec2.decode_concurrent_instances=32
 
 PRODUCT_PACKAGES += \
-    android.hardware.media.c2@1.0-service-v4l2 \
+    android.hardware.media.c2@1.2-service-v4l2 \
     libc2plugin_store
 
 # See:
