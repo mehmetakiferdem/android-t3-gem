@@ -27,8 +27,6 @@ BOARD_AVB_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 else
 BOARD_AVB_ENABLE := false
 endif
-# BT configs
-BOARD_HAVE_BLUETOOTH := true
 
 BOARD_USES_METADATA_PARTITION := true
 
@@ -271,3 +269,4 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += $(BOARD_VENDOR_KERNEL_MODULES)
 -include device/ti/am62x/shared/audio/BoardConfig.mk
 -include device/ti/am62x/shared/media/BoardConfig.mk
 -include device/ti/am62x/shared/wifi/BoardConfig.mk
+-include device/ti/am62x/shared/bluetooth/BoardConfig.mk

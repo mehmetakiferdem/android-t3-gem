@@ -198,16 +198,6 @@ PRODUCT_PACKAGES += \
 	Launcher3QuickStep \
 	ThemePicker
 
-#
-# Enable bluetooth
-PRODUCT_PACKAGES += \
-	android.hardware.bluetooth-service.default
-
-# Bluetooth se policies
-BOARD_SEPOLICY_DIRS += system/bt/vendor_libs/linux/sepolicy
-PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml
-
 # Demo apps
 PRODUCT_PACKAGES_DEBUG += cabin_demo
 
@@ -230,3 +220,4 @@ $(call inherit-product, device/ti/am62x/shared/camera/device_vendor.mk)
 $(call inherit-product, device/ti/am62x/shared/audio/device_vendor.mk)
 $(call inherit-product, device/ti/am62x/shared/media/device_vendor.mk)
 $(call inherit-product, device/ti/am62x/shared/wifi/device_vendor.mk)
+$(call inherit-product, device/ti/am62x/shared/bluetooth/device_vendor.mk)
