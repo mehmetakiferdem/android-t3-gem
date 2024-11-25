@@ -45,10 +45,10 @@
         <!-- Primary Audio HAL -->
         <module name="primary" halVersion="3.0">
             <attachedDevices>
-                <item>Wired Headphones</item>
+                <item>Speaker</item>
                 <item>Builtin Mic</item>
             </attachedDevices>
-            <defaultOutputDevice>Wired Headphones</defaultOutputDevice>
+            <defaultOutputDevice>Speaker</defaultOutputDevice>
             <mixPorts>
                 <mixPort name="primary output" role="source" flags="AUDIO_OUTPUT_FLAG_PRIMARY">
                     <profile format="AUDIO_FORMAT_PCM_32_BIT"
@@ -61,7 +61,7 @@
             </mixPorts>
             <devicePorts>
                 <!-- Output devices declaration, i.e. Sink DEVICE PORT -->
-                <devicePort tagName="Wired Headphones" type="AUDIO_DEVICE_OUT_WIRED_HEADPHONE" role="sink">
+                <devicePort tagName="Speaker" type="AUDIO_DEVICE_OUT_SPEAKER" role="sink">
                     <profile format="AUDIO_FORMAT_PCM_32_BIT"
                              samplingRates="32000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </devicePort>
@@ -72,7 +72,7 @@
             </devicePorts>
             <!-- route declaration, i.e. list all available sources for a given sink -->
             <routes>
-                <route type="mix" sink="Wired Headphones"
+                <route type="mix" sink="Speaker"
                        sources="primary output"/>
                 <route type="mix" sink="primary input"
                        sources="Builtin Mic"/>
