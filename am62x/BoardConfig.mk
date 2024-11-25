@@ -46,28 +46,28 @@ BOARD_BOOTCONFIG += androidboot.hardware=am62x
 
 # Copy Bootloader prebuilts and prebuilts images
 PRODUCT_COPY_FILES += \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62x-lp-sk.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-lp-sk-hsfs.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk/tispl.bin:$(TARGET_OUT)/tispl-am62x-lp-sk.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk/u-boot.img:$(TARGET_OUT)/u-boot-am62x-lp-sk.img \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-sk/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62x-sk.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-sk/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-sk-hsfs.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-sk/tispl.bin:$(TARGET_OUT)/tispl-am62x-sk.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-sk/u-boot.img:$(TARGET_OUT)/u-boot-am62x-sk.img \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk-dfu/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62x-lp-sk-dfu.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk-dfu/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-lp-sk-dfu-hsfs.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk-dfu/tispl.bin:$(TARGET_OUT)/tispl-am62x-lp-sk-dfu.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am62x-lp-sk-dfu.img \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-sk-dfu/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62x-sk-dfu.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-sk-dfu/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-sk-dfu-hsfs.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-sk-dfu/tispl.bin:$(TARGET_OUT)/tispl-am62x-sk-dfu.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am62x-sk-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am62x-sk-dfu.img \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am625-beagleplay/tiboot3.bin:$(TARGET_OUT)/tiboot3-am625-beagleplay.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am625-beagleplay/tispl.bin:$(TARGET_OUT)/tispl-am625-beagleplay.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am625-beagleplay/u-boot.img:$(TARGET_OUT)/u-boot-am625-beagleplay.img \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am625-beagleplay-dfu/tiboot3.bin:$(TARGET_OUT)/tiboot3-am625-beagleplay-dfu.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am625-beagleplay-dfu/tispl.bin:$(TARGET_OUT)/tispl-am625-beagleplay-dfu.bin \
-        vendor/ti/am62x/bootloader-$(TARGET_BOOTLOADER_VERSION)/am625-beagleplay-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am625-beagleplay-dfu.img
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62x-lp-sk.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-lp-sk-hsfs.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk/tispl.bin:$(TARGET_OUT)/tispl-am62x-lp-sk.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk/u-boot.img:$(TARGET_OUT)/u-boot-am62x-lp-sk.img \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-sk/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62x-sk.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-sk/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-sk-hsfs.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-sk/tispl.bin:$(TARGET_OUT)/tispl-am62x-sk.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-sk/u-boot.img:$(TARGET_OUT)/u-boot-am62x-sk.img \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk-dfu/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62x-lp-sk-dfu.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk-dfu/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-lp-sk-dfu-hsfs.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk-dfu/tispl.bin:$(TARGET_OUT)/tispl-am62x-lp-sk-dfu.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-lp-sk-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am62x-lp-sk-dfu.img \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-sk-dfu/tiboot3.bin:$(TARGET_OUT)/tiboot3-am62x-sk-dfu.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-sk-dfu/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am62x-sk-dfu-hsfs.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-sk-dfu/tispl.bin:$(TARGET_OUT)/tispl-am62x-sk-dfu.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am62x-sk-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am62x-sk-dfu.img \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am625-beagleplay/tiboot3.bin:$(TARGET_OUT)/tiboot3-am625-beagleplay.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am625-beagleplay/tispl.bin:$(TARGET_OUT)/tispl-am625-beagleplay.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am625-beagleplay/u-boot.img:$(TARGET_OUT)/u-boot-am625-beagleplay.img \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am625-beagleplay-dfu/tiboot3.bin:$(TARGET_OUT)/tiboot3-am625-beagleplay-dfu.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am625-beagleplay-dfu/tispl.bin:$(TARGET_OUT)/tispl-am625-beagleplay-dfu.bin \
+        vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am625-beagleplay-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am625-beagleplay-dfu.img
 
 # Copy snagrecover config file
 PRODUCT_COPY_FILES += \
