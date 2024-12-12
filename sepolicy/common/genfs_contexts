@@ -18,7 +18,6 @@ genfscon sysfs /devices/platform/bus@f0000/bus@f0000:bus@b00000/2b1f0000.rtc/rtc
 genfscon sysfs /devices/platform/bus@f0000/bus@f0000:bus@b00000/2b1f0000.rtc/rtc/rtc0/alarmtimer.1.auto/wakeup            u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/bus@f0000:bus@b00000/2b1f0000.rtc/rtc/rtc0/alarmtimer.3.auto/wakeup            u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/2800000.serial/power/wakeup                                                    u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/bus@f0000/2800000.serial/wakeup/wakeup3                                                  u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/f900000.dwc3-usb/wakeup                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/f910000.dwc3-usb/wakeup                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/bus@f0000/f900000.dwc3-usb/wakeup/wakeup4                                                u:object_r:sysfs_wakeup:s0
