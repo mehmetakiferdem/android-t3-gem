@@ -1,3 +1,6 @@
+# HWUI
+TARGET_USES_VULKAN = true
+
 # HWcomposer
 PRODUCT_PACKAGES += \
 	android.hardware.composer.hwc3-service.drm
