@@ -10,6 +10,7 @@ function usage {
 	echo "  --bootloader To flash bootloader only. Useful when partitioning changes occur"
 	echo "  --hsfs for HS-FS devices which require bootloader authentication (default for am62px-sk)"
 	echo "  --sdcard /dev/<SDCARD> to generate a bootable SD card"
+	echo "  --disable-avb To disable Android Verified Boot (development build)"
 	echo "  --help Show this message and exit"
 	exit 1;
 }
@@ -81,7 +82,7 @@ function run_sdcard_creation {
 }
 
 function main {
-	local opts_args="sdcard:,help,hsfs,board:,bootloader"
+	local opts_args="sdcard:,help,hsfs,board:,bootloader,disable-avb"
 	local opts=$(getopt -o '' -l "${opts_args}" -- "$@")
 	eval set -- "${opts}"
 
@@ -89,12 +90,14 @@ function main {
 	local sd_dev=""
 	local hsfs="false"
 	local bootloader_only="false"
+	local disable_avb="false"
 	while true; do
 		case "$1" in
 			--board) board="$2"; shift 2 ;;
 			--sdcard) sd_dev="$2"; shift 2 ;;
 			--hsfs) hsfs="true"; shift ;;
 			--bootloader) bootloader_only="true"; shift ;;
+			--disable-avb) disable_avb="true"; shift;;
 			--help) usage; exit 0 ;;
 			--) shift; break;;
 		esac
@@ -165,16 +168,9 @@ function main {
 		"${initbootimg}"
 		"${persistimg}"
 		"${metadataimg}"
+		"${dtboimg}"
+		"${vbmetaimg}"
 	)
-
-	if [ -e "${vbmetaimg}" ] ; then
-		# When a vbmeta.img is available, AVB is enabled
-		# In that case, we use a signed dtbo.img
-		required_images+=("${vbmetaimg}" "${dtboimg}")
-	else
-		# otherwise, we use the dtbo-unsigned.img
-		required_images+=("${dtbouimg}")
-	fi
 
 	for img in ${required_images[@]}; do
 		if [ ! -e "${img}" ] ; then
@@ -217,21 +213,24 @@ function main {
 	echo "Flashing Userdata Image"
 	${FASTBOOT} flash userdata ${userdataimg}
 
-	if [ -e "${vbmetaimg}" ]; then
-		echo "Flashing vbmeta Image"
-		${FASTBOOT} flash vbmeta_a ${vbmetaimg}
-		${FASTBOOT} flash vbmeta_b ${vbmetaimg}
-		echo "Flashing vbmeta vendor dlkm Image"
-		${FASTBOOT} flash vbmeta_vendor_dlkm_a ${vbmetavendordlkmimg}
-		${FASTBOOT} flash vbmeta_vendor_dlkm_b ${vbmetavendordlkmimg}
-		echo "Flashing DTBO Image"
-		${FASTBOOT} flash dtbo_a ${dtboimg}
-		${FASTBOOT} flash dtbo_b ${dtboimg}
+	if [[ "$disable_avb" == "true" ]]; then
+	    echo "Flashing vbmeta Image (disabling AVB)"
+	    ${FASTBOOT} flash --disable-verity --disable-verification vbmeta_a ${vbmetaimg}
+	    ${FASTBOOT} flash --disable-verity --disable-verification vbmeta_b ${vbmetaimg}
+	    echo "Flashing vbmeta vendor dlkm Image (disabling AVB)"
+	    ${FASTBOOT} flash --disable-verity --disable-verification vbmeta_vendor_dlkm_a ${vbmetavendordlkmimg}
+	    ${FASTBOOT} flash --disable-verity --disable-verification vbmeta_vendor_dlkm_b ${vbmetavendordlkmimg}
 	else
-		echo "Flashing DTBO Unsigned Image"
-		${FASTBOOT} flash dtbo_a ${dtbouimg}
-		${FASTBOOT} flash dtbo_b ${dtbouimg}
+	    echo "Flashing vbmeta Image"
+	    ${FASTBOOT} flash vbmeta_a ${vbmetaimg}
+	    ${FASTBOOT} flash vbmeta_b ${vbmetaimg}
+	    echo "Flashing vbmeta vendor dlkm Image"
+	    ${FASTBOOT} flash vbmeta_vendor_dlkm_a ${vbmetavendordlkmimg}
+	    ${FASTBOOT} flash vbmeta_vendor_dlkm_b ${vbmetavendordlkmimg}
 	fi
+	echo "Flashing DTBO Image"
+	${FASTBOOT} flash dtbo_a ${dtboimg}
+	${FASTBOOT} flash dtbo_b ${dtboimg}
 
 	echo "Flashing Persist Partition"
 	${FASTBOOT} flash persist ${persistimg}
