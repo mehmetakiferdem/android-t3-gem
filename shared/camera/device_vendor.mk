@@ -29,4 +29,5 @@ PRODUCT_PACKAGES += \
 	android.hardware.camera.provider@2.5-service_64
 
 # Enable USB Camera
-PRODUCT_PACKAGES += android.hardware.camera.provider@2.5-external-service_64.ti
+PRODUCT_PACKAGES += \
+	android.hardware.camera.provider@2.5-external-service_64.ti
