@@ -16,16 +16,8 @@
 
 $(call inherit-product, device/ti/am62x/optee/kmgk.mk)
 
-# optee
-OPTEE_OS_DIR := vendor/linaro/optee-os
-OPTEE_TA_TARGETS := ta_arm64
-OPTEE_CFG_ARM64_CORE := y
-
-CFG_SECSTOR_TA_MGMT_PTA := y
-CFG_SECURE_DATA_PATH := y
-OPTEE_CFG_CORE_HEAP_SIZE=131072
-
-BUILD_OPTEE_MK := device/ti/am62x/optee/build_optee.mk
+# optee TA dev kit
+TA_DEV_KIT_DIR := vendor/ti/am62x/optee/ta/export-ta_arm64
 
 # optee-client (libteec and tee-supplicant)
 include vendor/linaro/optee_client/optee_client.device.mk
