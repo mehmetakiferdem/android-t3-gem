@@ -25,6 +25,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
+# Boot image profiles
+PRODUCT_COPY_FILES +=  device/ti/am62x/shared/boot-profiles/preloaded-classes-am62p_car:system/etc/preloaded-classes
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := device/ti/am62x/shared/boot-profiles/boot-image-profile-am62p_car.txt
+
 # Set SOC information
 PRODUCT_VENDOR_PROPERTIES += \
 	ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
