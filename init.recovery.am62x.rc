@@ -30,7 +30,56 @@ on early-boot
     setprop sys.usb.ffs.aio_compat 1
     symlink /config/usb_gadget/g1/configs/b.1 /config/usb_gadget/g1/os_desc/b.1
     setprop vendor.usb.controller ${sys.usb.controller}
-    start init-gadgethal-sh
+
+    # chown file/folder permission for usb gadget config nodes
+    chown system system /config/usb_gadget
+    chown system system /config/usb_gadget/g1
+    chown system system /config/usb_gadget/g1/webusb
+    chown system system /config/usb_gadget/g1/webusb/landingPage
+    chown system system /config/usb_gadget/g1/webusb/bVendorCode
+    chown system system /config/usb_gadget/g1/webusb/bcdVersion
+    chown system system /config/usb_gadget/g1/webusb/use
+    chown system system /config/usb_gadget/g1/os_desc
+    chown system system /config/usb_gadget/g1/os_desc/b.1
+    chown system system /config/usb_gadget/g1/os_desc/qw_sign
+    chown system system /config/usb_gadget/g1/os_desc/b_vendor_code
+    chown system system /config/usb_gadget/g1/os_desc/use
+    chown system system /config/usb_gadget/g1/strings
+    chown system system /config/usb_gadget/g1/strings/0x409
+    chown system system /config/usb_gadget/g1/strings/0x409/serialnumber
+    chown system system /config/usb_gadget/g1/strings/0x409/product
+    chown system system /config/usb_gadget/g1/strings/0x409/manufacturer
+    chown system system /config/usb_gadget/g1/configs
+    chown system system /config/usb_gadget/g1/configs/b.1
+    chown system system /config/usb_gadget/g1/configs/b.1/f1
+    chown system system /config/usb_gadget/g1/configs/b.1/strings
+    chown system system /config/usb_gadget/g1/configs/b.1/strings/0x409
+    chown system system /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration
+    chown system system /config/usb_gadget/g1/configs/b.1/bmAttributes
+    chown system system /config/usb_gadget/g1/configs/b.1/MaxPower
+    chown system system /config/usb_gadget/g1/functions
+    chown system system /config/usb_gadget/g1/functions/ffs.ptp
+    chown system system /config/usb_gadget/g1/functions/ffs.mtp
+    chown system system /config/usb_gadget/g1/functions/ffs.adb
+    chown system system /config/usb_gadget/g1/functions/ffs.fastboot
+    chown system system /config/usb_gadget/g1/functions/midi.gs5
+    chown system system /config/usb_gadget/g1/functions/midi.gs5/id
+    chown system system /config/usb_gadget/g1/functions/midi.gs5/out_ports
+    chown system system /config/usb_gadget/g1/functions/midi.gs5/in_ports
+    chown system system /config/usb_gadget/g1/functions/midi.gs5/qlen
+    chown system system /config/usb_gadget/g1/functions/midi.gs5/buflen
+    chown system system /config/usb_gadget/g1/functions/midi.gs5/index
+    chown system system /config/usb_gadget/g1/functions/accessory.gs2
+    chown system system /config/usb_gadget/g1/max_speed
+    chown system system /config/usb_gadget/g1/UDC
+    chown system system /config/usb_gadget/g1/bcdUSB
+    chown system system /config/usb_gadget/g1/bcdDevice
+    chown system system /config/usb_gadget/g1/idProduct
+    chown system system /config/usb_gadget/g1/idVendor
+    chown system system /config/usb_gadget/g1/bMaxPacketSize0
+    chown system system /config/usb_gadget/g1/bDeviceProtocol
+    chown system system /config/usb_gadget/g1/bDeviceSubClass
+    chown system system /config/usb_gadget/g1/bDeviceClass
 
 service console /system/bin/sh
     class core
