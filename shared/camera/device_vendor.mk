@@ -23,8 +23,8 @@ TARGET_PRODUCT_PROP += \
 
 # Camera
 PRODUCT_PACKAGES += \
-	android.hardware.camera.provider@2.5-service_64
+	android.hardware.camera.provider-V1-libcamera-service
 
 # Enable USB Camera
 PRODUCT_PACKAGES += \
-	android.hardware.camera.provider@2.5-external-service_64.ti
+	android.hardware.camera.provider-V1-external-service

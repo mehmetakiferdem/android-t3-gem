@@ -4,7 +4,5 @@
 
 
 # Camera HAL
-/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-service_64               u:object_r:hal_camera_default_exec:s0
-/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-service                  u:object_r:hal_camera_default_exec:s0
-/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-external-service\.ti     u:object_r:hal_camera_default_exec:s0
-/vendor/bin/hw/android\.hardware\.camera.provider@2\.5-external-service_64\.ti  u:object_r:hal_camera_default_exec:s0
+/vendor/bin/hw/android\.hardware\.camera\.provider-V1-external-service          u:object_r:hal_camera_default_exec:s0
+/vendor/bin/hw/android\.hardware\.camera\.provider-V1-libcamera-service         u:object_r:hal_camera_default_exec:s0
