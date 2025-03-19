@@ -17,6 +17,7 @@
 /data/vendor/mediadrm(/.*)?    u:object_r:mediadrm_vendor_data_file:s0
 
 /sys/devices/platform/bus@f0000/fa20000.mmc/mmc_host/mmc2/mmc2:0001/mmc2:0001:2/wl18xx.2.auto/net/wlan0/mtu    u:object_r:sysfs_net:s0
+/sys/devices/platform/bus@f0000/fa20000.mmc/mmc_host/mmc2/mmc2:0001/mmc2:0001:2/cc33xx.[0-9].auto/net/wlan0/mtu    u:object_r:sysfs_net:s0
 
 /(vendor|system/vendor)/firmware(/.*)?        u:object_r:vendor_firmware_file:s0
 
