@@ -204,9 +204,6 @@ $(call inherit-product, hardware/ti/am62x/light/lights.mk)
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.frp.pst=/dev/block/by-name/frp
 
-# APEXes flattened and not updatable
-OVERRIDE_TARGET_FLATTEN_APEX := true
-
 $(call inherit-product, device/ti/am62x/shared/graphics/device_vendor.mk)
 $(call inherit-product, device/ti/am62x/shared/camera/device_vendor.mk)
 $(call inherit-product, device/ti/am62x/shared/audio/device_vendor.mk)
