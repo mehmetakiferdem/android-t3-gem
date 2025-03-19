@@ -149,7 +149,7 @@ PRODUCT_COPY_FILES += \
 
 # USB HAL
 PRODUCT_PACKAGES += \
-	android.hardware.usb-service.generic
+	com.android.hardware.usb.generic
 
 PRODUCT_COPY_FILES += \
 	hardware/ti/am62x/usb/aidl/init.gadgethal.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.gadgethal.sh
