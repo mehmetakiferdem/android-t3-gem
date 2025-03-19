@@ -246,6 +246,9 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
 	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tidss.ko \
 	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/display-connector.ko \
 	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/panel-simple.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rpi-panel-attiny-regulator.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/cdns-dsi.ko \
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tc358762.ko \
 	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sii902x.ko \
 	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ite-it66121.ko  \
 	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219.ko \
