@@ -27,6 +27,9 @@ PRODUCT_RUNTIMES := runtime_libart_default
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
+# Use generic ramdisk (init_boot)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
+
 # Enable project quotas and casefolding for emulated storage without sdcardfs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
