@@ -23,19 +23,10 @@ TARGET_CPU_VARIANT := cortex-a53
 
 TARGET_IS_64_BIT := true
 
-# AVB
-ifeq ($(TARGET_BUILD_VARIANT), user)
-TARGET_AVB_ENABLE := true
-endif
-
-ifeq ($(TARGET_AVB_ENABLE), true)
 BOARD_AVB_ENABLE := true
 BOARD_AVB_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-else
-BOARD_AVB_ENABLE := false
-endif
 
 BOARD_USES_METADATA_PARTITION := true
 
@@ -60,11 +51,9 @@ AB_OTA_PARTITIONS := \
 	vendor \
 	vendor_boot \
 	init_boot \
-	vendor_dlkm
-
-ifeq ($(TARGET_AVB_ENABLE), true)
-AB_OTA_PARTITIONS += vbmeta vbmeta_vendor_dlkm
-endif
+	vendor_dlkm \
+	vbmeta \
+	vbmeta_vendor_dlkm
 
 # FS Configuration
 BOARD_BOOTIMAGE_PARTITION_SIZE := 41943040 # 40MiB
@@ -123,18 +112,10 @@ BOARD_BOOTCONFIG += androidboot.load_modules_parallel=true
 
 #fstab
 ifeq ($(TARGET_SDCARD_BOOT), true)
-ifeq ($(TARGET_AVB_ENABLE), true)
 BOARD_BOOTCONFIG += androidboot.fstab_suffix=am62.sdcard.avb
-else
-BOARD_BOOTCONFIG += androidboot.fstab_suffix=am62.sdcard
-endif
 BOARD_BOOTCONFIG += androidboot.boot_devices=bus@f0000/fa00000.mmc
 else
-ifeq ($(TARGET_AVB_ENABLE), true)
 BOARD_BOOTCONFIG += androidboot.fstab_suffix=am62.mmc.avb
-else
-BOARD_BOOTCONFIG += androidboot.fstab_suffix=am62.mmc
-endif
 BOARD_BOOTCONFIG += androidboot.boot_devices=bus@f0000/fa10000.mmc
 endif
 
@@ -181,7 +162,6 @@ BOARD_VENDOR_KERNEL_MODULES += $(BOARD_ALL_MODULES)
 BOARD_SEPOLICY_DIRS += \
 	hardware/ti/am62x/usb/aidl/sepolicy
 
-ifeq ($(TARGET_AVB_ENABLE), true)
 # Enable chained vbmeta for boot images
 BOARD_AVB_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_BOOT_ALGORITHM := SHA256_RSA4096
@@ -205,7 +185,6 @@ BOARD_AVB_VBMETA_VENDOR_DLKM_ROLLBACK_INDEX_LOCATION := 4
 BOARD_AVB_SYSTEM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
-endif
 
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
 	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/8250_omap.ko \

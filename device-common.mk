@@ -15,11 +15,6 @@
 #
 PRODUCT_SOONG_NAMESPACES += device/ti/am62x/
 
-# AVB
-ifeq ($(TARGET_BUILD_VARIANT), user)
-TARGET_AVB_ENABLE := true
-endif
-
 # Kernel part
 LOCAL_KERNEL := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/Image.lz4
 LOCAL_DTB := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)
@@ -115,11 +110,9 @@ PRODUCT_PACKAGES += \
 	com.android.hardware.boot \
 	android.hardware.boot-service.default_recovery
 
-ifeq ($(TARGET_AVB_ENABLE), true)
 #copy xml file to tell PackageManager that the system supports Verified Boot
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
-endif # eq $(TARGET_AVB_ENABLE), true
 
 PRODUCT_SHIPPING_API_LEVEL := 35
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
