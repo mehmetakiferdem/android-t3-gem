@@ -19,3 +19,7 @@ PRODUCT_COPY_FILES += \
 
 TARGET_PRODUCT_PROP += \
 	device/ti/am62x/shared/graphics/product.prop
+
+# Debug packages
+PRODUCT_PACKAGES_DEBUG += \
+	modetest
