@@ -120,7 +120,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 
 PRODUCT_SHIPPING_API_LEVEL := 35
-PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
 # Power HAL
 PRODUCT_PACKAGES += com.android.hardware.power
