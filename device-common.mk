@@ -161,8 +161,7 @@ PRODUCT_PACKAGES += \
 
 # Copy hardware config file(s)
 PRODUCT_COPY_FILES += \
-	device/linaro/hikey/etc/permissions/android.hardware.screen.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.screen.xml \
-	device/ti/am62x/android.hardware.hardware_keystore.optee-keymint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.hardware_keystore.optee-keymint.xml
+	device/linaro/hikey/etc/permissions/android.hardware.screen.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.screen.xml
 
 # Copy software config file(s)
 PRODUCT_COPY_FILES += \
