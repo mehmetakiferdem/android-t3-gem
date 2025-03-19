@@ -15,15 +15,12 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES_DEBUG += cam
 
-PRODUCT_PACKAGES += \
-	camera.libcamera
-
 TARGET_PRODUCT_PROP += \
 	device/ti/am62x/shared/camera/product.prop
 
 # Camera
 PRODUCT_PACKAGES += \
-	android.hardware.camera.provider-V1-libcamera-service
+	com.android.hardware.camera.libcamera
 
 # Enable USB Camera
 PRODUCT_PACKAGES += \
