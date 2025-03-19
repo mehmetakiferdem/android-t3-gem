@@ -38,6 +38,9 @@ PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
+# pKVM
+$(call inherit-product-if-exists, packages/modules/Virtualization/apex/product_packages.mk)
+
 # Overlays
 PRODUCT_PACKAGES += \
 	AndroidAM62Overlay \
