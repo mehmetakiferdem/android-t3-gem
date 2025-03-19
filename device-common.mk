@@ -15,6 +15,15 @@
 #
 PRODUCT_SOONG_NAMESPACES += device/ti/am62x/
 
+# Disable debug binaries for an unbundled ART build.
+# From //build/make/target/product/go_defaults_common.mk
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+# Strip the local variable table and the local variable type table to reduce
+    # the size of the system image. This has no bearing on stack traces, but will
+    # leave less information available via JDWP.
+    # From //build/make/target/product/go_defaults_common.mk
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+
 # Kernel part
 LOCAL_KERNEL := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/Image.lz4
 LOCAL_DTB := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)
