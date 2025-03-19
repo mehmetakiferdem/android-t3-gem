@@ -121,8 +121,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_SHIPPING_API_LEVEL := 35
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
-# Enforce the Product interface
-PRODUCT_PRODUCT_VNDK_VERSION := current
 
 # Power HAL
 PRODUCT_PACKAGES += com.android.hardware.power
