@@ -44,7 +44,8 @@ $(call inherit-product-if-exists, packages/modules/Virtualization/apex/product_p
 # Overlays
 PRODUCT_PACKAGES += \
 	AndroidAM62Overlay \
-	SettingsProviderAM62Overlay
+	SettingsProviderAM62Overlay \
+	TetheringAM62Overlay
 
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
