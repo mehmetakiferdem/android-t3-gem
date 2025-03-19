@@ -21,9 +21,6 @@ PRODUCT_PACKAGES += \
 TARGET_PRODUCT_PROP += \
 	device/ti/am62x/shared/camera/product.prop
 
-PRODUCT_COPY_FILES += \
-	device/ti/am62x/shared/camera/config/android.hardware.camera.provider@2.5-service_64_am62x.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.camera.provider@2.5-service_64_$(PRODUCT_PLATFORM).rc
-
 # Camera
 PRODUCT_PACKAGES += \
 	android.hardware.camera.provider@2.5-service_64
