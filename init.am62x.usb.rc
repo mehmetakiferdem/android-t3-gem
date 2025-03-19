@@ -1,3 +1,9 @@
+service init-gadgethal-sh /vendor/bin/init.gadgethal.sh
+    class hal
+    user root
+    disabled
+    oneshot
+
 on early-boot
     mkdir /config/usb_gadget/g1 0775 system system
     mkdir /config/usb_gadget/g1/strings/0x409 0770 system system
