@@ -76,7 +76,6 @@ PRODUCT_PACKAGES += android.hardware.automotive.remoteaccess@V1-default-service 
 
 # Permissions
 PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.software.activities_on_secondary_displays.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.activities_on_secondary_displays.xml \
 	frameworks/native/data/etc/car_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/car_core_hardware.xml
 
 # Broadcast radio
