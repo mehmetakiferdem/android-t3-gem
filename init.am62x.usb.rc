@@ -14,6 +14,9 @@ on early-boot
     mkdir /config/usb_gadget/g1/functions/ffs.mtp
     mkdir /config/usb_gadget/g1/functions/ffs.ptp
     mkdir /config/usb_gadget/g1/functions/rndis.gs4
+    mkdir /config/usb_gadget/g1/functions/ncm.gs9
+    write /config/usb_gadget/g1/functions/ncm.gs9/os_desc/interface.ncm/compatible_id WINNCM
+    write /config/usb_gadget/g1/functions/ncm.gs9/ifname ncm%d
     mkdir /config/usb_gadget/g1/configs/b.1 0770 system system
     mkdir /config/usb_gadget/g1/configs/b.1/strings/0x409 0770 system system
     write /config/usb_gadget/g1/os_desc/b_vendor_code 0x1
@@ -68,6 +71,15 @@ on early-boot
     chown system system /config/usb_gadget/g1/functions/midi.gs5/buflen
     chown system system /config/usb_gadget/g1/functions/midi.gs5/index
     chown system system /config/usb_gadget/g1/functions/accessory.gs2
+    chown system system /config/usb_gadget/g1/functions/ncm.gs9
+    chown system system /config/usb_gadget/g1/functions/ncm.gs9/dev_addr
+    chown system system /config/usb_gadget/g1/functions/ncm.gs9/host_addr
+    chown system system /config/usb_gadget/g1/functions/ncm.gs9/ifname
+    chown system system /config/usb_gadget/g1/functions/ncm.gs9/os_desc
+    chown system system /config/usb_gadget/g1/functions/ncm.gs9/os_desc/interface.ncm
+    chown system system /config/usb_gadget/g1/functions/ncm.gs9/os_desc/interface.ncm/compatible_id
+    chown system system /config/usb_gadget/g1/functions/ncm.gs9/os_desc/interface.ncm/sub_compatible_id
+    chown system system /config/usb_gadget/g1/functions/ncm.gs9/qmult
     chown system system /config/usb_gadget/g1/max_speed
     chown system system /config/usb_gadget/g1/UDC
     chown system system /config/usb_gadget/g1/bcdUSB
