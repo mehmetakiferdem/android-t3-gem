@@ -128,7 +128,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 
-PRODUCT_SHIPPING_API_LEVEL := 35
+PRODUCT_SHIPPING_API_LEVEL := 36
 
 # Power HAL
 PRODUCT_PACKAGES += com.android.hardware.power
