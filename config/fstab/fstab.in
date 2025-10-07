@@ -1,6 +1,7 @@
 system                                                       /system         ext4    noatime,ro,errors=panic          wait,slotselect,logical,first_stage_mount
 vendor                                                       /vendor         ext4    noatime,ro,errors=panic          wait,slotselect,logical,first_stage_mount
 vendor_dlkm                                                  /vendor_dlkm    ext4    noatime,ro,errors=panic          wait,slotselect,logical,first_stage_mount
+system_dlkm                                                  /system_dlkm    ext4    noatime,ro,errors=panic          wait,slotselect,logical,first_stage_mount
 /dev/block/platform/bus@f0000/@sdio_node@/by-name/vendor_boot /vendor_boot   emmc    defaults                         recoveryonly,slotselect
 /dev/block/platform/bus@f0000/@sdio_node@/by-name/boot       /boot           emmc    defaults                         recoveryonly,slotselect,first_stage_mount
 /dev/block/platform/bus@f0000/@sdio_node@/by-name/init_boot  /init_boot      emmc    defaults                         recoveryonly,slotselect,first_stage_mount

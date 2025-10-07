@@ -52,12 +52,14 @@ AB_OTA_PARTITIONS := \
 	vendor_boot \
 	init_boot \
 	vendor_dlkm \
+	system_dlkm \
 	vbmeta \
-	vbmeta_vendor_dlkm
+	vbmeta_vendor_dlkm \
+	vbmeta_system_dlkm
 
 # FS Configuration
 BOARD_BOOTIMAGE_PARTITION_SIZE := 41943040 # 40MiB
-BOARD_PREBUILT_DTBOIMAGE := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dtbo.img
+BOARD_PREBUILT_DTBOIMAGE := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dtbo/dtbo.img
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608 # 8 MiB
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE ?= ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -81,6 +83,12 @@ BOARD_USES_VENDOR_DLKMIMAGE := true
 BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 BOARD_DB_DYNAMIC_PARTITIONS_PARTITION_LIST += vendor_dlkm
+
+# System DLKM partition
+BOARD_USES_SYSTEM_DLKMIMAGE := true
+BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
+BOARD_DB_DYNAMIC_PARTITIONS_PARTITION_LIST += system_dlkm
 
 TARGET_SCREEN_DENSITY ?= 240
 
@@ -148,15 +156,11 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS += device/ti/am62x/sepolicy-private
 PRODUCT_COPY_FILES += \
 	vendor/ti/am62x/binaries/persist.img:$(TARGET_OUT)/persist.img \
 	vendor/ti/am62x/binaries/metadata.img:$(TARGET_OUT)/metadata.img \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dtbo.img:$(TARGET_OUT)/dtbo-unsigned.img
+	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dtbo/dtbo.img:$(TARGET_OUT)/dtbo-unsigned.img
 
 # Copy Android Flashing Script
 PRODUCT_COPY_FILES += \
 	device/ti/am62x/flashall.sh:$(TARGET_OUT)/flashall.sh
-
-# Copy kernel modules into /vendor/lib/modules
-BOARD_ALL_MODULES := $(shell find device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE) -type f -iname '*.ko')
-BOARD_VENDOR_KERNEL_MODULES += $(BOARD_ALL_MODULES)
 
 # USB Hal
 BOARD_SEPOLICY_DIRS += \
@@ -175,89 +179,58 @@ BOARD_AVB_INIT_BOOT_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_INIT_BOOT_ROLLBACK_INDEX_LOCATION := 3
 
 # Enabled chained vbmeta for vendor_dlkm
-BOARD_AVB_VBMETA_CUSTOM_PARTITIONS := vendor_dlkm
+BOARD_AVB_VBMETA_CUSTOM_PARTITIONS := vendor_dlkm system_dlkm
 BOARD_AVB_VBMETA_VENDOR_DLKM := vendor_dlkm
 BOARD_AVB_VBMETA_VENDOR_DLKM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_VBMETA_VENDOR_DLKM_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_VBMETA_VENDOR_DLKM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_VENDOR_DLKM_ROLLBACK_INDEX_LOCATION := 4
 
+# Enabled chained vbmeta for system_dlkm
+BOARD_AVB_VBMETA_SYSTEM_DLKM := system_dlkm
+BOARD_AVB_VBMETA_SYSTEM_DLKM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_VBMETA_SYSTEM_DLKM_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_VBMETA_SYSTEM_DLKM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_VBMETA_SYSTEM_DLKM_ROLLBACK_INDEX_LOCATION := 5
+
 BOARD_AVB_SYSTEM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/8250_omap.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/zsmalloc.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/zram.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/cma_heap.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/system_heap.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/omap-mailbox.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti-msgmgr.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-psil-lib.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-udma.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-udma-glue.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3-ringacc.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/irq-ti-sci-inta.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/irq-ti-sci-intr.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_sci.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti_sci_pm_domains.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/syscon-clk.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tee.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sci-clk.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/reset-ti-sci.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/reset-ti-syscon.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rtc-ti-k3.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/optee-rng.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sa2ul.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/gpio-davinci.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/gpio-pca953x.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/gpio-regulator.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/drm_dma_helper.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/omap_hwspinlock.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-omap.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-mux.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-mux-pca954x.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/i2c-dev.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ili210x.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-omap-usb2.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/palmas.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sdhci_am654.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mux-core.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mux-mmio.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/davinci_mdio.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mdio-bitbang.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/mdio-gpio.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/cdns-dphy-rx.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/cdns-dphy.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-cadence-torrent.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-can-transceiver.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-gmii-sel.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/phy-j721e-wiz.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/palmas-regulator.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/optee.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3_bandgap.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/k3_j72xx_bandgap.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-am62.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-haps.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/dwc3-of-simple.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps6598x.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rti_wdt.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tidss.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/display-connector.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/panel-simple.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/rpi-panel-attiny-regulator.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/cdns-dsi.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tc358762.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/sii902x.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ite-it66121.ko  \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219-pwrbutton.ko \
-	device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/tps65219-regulator.ko
+# Dynamically generate BOARD_VENDOR_RAMDISK_KERNEL_MODULES from ramdisk directory
+# Exclude pvrsrvkm modules as they will be added conditionally based on platform
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(shell find device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ramdisk -name '*.ko' ! -name 'pvrsrvkm*.ko' 2>/dev/null | sort)
+
+# Add platform-specific PowerVR kernel modules
+RAMDISK_MODULE_PATH := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ramdisk
+
+ifeq ($(PRODUCT_PLATFORM),am62x)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES += $(RAMDISK_MODULE_PATH)/pvrsrvkm.ko
+else ifneq ($(filter am62p am67a,$(PRODUCT_PLATFORM)),)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES += $(RAMDISK_MODULE_PATH)/pvrsrvkm_am62p.ko
+endif
 
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD +=  $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES)
 
-BOARD_VENDOR_KERNEL_MODULES_LOAD += $(BOARD_VENDOR_KERNEL_MODULES)
+# =============================================================================
+# DLKM module configuration using organized directory structure
+# =============================================================================
+
+# Path to the organized modules directories
+VENDOR_DLKM_MODULES_DIR := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/vendor_dlkm
+SYSTEM_DLKM_MODULES_DIR := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/system_dlkm
+
+# Generate the module lists from organized directories
+BOARD_VENDOR_DLKM_MODULES := $(shell find $(VENDOR_DLKM_MODULES_DIR) -name '*.ko' 2>/dev/null | sort)
+BOARD_SYSTEM_DLKM_MODULES := $(shell find $(SYSTEM_DLKM_MODULES_DIR) -name '*.ko' 2>/dev/null | sort)
+
+# Copy vendor_dlkm modules to /vendor/lib/modules
+BOARD_VENDOR_KERNEL_MODULES += $(BOARD_VENDOR_DLKM_MODULES)
+
+# Copy system_dlkm modules to /system_dlkm/lib/modules
+BOARD_SYSTEM_KERNEL_MODULES += $(BOARD_SYSTEM_DLKM_MODULES)
+BOARD_SYSTEM_KERNEL_MODULES_LOAD += $(BOARD_SYSTEM_KERNEL_MODULES)
 
 -include device/ti/am62x/shared/graphics/BoardConfig.mk
 -include device/ti/am62x/shared/camera/BoardConfig.mk

@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-TARGET_KERNEL_USE ?= 6.6
+TARGET_KERNEL_USE ?= 6.12
 TARGET_BOOTLOADER_VERSION ?= 2025.01
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)

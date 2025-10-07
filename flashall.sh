@@ -151,6 +151,7 @@ function main {
 	initbootimg="init_boot.img"
 	vbmetaimg="vbmeta.img"
 	vbmetavendordlkmimg="vbmeta_vendor_dlkm.img"
+	vbmetasystemdlkmimg="vbmeta_system_dlkm.img"
 	dtboimg="dtbo.img"
 	dtbouimg="dtbo-unsigned.img"
 	persistimg="persist.img"
@@ -170,6 +171,8 @@ function main {
 		"${metadataimg}"
 		"${dtboimg}"
 		"${vbmetaimg}"
+		"${vbmetavendordlkmimg}"
+		"${vbmetasystemdlkmimg}"
 	)
 
 	for img in ${required_images[@]}; do
@@ -220,6 +223,9 @@ function main {
 	    echo "Flashing vbmeta vendor dlkm Image (disabling AVB)"
 	    ${FASTBOOT} flash --disable-verity --disable-verification vbmeta_vendor_dlkm_a ${vbmetavendordlkmimg}
 	    ${FASTBOOT} flash --disable-verity --disable-verification vbmeta_vendor_dlkm_b ${vbmetavendordlkmimg}
+	    echo "Flashing vbmeta system dlkm Image (disabling AVB)"
+	    ${FASTBOOT} flash --disable-verity --disable-verification vbmeta_system_dlkm_a ${vbmetasystemdlkmimg}
+	    ${FASTBOOT} flash --disable-verity --disable-verification vbmeta_system_dlkm_b ${vbmetasystemdlkmimg}
 	else
 	    echo "Flashing vbmeta Image"
 	    ${FASTBOOT} flash vbmeta_a ${vbmetaimg}
@@ -227,6 +233,9 @@ function main {
 	    echo "Flashing vbmeta vendor dlkm Image"
 	    ${FASTBOOT} flash vbmeta_vendor_dlkm_a ${vbmetavendordlkmimg}
 	    ${FASTBOOT} flash vbmeta_vendor_dlkm_b ${vbmetavendordlkmimg}
+	    echo "Flashing vbmeta system dlkm Image"
+	    ${FASTBOOT} flash vbmeta_system_dlkm_a ${vbmetasystemdlkmimg}
+	    ${FASTBOOT} flash vbmeta_system_dlkm_b ${vbmetasystemdlkmimg}
 	fi
 	echo "Flashing DTBO Image"
 	${FASTBOOT} flash dtbo_a ${dtboimg}
