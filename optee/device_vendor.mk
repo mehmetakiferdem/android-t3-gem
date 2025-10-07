@@ -16,6 +16,7 @@
 # optee-client (libteec and tee-supplicant)
 include vendor/linaro/optee_client/optee_client.device.mk
 $(call soong_config_set,optee_client,cfg_tee_fs_parent_path,/mnt/vendor/persist/tee)
+$(call soong_config_set,optee_client,rpmb_emu,false)
 
 PRODUCT_PACKAGES += \
 	libteec \
