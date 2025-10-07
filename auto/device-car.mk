@@ -93,3 +93,7 @@ PRODUCT_PACKAGES += \
 # https://github.com/snappautomotive/firmware-vendor_snappautomotive_packages_maps
 PRODUCT_PACKAGES_DEBUG += \
 	osmdroid
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    service.sf.prime_shader_cache=0
+
