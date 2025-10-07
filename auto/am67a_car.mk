@@ -16,7 +16,6 @@
 TARGET_KERNEL_USE ?= 6.12
 TARGET_BOOTLOADER_VERSION ?= 2025.01
 
-include device/ti/am62x/optee/device-optee.mk
 $(call inherit-product, device/ti/am62x/auto/device-car.mk)
 $(call inherit-product, device/ti/am62x/am67a/device.mk)
 

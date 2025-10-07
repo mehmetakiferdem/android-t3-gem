@@ -13,6 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+ifndef TARGET_MODE_BL
+ifeq ($(TARGET_BUILD_VARIANT), user)
+ifeq ($(FACTORY_BUILD), true)
+TARGET_MODE_BL := factory
+else
+TARGET_MODE_BL := release
+endif
+else
+TARGET_MODE_BL := debug
+endif
+endif
+
+-include device/ti/am62x/shared/bootloader/BoardConfig.mk
+TARGET_BOOTLOADER_VERSION ?= 2025.01 
+BOOTLOADERS_BINARIES := vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/
 
 # Primary Arch
 TARGET_ARCH := arm64
@@ -152,6 +167,12 @@ endif
 PRODUCT_PRIVATE_SEPOLICY_DIRS += device/ti/am62x/sepolicy-private
 
 # Copy Bootloader prebuilts and prebuilts images
+$(foreach board,$(BOARD_LIST), \
+  $(eval TIBOOT3_HSFS := $(wildcard $(BOOTLOADERS_BINARIES)/$(board)/tiboot3-$(TARGET_MODE_BL)-hsfs.bin)) \
+  $(eval TIBOOT3_GP := $(wildcard $(BOOTLOADERS_BINARIES)/$(board)/tiboot3-$(TARGET_MODE_BL)-gp.bin)) \
+  $(call copy_bl_binaries,$(BOOTLOADERS_BINARIES),$(board),$(TIBOOT3_HSFS),$(TIBOOT3_GP)) \
+)
+
 PRODUCT_COPY_FILES += \
 	vendor/ti/am62x/binaries/persist.img:$(TARGET_OUT)/persist.img \
 	vendor/ti/am62x/binaries/metadata.img:$(TARGET_OUT)/metadata.img \
@@ -231,6 +252,7 @@ BOARD_VENDOR_KERNEL_MODULES += $(BOARD_VENDOR_DLKM_MODULES)
 BOARD_SYSTEM_KERNEL_MODULES += $(BOARD_SYSTEM_DLKM_MODULES)
 BOARD_SYSTEM_KERNEL_MODULES_LOAD += $(BOARD_SYSTEM_KERNEL_MODULES)
 
+-include device/ti/am62x/optee/BoardConfig.mk
 -include device/ti/am62x/shared/graphics/BoardConfig.mk
 -include device/ti/am62x/shared/camera/BoardConfig.mk
 -include device/ti/am62x/shared/audio/BoardConfig.mk

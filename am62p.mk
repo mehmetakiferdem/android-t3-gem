@@ -43,8 +43,6 @@ allowed_list := product_manifest.xml
 allowed_list += com.android.ranging
 $(call enforce-product-packages-exist, $(allowed_list))
 
-include device/ti/am62x/optee/device-optee.mk
-
 # Include vendor binaries
 $(call inherit-product-if-exists, vendor/ti/am62x/am62p.mk)
 

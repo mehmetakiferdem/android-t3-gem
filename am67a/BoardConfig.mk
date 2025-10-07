@@ -23,17 +23,8 @@ BOARD_KERNEL_CMDLINE += cma=768M
 
 BOARD_BOOTCONFIG += androidboot.hardware=am67a
 
-# Copy Bootloader prebuilts and prebuilts images
-PRODUCT_COPY_FILES += \
-	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-evm/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am67a-evm-hsfs.bin \
-	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-evm/tispl.bin:$(TARGET_OUT)/tispl-am67a-evm.bin \
-	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-evm/u-boot.img:$(TARGET_OUT)/u-boot-am67a-evm.img \
-	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-evm-dfu/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am67a-evm-dfu-hsfs.bin \
-	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-evm-dfu/tispl.bin:$(TARGET_OUT)/tispl-am67a-evm-dfu.bin \
-	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-evm-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am67a-evm-dfu.img \
-	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-beagley-ai/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am67a-beagley-ai-hsfs.bin \
-	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-beagley-ai/tispl.bin:$(TARGET_OUT)/tispl-am67a-beagley-ai.bin \
-	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-beagley-ai/u-boot.img:$(TARGET_OUT)/u-boot-am67a-beagley-ai.img
+# Define supported board list
+BOARD_LIST := am67a-evm am67a-evm-dfu am67a-beagley-ai
 
 # Copy snagrecover config file
 PRODUCT_COPY_FILES += \
