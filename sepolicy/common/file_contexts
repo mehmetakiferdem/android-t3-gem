@@ -5,10 +5,6 @@
 /dev/dma_heap/carveout_video    u:object_r:dmabuf_system_heap_device:s0
 
 # binaries
-/vendor/bin/hw/android\.hardware\.atrace@1\.0-service\.img                          u:object_r:hal_atrace_default_exec:s0
-/vendor/bin/hw/android\.hardware\.dumpstate@1\.1-service\.img                       u:object_r:hal_dumpstate_default_exec:s0
-/vendor/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.software	            u:object_r:hal_gatekeeper_default_exec:s0
-/vendor/bin/hw/android\.hardware\.memtrack-service\.img                             u:object_r:hal_memtrack_default_exec:s0
 /vendor/bin/hw/android\.hardware\.health-service\.cuttlefish                        u:object_r:hal_health_default_exec:s0
 /vendor/bin/hw/android\.hardware\.health\.storage-service\.cuttlefish               u:object_r:hal_health_storage_default_exec:s0
 
