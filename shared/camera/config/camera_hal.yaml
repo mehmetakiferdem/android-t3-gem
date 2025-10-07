@@ -8,3 +8,8 @@ cameras:
   "/base/bus@f0000/bus@b00000/i2c@2b200000/camera@3c":
     location: back
     rotation: 0
+
+  # AM67a EVM camera on CSI2
+  "/base/bus@f0000/i2c@20020000/i2c-mux@71/i2c@0/camera@3c":
+    location: back
+    rotation: 0
