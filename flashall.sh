@@ -105,7 +105,7 @@ function main {
 
 	case "${board}" in
 		"am62x-sk"|"am62x-lp-sk"|"am625-beagleplay") ;;
-		"am62px-sk") hsfs="true";;
+		"am62px-sk"|"am67a-evm") hsfs="true";;
 		*) echo "invalid board: $board"; usage;;
 	esac
 
