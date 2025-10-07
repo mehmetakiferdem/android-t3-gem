@@ -34,6 +34,6 @@ PRODUCT_COPY_FILES += \
 
 # Copy snagrecover config file
 PRODUCT_COPY_FILES += \
-	device/ti/am62x/config/dfu/am62px-sk-evm-hsfs.yaml:$(TARGET_OUT)/am67a-evm-hsfs.yaml
+	device/ti/am62x/config/dfu/am67a-evm-hsfs.yaml:$(TARGET_OUT)/am67a-evm-hsfs.yaml
 
 include device/ti/am62x/BoardConfig-common.mk
