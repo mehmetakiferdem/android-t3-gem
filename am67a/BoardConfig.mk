@@ -30,7 +30,10 @@ PRODUCT_COPY_FILES += \
 	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-evm/u-boot.img:$(TARGET_OUT)/u-boot-am67a-evm.img \
 	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-evm-dfu/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am67a-evm-dfu-hsfs.bin \
 	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-evm-dfu/tispl.bin:$(TARGET_OUT)/tispl-am67a-evm-dfu.bin \
-	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-evm-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am67a-evm-dfu.img
+	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-evm-dfu/u-boot.img:$(TARGET_OUT)/u-boot-am67a-evm-dfu.img \
+	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-beagley-ai/tiboot3-hsfs.bin:$(TARGET_OUT)/tiboot3-am67a-beagley-ai-hsfs.bin \
+	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-beagley-ai/tispl.bin:$(TARGET_OUT)/tispl-am67a-beagley-ai.bin \
+	vendor/ti/am62x/bootloader/$(TARGET_BOOTLOADER_VERSION)/am67a-beagley-ai/u-boot.img:$(TARGET_OUT)/u-boot-am67a-beagley-ai.img
 
 # Copy snagrecover config file
 PRODUCT_COPY_FILES += \
