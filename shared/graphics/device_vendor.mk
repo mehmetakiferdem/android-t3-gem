@@ -7,7 +7,7 @@ PRODUCT_PACKAGES += \
 
 # Gralloc
 PRODUCT_VENDOR_PROPERTIES += \
-	ro.hardware.gralloc=$(PRODUCT_PLATFORM)
+	ro.hardware.gralloc=$(GRALLOC_PLATFORM)
 
 # Vulkan
 PRODUCT_COPY_FILES += \

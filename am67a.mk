@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2023 Texas Instruments Incorporated - http://www.ti.com/
+# Copyright (C) 2025 Texas Instruments Incorporated - http://www.ti.com/
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,16 +16,14 @@
 TARGET_KERNEL_USE ?= 6.6
 TARGET_BOOTLOADER_VERSION ?= 2024.04
 
-PRODUCT_PLATFORM := am62p
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, device/ti/am62x/am62p/device.mk)
+$(call inherit-product, device/ti/am62x/am67a/device.mk)
 
-PRODUCT_NAME := am62p
-PRODUCT_DEVICE := am62p
+PRODUCT_NAME := am67a
+PRODUCT_DEVICE := am67a
 PRODUCT_BRAND := TI
-PRODUCT_MODEL := AOSP on AM62P EVM
+PRODUCT_MODEL := AOSP on AM67A EVM
 PRODUCT_MANUFACTURER := TexasInstruments
 PRODUCT_CHARACTERISTICS := tablet
 

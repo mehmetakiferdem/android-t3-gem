@@ -1,5 +1,5 @@
 #
-# Copyright 2022 The Android Open-Source Project
+# Copyright 2025 Texas Instruments Incorporated - http://www.ti.com/
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,24 +14,7 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/am62x.mk \
-	$(LOCAL_DIR)/am62p.mk \
-	$(LOCAL_DIR)/am67a.mk \
-	$(LOCAL_DIR)/auto/am62x_car.mk \
-	$(LOCAL_DIR)/auto/am62p_car.mk \
-	$(LOCAL_DIR)/auto/am67a_car.mk \
+PRODUCT_PLATFORM := am67a
 
-COMMON_LUNCH_CHOICES := \
-	am62x-userdebug \
-	am62x-user \
-	am62x_car-userdebug \
-	am62x_car-user \
-	am62p-userdebug \
-	am62p-user \
-	am62p_car-userdebug \
-	am62p_car-user \
-	am67a-userdebug \
-	am67a-user \
-	am67a_car-userdebug \
-	am67a_car-user
+$(call inherit-product, device/ti/am62x/am62p/device.mk)
+

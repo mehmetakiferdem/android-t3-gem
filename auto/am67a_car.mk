@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2023 Texas Instruments Incorporated - http://www.ti.com/
+# Copyright (C) 2025 Texas Instruments Incorporated - http://www.ti.com/
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,36 +16,30 @@
 TARGET_KERNEL_USE ?= 6.6
 TARGET_BOOTLOADER_VERSION ?= 2024.04
 
-PRODUCT_PLATFORM := am62p
+include device/ti/am62x/optee/device-optee.mk
+$(call inherit-product, device/ti/am62x/auto/device-car.mk)
+$(call inherit-product, device/ti/am62x/am67a/device.mk)
 
+PRODUCT_CHARACTERISTICS := automotive
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, device/ti/am62x/am62p/device.mk)
-
-PRODUCT_NAME := am62p
-PRODUCT_DEVICE := am62p
-PRODUCT_BRAND := TI
-PRODUCT_MODEL := AOSP on AM62P EVM
-PRODUCT_MANUFACTURER := TexasInstruments
-PRODUCT_CHARACTERISTICS := tablet
+$(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
 # Boot image profiles
-PRODUCT_COPY_FILES +=  device/ti/am62x/shared/boot-profiles/preloaded-classes-am62p:system/etc/preloaded-classes
-PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := device/ti/am62x/shared/boot-profiles/boot-image-profile-am62p.txt
+PRODUCT_COPY_FILES +=  device/ti/am62x/shared/boot-profiles/preloaded-classes-am62p_car:system/etc/preloaded-classes
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := device/ti/am62x/shared/boot-profiles/boot-image-profile-am62p_car.txt
 
 # Set SOC information
 PRODUCT_VENDOR_PROPERTIES += \
 	ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
 	ro.soc.model=$(PRODUCT_DEVICE)
 
-# clean-up all unknown PRODUCT_PACKAGES
-allowed_list := product_manifest.xml
-allowed_list += android.hardware.health@2.0-impl-default.recovery
-allowed_list += DeviceDiagnostics
-$(call enforce-product-packages-exist, $(allowed_list))
-
-include device/ti/am62x/optee/device-optee.mk
-
 # Include vendor binaries
 $(call inherit-product-if-exists, vendor/ti/am62x/am62p.mk)
 
+PRODUCT_NAME := am67a_car
+PRODUCT_DEVICE := am67a
+PRODUCT_BRAND := TI
+PRODUCT_MODEL := AOSP Car on AM67A EVM
+PRODUCT_MANUFACTURER := TexasInstruments
+PRODUCT_RELEASE_NAME := AM67A

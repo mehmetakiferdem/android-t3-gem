@@ -1,0 +1,6 @@
+tiboot3:
+   path: tiboot3-am67a-evm-dfu-hsfs.bin
+tispl:
+   path: tispl-am67a-evm-dfu.bin
+u-boot:
+   path: u-boot-am67a-evm-dfu.img
