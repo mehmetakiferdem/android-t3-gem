@@ -39,6 +39,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_VENDOR_PROPERTIES += ro.hardware.keystore=optee
 PRODUCT_PACKAGES += android.hardware.security.keymint-service.optee
 
+PRODUCT_PACKAGES += android.hardware.oemlock-service.optee
+
 PRODUCT_COPY_FILES += \
 	device/ti/am62x/android.hardware.hardware_keystore.optee-keymint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.hardware_keystore.optee-keymint.xml
 

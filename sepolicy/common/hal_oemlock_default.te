@@ -1,0 +1,11 @@
+# Allow TEE access for OP-TEE oemlock HAL
+allow hal_oemlock_default tee_device:chr_file rw_file_perms;
+
+# Allow accessing vendor data for persistence
+allow hal_oemlock_default vendor_data_file:dir search;
+allow hal_oemlock_default tee_data_file:dir { create_dir_perms };
+allow hal_oemlock_default tee_data_file:file { create_file_perms };
+
+# Allow property socket access for setting system properties
+allow hal_oemlock_default property_socket:sock_file write;
+allow hal_oemlock_default init:unix_stream_socket connectto;
