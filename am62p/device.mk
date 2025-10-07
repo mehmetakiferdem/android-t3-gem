@@ -8,6 +8,10 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_VENDOR_PROPERTIES += \
 	vendor.hwc.drm.scale_with_gpu=1
 
+# Set Thermal value to select Json file
+PRODUCT_VENDOR_PROPERTIES += \
+	vendor.thermal.hardware=am62p
+
 # Ueventd
 PRODUCT_COPY_FILES += \
 	device/ti/am62x/am62p/ueventd.am62p.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
