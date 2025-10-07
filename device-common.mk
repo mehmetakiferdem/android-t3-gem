@@ -25,7 +25,7 @@ PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 
 # Kernel part
-LOCAL_KERNEL := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/Image
+LOCAL_KERNEL := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/ti-Image.lz4
 LOCAL_DTB := device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)
 
 PRODUCT_COPY_FILES += \
