@@ -38,8 +38,8 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # clean-up all unknown PRODUCT_PACKAGES
 allowed_list := product_manifest.xml
-allowed_list += android.hardware.health@2.0-impl-default.recovery
-allowed_list += DeviceDiagnostics
+allowed_list := product_manifest.xml
+allowed_list += com.android.ranging
 $(call enforce-product-packages-exist, $(allowed_list))
 
 include device/ti/am62x/optee/device-optee.mk
