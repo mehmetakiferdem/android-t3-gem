@@ -8,6 +8,10 @@ allow tee persist_block_device:file create_file_perms;
 allow tee persist_block_device:chr_file rw_file_perms;
 allow tee mnt_vendor_file:dir { getattr search };
 
+# RPMB access permissions
+allow tee persist_block_device:blk_file rw_file_perms;
+allow tee sysfs:file { read open };
+
 # required to run xtest
 userdebug_or_eng(`
   allow tee self:tcp_socket create_socket_perms;
