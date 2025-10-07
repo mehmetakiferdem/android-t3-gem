@@ -142,7 +142,6 @@ BOARD_KERNEL_CMDLINE += mem_sleep_default=deep
 BOARD_KERNEL_CMDLINE += 8250.nr_uarts=10
 
 DEVICE_MANIFEST_FILE += device/ti/am62x/manifest.xml
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/ti/am62x/framework_compatibility_matrix.xml
 
 BOARD_SEPOLICY_DIRS += device/ti/am62x/sepolicy/common/
 ifeq ($(TARGET_SDCARD_BOOT), true)
