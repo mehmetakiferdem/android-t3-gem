@@ -36,7 +36,6 @@
 [Landroid.content.IntentFilter;
 [Landroid.content.SyncAdapterType;
 [Landroid.content.UndoOwner;
-[Landroid.content.om.OverlayConstraint;
 [Landroid.content.pm.ActivityInfo;
 [Landroid.content.pm.Attribution;
 [Landroid.content.pm.Checksum;
@@ -2252,9 +2251,6 @@ android.car.builtin.app.ActivityManagerHelper$ProcessObserverCallback$1
 android.car.builtin.app.AppOpsManagerHelper
 android.car.builtin.app.TaskInfoHelper
 android.car.builtin.app.VoiceInteractionHelper
-android.car.builtin.bluetooth.le.AdvertisingSetCallbackHelper
-android.car.builtin.bluetooth.le.AdvertisingSetCallbackHelper$1
-android.car.builtin.bluetooth.le.AdvertisingSetCallbackHelper$Callback
 android.car.builtin.content.ContextHelper
 android.car.builtin.content.pm.PackageManagerHelper
 android.car.builtin.display.DisplayManagerHelper
@@ -2331,7 +2327,6 @@ android.car.drivingstate.CarUxRestrictionsConfiguration$RestrictionsPerSpeedRang
 android.car.drivingstate.CarUxRestrictionsManager
 android.car.drivingstate.CarUxRestrictionsManager$CarUxRestrictionsChangeListenerToService
 android.car.drivingstate.CarUxRestrictionsManager$EventCallbackHandler
-android.car.drivingstate.CarUxRestrictionsManager$OnUxRestrictionsChangedListener
 android.car.drivingstate.ICarDrivingState
 android.car.drivingstate.ICarDrivingState$Stub
 android.car.drivingstate.ICarDrivingStateChangeListener
@@ -2393,12 +2388,10 @@ android.car.hardware.property.CarPropertyEvent
 android.car.hardware.property.CarPropertyEvent$1
 android.car.hardware.property.CarPropertyManager
 android.car.hardware.property.CarPropertyManager$$ExternalSyntheticLambda2
-android.car.hardware.property.CarPropertyManager$$ExternalSyntheticLambda3
 android.car.hardware.property.CarPropertyManager$1
 android.car.hardware.property.CarPropertyManager$AsyncPropertyResultCallback
 android.car.hardware.property.CarPropertyManager$CarPropertyConfigs
 android.car.hardware.property.CarPropertyManager$CarPropertyEventListenerToService
-android.car.hardware.property.CarPropertyManager$CarServiceSupportedValuesChangeCallback
 android.car.hardware.property.CarPropertyManager$GetPropertyResultCallback
 android.car.hardware.property.CarPropertyManager$PropertyResultCallback
 android.car.hardware.property.CarPropertyManager$RemoteCallable
@@ -2791,8 +2784,6 @@ android.content.om.CriticalOverlayInfo
 android.content.om.IOverlayManager
 android.content.om.IOverlayManager$Stub
 android.content.om.IOverlayManager$Stub$Proxy
-android.content.om.OverlayConstraint
-android.content.om.OverlayConstraint$1
 android.content.om.OverlayIdentifier
 android.content.om.OverlayIdentifier$1
 android.content.om.OverlayInfo
@@ -2890,6 +2881,8 @@ android.content.pm.IPackageInstallerCallback$Stub$Proxy
 android.content.pm.IPackageInstallerSession
 android.content.pm.IPackageInstallerSession$Stub
 android.content.pm.IPackageInstallerSession$Stub$Proxy
+android.content.pm.IPackageLoadingProgressCallback
+android.content.pm.IPackageLoadingProgressCallback$Stub
 android.content.pm.IPackageManager
 android.content.pm.IPackageManager$Stub
 android.content.pm.IPackageManager$Stub$$ExternalSyntheticLambda0
@@ -3866,6 +3859,7 @@ android.hardware.biometrics.BiometricFingerprintConstants
 android.hardware.biometrics.BiometricManager
 android.hardware.biometrics.BiometricSourceType
 android.hardware.biometrics.BiometricSourceType$1
+android.hardware.biometrics.BiometricStateListener
 android.hardware.biometrics.ComponentInfoInternal
 android.hardware.biometrics.ComponentInfoInternal$1
 android.hardware.biometrics.CryptoObject
@@ -3893,6 +3887,7 @@ android.hardware.biometrics.IBiometricServiceReceiver
 android.hardware.biometrics.IBiometricServiceReceiver$Stub
 android.hardware.biometrics.IBiometricServiceReceiver$Stub$Proxy
 android.hardware.biometrics.IBiometricStateListener
+android.hardware.biometrics.IBiometricStateListener$Stub
 android.hardware.biometrics.IBiometricSysuiReceiver
 android.hardware.biometrics.IBiometricSysuiReceiver$Stub
 android.hardware.biometrics.IBiometricSysuiReceiver$Stub$Proxy
@@ -6465,7 +6460,6 @@ android.media.AudioManager$1
 android.media.AudioManager$2
 android.media.AudioManager$3
 android.media.AudioManager$4
-android.media.AudioManager$5
 android.media.AudioManager$AudioPlaybackCallback
 android.media.AudioManager$AudioPlaybackCallbackInfo
 android.media.AudioManager$AudioRecordingCallback
@@ -8450,7 +8444,6 @@ android.security.KeyStoreSecurityLevel$$ExternalSyntheticLambda1
 android.security.LegacyVpnProfileStore
 android.security.NetworkSecurityPolicy
 android.security.Scrypt
-android.security.advancedprotection.AdvancedProtectionFeature
 android.security.advancedprotection.AdvancedProtectionManager
 android.security.attestationverification.AttestationVerificationManager
 android.security.attestationverification.IAttestationVerificationManagerService
@@ -12072,6 +12065,7 @@ android.window.DesktopExperienceFlags$$ExternalSyntheticLambda6
 android.window.DesktopExperienceFlags$$ExternalSyntheticLambda7
 android.window.DesktopExperienceFlags$$ExternalSyntheticLambda8
 android.window.DesktopExperienceFlags$$ExternalSyntheticLambda9
+android.window.DesktopExperienceFlags$DesktopExperienceFlag
 android.window.DesktopModeFlags
 android.window.DesktopModeFlags$$ExternalSyntheticLambda0
 android.window.DesktopModeFlags$$ExternalSyntheticLambda1
@@ -12183,7 +12177,6 @@ android.window.ITaskFragmentOrganizer$Stub
 android.window.ITaskFragmentOrganizer$Stub$Proxy
 android.window.ITaskFragmentOrganizerController
 android.window.ITaskFragmentOrganizerController$Stub
-android.window.ITaskFragmentOrganizerController$Stub$Proxy
 android.window.ITaskOrganizer
 android.window.ITaskOrganizer$Stub
 android.window.ITaskOrganizer$Stub$Proxy
@@ -12379,7 +12372,6 @@ com.android.car.internal.SingleMessageHandler$1
 com.android.car.internal.StaticBinderInterface
 com.android.car.internal.SystemStaticBinder
 com.android.car.internal.common.CommonConstants
-com.android.car.internal.common.DispatchList
 com.android.car.internal.common.UserHelperLite
 com.android.car.internal.dep.SystemProperties
 com.android.car.internal.dep.Trace
@@ -12407,16 +12399,9 @@ com.android.car.internal.property.GetPropertyConfigListResult
 com.android.car.internal.property.GetPropertyConfigListResult$1
 com.android.car.internal.property.IAsyncPropertyResultCallback
 com.android.car.internal.property.IAsyncPropertyResultCallback$Stub
-com.android.car.internal.property.ISupportedValuesChangeCallback
-com.android.car.internal.property.ISupportedValuesChangeCallback$Stub
 com.android.car.internal.property.InputSanitizationUtils
 com.android.car.internal.property.LargeParcelableList
-com.android.car.internal.property.MinMaxSupportedPropertyValue
 com.android.car.internal.property.OnChangeCarPropertyEventTracker
-com.android.car.internal.property.PropIdAreaId
-com.android.car.internal.property.PropIdAreaId$1
-com.android.car.internal.property.RawPropertyValue
-com.android.car.internal.property.RawPropertyValue$1
 com.android.car.internal.property.SubscriptionManager
 com.android.car.internal.property.SubscriptionManager$RateInfo
 com.android.car.internal.property.SubscriptionManager$RateInfoForClients
@@ -12426,10 +12411,6 @@ com.android.car.internal.util.ArrayUtils
 com.android.car.internal.util.ConcurrentUtils
 com.android.car.internal.util.ConcurrentUtils$DirectExecutor
 com.android.car.internal.util.ConstantDebugUtils
-com.android.car.internal.util.ConstantDebugUtils$$ExternalSyntheticLambda0
-com.android.car.internal.util.ConstantDebugUtils$ConstantClazz
-com.android.car.internal.util.ConstantDebugUtils$ConstantKey
-com.android.car.internal.util.ConstantDebugUtils$ConstantKey$$ExternalSyntheticRecord0
 com.android.car.internal.util.DebugUtils
 com.android.car.internal.util.FunctionalUtils
 com.android.car.internal.util.IndentingPrintWriter
@@ -13902,6 +13883,7 @@ com.android.internal.protolog.common.LogDataType
 com.android.internal.protolog.common.LogLevel
 com.android.internal.ravenwood.RavenwoodEnvironment
 com.android.internal.security.VerityUtils
+com.android.internal.statusbar.DisableStates
 com.android.internal.statusbar.IAddTileResultCallback
 com.android.internal.statusbar.ISessionListener
 com.android.internal.statusbar.ISessionListener$Stub
