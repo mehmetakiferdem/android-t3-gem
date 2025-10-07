@@ -28,8 +28,8 @@ PRODUCT_MANUFACTURER := TexasInstruments
 PRODUCT_CHARACTERISTICS := tablet
 
 # Boot image profiles
-PRODUCT_COPY_FILES +=  device/ti/am62x/shared/boot-profiles/preloaded-classes-am62x:system/etc/preloaded-classes
-PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := device/ti/am62x/shared/boot-profiles/boot-image-profile-am62x.txt
+# PRODUCT_COPY_FILES +=  device/ti/am62x/shared/boot-profiles/preloaded-classes-am62x:system/etc/preloaded-classes
+# PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := device/ti/am62x/shared/boot-profiles/boot-image-profile-am62x.txt
 
 # Set lowram options
 PRODUCT_VENDOR_PROPERTIES += \
