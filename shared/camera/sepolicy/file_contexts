@@ -1,5 +1,5 @@
 # video devices
-/dev/media[0-2]                                                                 u:object_r:video_device:s0
+/dev/media[0-4]                                                                 u:object_r:video_device:s0
 /dev/v4l-subdev.*                                                               u:object_r:video_device:s0
 
 
