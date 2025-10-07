@@ -28,8 +28,8 @@ PRODUCT_MANUFACTURER := TexasInstruments
 PRODUCT_CHARACTERISTICS := tablet
 
 # Boot image profiles
-# PRODUCT_COPY_FILES +=  device/ti/am62x/shared/boot-profiles/preloaded-classes-am62p:system/etc/preloaded-classes
-# PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := device/ti/am62x/shared/boot-profiles/boot-image-profile-am62p.txt
+PRODUCT_COPY_FILES +=  device/ti/am62x/shared/boot-profiles/preloaded-classes-am67a:system/etc/preloaded-classes
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := device/ti/am62x/shared/boot-profiles/boot-image-profile-am67a.txt
 
 # Set SOC information
 PRODUCT_VENDOR_PROPERTIES += \
