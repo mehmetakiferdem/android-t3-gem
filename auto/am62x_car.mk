@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 TARGET_KERNEL_USE ?= 6.6
-TARGET_BOOTLOADER_VERSION ?= 2024.04
+TARGET_BOOTLOADER_VERSION ?= 2025.01
 
 include device/ti/am62x/optee/device-optee.mk
 $(call inherit-product, device/ti/am62x/auto/device-car.mk)
