@@ -17,7 +17,7 @@
 # gatekeeper
 PRODUCT_VENDOR_PROPERTIES += ro.hardware.gatekeeper=optee
 PRODUCT_PACKAGES += \
-	android.hardware.gatekeeper@1.0-service.optee
+	android.hardware.gatekeeper-service.optee
 
 # keymaster
 PRODUCT_VENDOR_PROPERTIES += ro.hardware.keystore=optee

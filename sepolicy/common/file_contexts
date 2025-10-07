@@ -25,7 +25,7 @@
 /dev/tee[0-9]*                                                     u:object_r:tee_device:s0
 /dev/teepriv[0-9]*                                                 u:object_r:tee_device:s0
 /vendor/bin/tee-supplicant                                         u:object_r:tee_exec:s0
-/vendor/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.optee   u:object_r:hal_gatekeeper_default_exec:s0
+/vendor/bin/hw/android\.hardware\.gatekeeper-service\.optee        u:object_r:hal_gatekeeper_default_exec:s0
 /vendor/bin/hw/android\.hardware\.security\.keymint-service\.optee u:object_r:hal_keymint_default_exec:s0
 /data/vendor/tee(/.*)?                                             u:object_r:tee_data_file:s0
 /mnt/vendor/persist(/.*)?                                          u:object_r:vendor_data_file:s0
