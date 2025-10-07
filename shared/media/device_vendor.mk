@@ -9,3 +9,5 @@ PRODUCT_COPY_FILES += \
 
 TARGET_PRODUCT_PROP += \
 	device/ti/am62x/shared/media/product.prop
+
+PRODUCT_PACKAGES_DEBUG += v4l2-ctl
