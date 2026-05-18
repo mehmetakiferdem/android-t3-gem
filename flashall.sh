@@ -6,7 +6,7 @@ set -o pipefail
 function usage {
 	echo "Usage: sudo flashall.sh <options>";
 	echo "options:";
-	echo "  --board To select good bootloader, board supported: am62x-sk, am62x-lp-sk, am625-beagleplay, am62px-sk, am67a-evm, am67a-beagley-ai"
+	echo "  --board To select good bootloader, board supported: am62x-sk, am62x-lp-sk, am625-beagleplay, am62px-sk, am67a-evm, am67a-beagley-ai, am67a-t3-gem-o1"
 	echo "  --bootloader To flash bootloader only. Useful when partitioning changes occur"
 	echo "  --hsfs for HS-FS devices which require bootloader authentication (default for am62px-sk)"
 	echo "  --sdcard /dev/<SDCARD> to generate a bootable SD card"
@@ -128,7 +128,7 @@ function main {
 
 	case "${board}" in
 		"am62x-sk"|"am62x-lp-sk"|"am625-beagleplay") ;;
-		"am62px-sk"|"am67a-evm"|"am67a-beagley-ai") hsfs="true";;
+		"am62px-sk"|"am67a-evm"|"am67a-beagley-ai"|"am67a-t3-gem-o1") hsfs="true";;
 		*) echo "invalid board: $board"; usage;;
 	esac
 
@@ -214,6 +214,10 @@ function main {
 		echo "Flashing tiboot3....."
 		echo "   tiboot3bin:  ${tiboot3bin}"
 		${FASTBOOT} flash tiboot3 ${tiboot3bin}
+
+		echo "Flashing tispl....."
+		echo "   tisplbin:  ${tisplbin}"
+		${FASTBOOT} flash tispl ${tisplbin}
 	fi
 
 	sleep 3

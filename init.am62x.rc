@@ -80,6 +80,8 @@ on early-fs
     mount_all --early
 
 on post-fs
+    restorecon_recursive /mnt/vendor/persist/
+
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 

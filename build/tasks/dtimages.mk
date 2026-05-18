@@ -18,7 +18,8 @@ DTB_FILES := \
 	$(LOCAL_DTB)/k3-am625-beagleplay.dtb \
 	$(LOCAL_DTB)/k3-am62p5-sk.dtb \
 	$(LOCAL_DTB)/k3-j722s-evm.dtb \
-	$(LOCAL_DTB)/k3-am67a-beagley-ai.dtb
+	$(LOCAL_DTB)/k3-am67a-beagley-ai.dtb \
+	$(LOCAL_DTB)/k3-am67a-t3-gem-o1.dtb
 
 $(DTBIMAGE): $(DTB_FILES) $(MKDTIMG)
 	$(MKDTIMG) create $@ --page_size=4096 $(DTB_FILES)

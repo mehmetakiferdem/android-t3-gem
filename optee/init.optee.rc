@@ -1,6 +1,3 @@
-on fs
-    restorecon_recursive /mnt/vendor/persist/
-
 service vendor.tee_supplicant /vendor/bin/tee-supplicant /dev/teepriv0
     class early_hal
     user root

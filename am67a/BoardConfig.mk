@@ -24,10 +24,11 @@ BOARD_KERNEL_CMDLINE += cma=768M
 BOARD_BOOTCONFIG += androidboot.hardware=am67a
 
 # Define supported board list
-BOARD_LIST := am67a-evm am67a-evm-dfu am67a-beagley-ai
+BOARD_LIST := am67a-evm am67a-evm-dfu am67a-beagley-ai am67a-t3-gem-o1
 
 # Copy snagrecover config file
 PRODUCT_COPY_FILES += \
-	device/ti/am62x/config/dfu/am67a-evm-hsfs.yaml:$(TARGET_OUT)/am67a-evm-hsfs.yaml
+	device/ti/am62x/config/dfu/am67a-evm-hsfs.yaml:$(TARGET_OUT)/am67a-evm-hsfs.yaml \
+	device/ti/am62x/config/dfu/am67a-t3-gem-o1-hsfs.yaml:$(TARGET_OUT)/am67a-t3-gem-o1-hsfs.yaml
 
 include device/ti/am62x/BoardConfig-common.mk

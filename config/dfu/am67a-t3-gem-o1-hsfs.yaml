@@ -1,0 +1,6 @@
+tiboot3:
+   path: tiboot3-am67a-t3-gem-o1-hsfs.bin
+tispl:
+   path: tispl-am67a-t3-gem-o1.bin
+u-boot:
+   path: u-boot-am67a-t3-gem-o1.img
