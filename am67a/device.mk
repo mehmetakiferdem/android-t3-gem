@@ -18,3 +18,11 @@ PRODUCT_PLATFORM := am67a
 
 $(call inherit-product, device/ti/am62x/am62p/device.mk)
 
+
+# RTL8822CS WiFi firmware (T3 Gem O1)
+PRODUCT_PACKAGES += linux_firmware_rtw88-rtw8822c
+
+# RTL8822CS BT firmware (T3 Gem O1) - no Soong module exists for rtl8822cs BT
+PRODUCT_COPY_FILES += \
+    device/ti/am62x/firmware/rtl_bt/rtl8822cs_fw.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl_bt/rtl8822cs_fw.bin \
+    device/ti/am62x/firmware/rtl_bt/rtl8822cs_config.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl_bt/rtl8822cs_config.bin
