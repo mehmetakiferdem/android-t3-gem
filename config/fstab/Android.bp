@@ -74,3 +74,17 @@ prebuilt_etc {
     vendor_ramdisk_available: true,
 }
 
+
+genrule {
+    name: "gen_fstab_am62_bootdevice_avb",
+    srcs: ["fstab.in.bootdevice.avb"],
+    out: ["fstab.am62"],
+    cmd: "cp $(in) $(out)",
+}
+
+prebuilt_etc {
+    name: "fstab.am62.bootdevice.avb",
+    src: ":gen_fstab_am62_bootdevice_avb",
+    vendor: true,
+    vendor_ramdisk_available: true,
+}

@@ -75,7 +75,9 @@ PRODUCT_PACKAGES += \
 	fstab.am62.mmc.avb \
 	fstab.am62.mmc.avb.vendor_ramdisk \
 	fstab.am62.mmc \
-	fstab.am62.mmc.vendor_ramdisk
+	fstab.am62.mmc.vendor_ramdisk \
+	fstab.am62.bootdevice.avb \
+	fstab.am62.bootdevice.avb.vendor_ramdisk
 
 # Dynamic partitions
 PRODUCT_BUILD_SUPER_PARTITION := true
