@@ -64,7 +64,25 @@ on init
 
     start watchdogd
 
+on early-boot
+    # ledtrig-heartbeat drives the ACT LED through the linux,default-trigger
+    # property in the device tree, but it is a trigger, not a driver: it has no
+    # device of its own, so ueventd's alias-driven module loading never reaches
+    # it and the LED stays solid instead of blinking. Load it by hand. The LED
+    # core applies the default trigger as soon as the trigger registers, so the
+    # ordering against leds-gpio does not matter.
+    insmod /vendor/lib/modules/ledtrig-heartbeat.ko
+
 on boot
+    # drm_hwcomposer enumerates the DRM connectors once, when it starts, and
+    # never looks again. It is in class animation, so init starts it about
+    # 12 s into boot, before the sii902x bridge can answer on the DDC bus: it
+    # finds no usable pipeline, falls back to headless mode and the screen
+    # stays dark for the rest of the session. By the time this trigger runs
+    # the connector reads its EDID fine, so restart the composer once here.
+    # surfaceflinger follows through the onrestart in hwc3-drm.rc.
+    restart vendor.hwcomposer-3
+
     # Allow to access debugfs for system:system
     chmod 0755 /sys/kernel/debug
     chown system system /sys/kernel/debug
