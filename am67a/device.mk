@@ -26,3 +26,16 @@ PRODUCT_PACKAGES += linux_firmware_rtw88-rtw8822c
 PRODUCT_COPY_FILES += \
     device/ti/am62x/firmware/rtl_bt/rtl8822cs_fw.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl_bt/rtl8822cs_fw.bin \
     device/ti/am62x/firmware/rtl_bt/rtl8822cs_config.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl_bt/rtl8822cs_config.bin
+
+# Both am67a products inherit this file, and both were shipping the same two
+# rough edges. full_base.mk pins PRODUCT_LOCALES to en_US, so the Turkish
+# layout and dictionary LatinIME already carries were never built in and the
+# language could not be selected at all. And the browser that comes down from
+# handheld_product.mk is Browser2, the WebView test shell: developer chrome, a
+# placeholder icon, and a package name that gives it away
+# (org.chromium.webview_shell). Jelly declares overrides: ["Browser2"], so
+# pulling it in replaces the shell rather than leaving two browsers installed.
+PRODUCT_LOCALES := en_US tr_TR
+
+PRODUCT_PACKAGES += \
+    Jelly
