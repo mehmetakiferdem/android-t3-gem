@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kart Sensörleri</string>
+    <string name="subtitle">T3 Gemstone O1 üzerindeki IIO cihazlarından canlı okuma</string>
+    <string name="no_devices">/sys/bus/iio/devices altında hiçbir IIO cihazı yok.\n\nKart sensörlerinin çekirdek sürücüleri gerekiyor: LPS22DF için st_pressure_spi, HDC2010 için hdc2010. ICM-20948\'in bu çekirdekte sürücüsü yok, spidev\'de kalıyor.</string>
+    <string name="denied">/sys/bus/iio/devices okunamıyor — uygulamanın sepolicy izinleri eksik.</string>
+    <string name="refresh">Yenile</string>
+    <string name="unknown_sensor">Bilinmeyen cihaz</string>
+</resources>

@@ -50,3 +50,8 @@ genfscon sysfs /devices/platform/bus@f0000/8000000.ethernet/net/eth1            
 genfscon sysfs /devices/platform/bus@f0000/fa20000.mmc/mmc_host/mmc2/mmc2:0001/mmc2:0001:2/wl18xx.3.auto/net/wlan0      u:object_r:sysfs_net:s0
 
 genfscon sysfs /devices/virtual/misc/usb_accessory u:object_r:sysfs_uhid:s0
+
+# sensors: HDC2010 on wkup_i2c0, LPS22DF on mcu_spi0
+genfscon sysfs /devices/platform/bus@f0000/20000000.i2c/i2c-3/3-0041                u:object_r:sysfs_iio:s0
+genfscon sysfs /devices/platform/bus@f0000/bus@f0000:bus@4000000/4b00000.spi        u:object_r:sysfs_iio:s0
+genfscon sysfs /bus/iio                                                             u:object_r:sysfs_iio:s0

@@ -38,4 +38,5 @@ PRODUCT_COPY_FILES += \
 PRODUCT_LOCALES := en_US tr_TR
 
 PRODUCT_PACKAGES += \
+    GemSensors \
     Jelly

@@ -5,3 +5,7 @@ type sysfs_mmc, fs_type, sysfs_type;
 type mediadrm_vendor_data_file, file_type, data_file_type;
 type vendor_firmware_file, vendor_file_type, file_type;
 type dri_device, dev_type;
+# The board sensors come up as IIO devices rather than through a sensors HAL,
+# so the readout app reads their sysfs nodes. Giving them their own type keeps
+# that from turning into a blanket sysfs grant.
+type sysfs_iio, fs_type, sysfs_type;

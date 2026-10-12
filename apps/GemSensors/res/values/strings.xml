@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Board Sensors</string>
+    <string name="subtitle">Live readings from the IIO devices on the T3 Gemstone O1</string>
+    <string name="no_devices">No IIO device found under /sys/bus/iio/devices.\n\nThe board sensors need their kernel drivers: LPS22DF through st_pressure_spi and HDC2010 through hdc2010. The ICM-20948 has no driver in this kernel and stays on spidev.</string>
+    <string name="denied">Cannot read /sys/bus/iio/devices — the app is missing the sepolicy rules it needs.</string>
+    <string name="refresh">Refresh</string>
+    <string name="unknown_sensor">Unknown device</string>
+</resources>

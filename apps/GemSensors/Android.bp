@@ -1,0 +1,26 @@
+//
+// Board sensor readout for T3 Gemstone O1.
+//
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_app {
+    name: "GemSensors",
+
+    srcs: ["src/**/*.java"],
+    resource_dirs: ["res"],
+    manifest: "AndroidManifest.xml",
+
+    // The board has no sensors HAL, so this reads the IIO sysfs nodes
+    // directly. That needs the system uid and the sepolicy rules in
+    // device/ti/am62x/sepolicy/common/gem_sensors.te.
+    certificate: "platform",
+    sdk_version: "system_current",
+    product_specific: true,
+
+    optimize: {
+        enabled: false,
+    },
+}
